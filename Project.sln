@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoshaverAmlak", "MoshaverAmlak\MoshaverAmlak.csproj", "{D3346FB8-BDD5-43E8-80F3-24F03A8C7C6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoshaverAmlak.Core", "MoshaverAmlak.Core\MoshaverAmlak.Core.csproj", "{172BA2A0-9DEA-47D5-A8E1-16FB09568909}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoshaverAmlak.DataLayer", "MoshaverAmlak.DataLayer\MoshaverAmlak.DataLayer.csproj", "{78EAAF45-AB78-4E6A-86B7-9B9CD8C11B54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{D3346FB8-BDD5-43E8-80F3-24F03A8C7C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3346FB8-BDD5-43E8-80F3-24F03A8C7C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3346FB8-BDD5-43E8-80F3-24F03A8C7C6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{172BA2A0-9DEA-47D5-A8E1-16FB09568909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172BA2A0-9DEA-47D5-A8E1-16FB09568909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172BA2A0-9DEA-47D5-A8E1-16FB09568909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172BA2A0-9DEA-47D5-A8E1-16FB09568909}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78EAAF45-AB78-4E6A-86B7-9B9CD8C11B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78EAAF45-AB78-4E6A-86B7-9B9CD8C11B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78EAAF45-AB78-4E6A-86B7-9B9CD8C11B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78EAAF45-AB78-4E6A-86B7-9B9CD8C11B54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
