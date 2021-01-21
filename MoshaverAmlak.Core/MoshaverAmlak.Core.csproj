@@ -4,4 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Repository\Repository\Class\" />
+    <Folder Include="Repository\Repository\Interface\" />
+    <Folder Include="Repository\Service\Class\" />
+    <Folder Include="Repository\Service\Interface\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MoshaverAmlak.DataLayer\MoshaverAmlak.DataLayer.csproj" />
+  </ItemGroup>
+
 </Project>
