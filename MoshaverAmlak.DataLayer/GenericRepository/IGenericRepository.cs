@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using MoshaverAmlak.DataLayer.Entity;
 
 namespace MoshaverAmlak.DataLayer.GenericRepository
 {
-    public interface IGenericRepository
+    public interface IGenericRepository<T> : IDisposable  where T : BaseEntity
     {
     }
 }

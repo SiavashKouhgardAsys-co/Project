@@ -1,19 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Repository\Repository\Class\" />
-    <Folder Include="Repository\Repository\Interface\" />
-    <Folder Include="Repository\Service\Class\" />
-    <Folder Include="Repository\Service\Interface\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Common\" />
+		<Folder Include="Repository\Repository\Class\" />
+		<Folder Include="Repository\Repository\Interface\" />
+		<Folder Include="Repository\Service\Class\" />
+		<Folder Include="Repository\Service\Interface\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MoshaverAmlak.DataLayer\MoshaverAmlak.DataLayer.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\MoshaverAmlak.DataLayer\MoshaverAmlak.DataLayer.csproj" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
 </Project>
