@@ -94,6 +94,7 @@ namespace MoshaverAmlak.DataLayer.Entity
         public int Name { get; set; }
 
         public ICollection<HomeFile> HomeFiles { get; set; }
+        public ICollection<UserRegion> UserRegions { get; set; }
     }
     public class Room : BaseEntity
     {
@@ -222,5 +223,110 @@ namespace MoshaverAmlak.DataLayer.Entity
 
         public Facilities Facilities { get; set; }
         public HomeFile HomeFile { get; set; }
+    }
+    public class UserRegion : BaseEntity
+    {
+        public string UserId { get; set; }
+        public int RegionId { get; set; }
+
+        public RealEstate_User RealEstate_User { get; set; }
+        public Region Region { get; set; }
+    }
+    public class RealEstate : BaseEntity
+    {
+        public string Name { get; set; }
+        public string RegistrationNumber { get; set; }
+        public string Description { get; set; }
+
+        public string UserId { get; set; }
+
+        public RealEstate_User RealEstate_User { get; set; }
+
+        public ICollection<RealEstateAddress> RealEstateAddresses { get; set; }
+        public ICollection<RealEstateTel> RealEstateTels { get; set; }
+    }
+    public class RealEstateAddress : BaseEntity
+    {
+        public string Address { get; set; }
+
+        public int RealEstateId { get; set; }
+
+        public RealEstate RealEstate { get; set; }
+    }
+    public class RealEstateTel : BaseEntity
+    {
+        public string Tel { get; set; }
+
+        public int RealEstateId { get; set; }
+
+        public RealEstate RealEstate { get; set; }
+    }
+    public class Owner : BaseEntity
+    {
+        public string FullName { get; set; }
+        public string Descrption { get; set; }
+
+        public string UserId { get; set; }
+
+        public RealEstate_User RealEstate_User { get; set; }
+
+        public ICollection<OwnerTel> OwnerTels { get; set; }
+    }
+    public class OwnerTel : BaseEntity
+    {
+        public string Tel { get; set; }
+
+        public int OwnerId { get; set; }
+
+        public Owner Owner { get; set; }
+    }
+    public class Buyer : BaseEntity
+    {
+        public string FullName { get; set; }
+        public string Description { get; set; }
+        public string AmountOfInvestiment { get; set; }
+
+        public string UserId { get; set; }
+
+        public RealEstate_User RealEstate_User { get; set; }
+
+        public ICollection<BuyerTel> BuyerTels { get; set; }
+    }
+    public class BuyerTel : BaseEntity
+    {
+        public string Tel { get; set; }
+
+        public int BuyerId { get; set; }
+
+        public Buyer Buyer { get; set; }
+    }
+    public class Investor : BaseEntity
+    {
+        public string FullName { get; set; }
+        public string Description { get; set; }
+        public string AmountOfInvestiment { get; set; }
+
+        public string UserId { get; set; }
+
+        public RealEstate_User RealEstate_User { get; set; }
+
+        public ICollection<InvestorTel> BuyerTels { get; set; }
+    }
+    public class InvestorTel : BaseEntity
+    {
+        public string Tel { get; set; }
+
+        public int InvestorId { get; set; }
+
+        public Investor Investor { get; set; }
+    }
+    public class UserWorkArea : BaseEntity
+    {
+        public double MaxArea { get; set; }
+        public double MinArea { get; set; }
+
+        public string UserId { get; set; }
+
+        public RealEstate_User RealEstate_User { get; set; }
     }
 }

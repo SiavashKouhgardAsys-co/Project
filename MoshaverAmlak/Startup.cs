@@ -36,7 +36,7 @@ namespace MoshaverAmlak
 
             services.AddDbContext<RealEstate_Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefualtConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(opt =>
+            services.AddIdentity<RealEstate_User, IdentityRole>(opt =>
             {
                 opt.Password.RequiredLength = 6;
                 opt.Password.RequireDigit = false;
