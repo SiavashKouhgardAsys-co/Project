@@ -310,7 +310,7 @@ namespace MoshaverAmlak.DataLayer.Entity
 
         public RealEstate_User RealEstate_User { get; set; }
 
-        public ICollection<InvestorTel> BuyerTels { get; set; }
+        public ICollection<InvestorTel> InvestorTels { get; set; }
     }
     public class InvestorTel : BaseEntity
     {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoshaverAmlak.DataLayer.Entity;
 
 namespace MoshaverAmlak.DataLayer.Migrations
 {
     [DbContext(typeof(RealEstate_Context))]
-    partial class RealEstate_ContextModelSnapshot : ModelSnapshot
+    [Migration("20210129120903_GenerateDatabaseV02")]
+    partial class GenerateDatabaseV02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
