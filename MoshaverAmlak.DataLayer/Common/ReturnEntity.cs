@@ -1,10 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace MoshaverAmlak.DataLayer.Common
 {
-    class ReturnEntity
+    public class ReturnEntity<T>
     {
+        public Result Result { get; set; }
+        public T Entity { get; set; }
+    }
+
+    public class ReturnEntity_List<T>
+    {
+        public Result Result { get; set; }
+        public List<T> Entity { get; set; }
+    }
+
+    public class ReturnEntity_IQueryable<T>
+    {
+        public Result Result { get; set; }
+        public IQueryable<T> Entity { get; set; }
     }
 }
