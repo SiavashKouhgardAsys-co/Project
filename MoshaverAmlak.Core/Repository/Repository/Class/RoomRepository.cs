@@ -23,6 +23,22 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             return await _roomRepository.SaveChangeAsync();
         }
 
+        public async Task<Result> DeleteRoomById(int roomId)
+        {
+            var entity = _roomRepository.DeleteEntityById(roomId);
+            if (entity.StatusResult != (int)Result.Status.OK) return entity;
+            return await _roomRepository.SaveChangeAsync();
+        }
+
+        public async Task<Result> EditRoom(Room room)
+        {
+            var entity = _roomRepository.GetEntityById(room.Id);
+            if (entity.Result.StatusResult != (int)Result.Status.OK) return entity.Result;
+            entity.Entity.Name = room.Name;
+            var updateEntity = _roomRepository.UpdateEntity(entity.Entity);
+            if (updateEntity.StatusResult != (int)Result.Status.OK) return updateEntity;
+            return await _roomRepository.SaveChangeAsync();
+        }
         public void Dispose()
         {
             _roomRepository?.Dispose();
