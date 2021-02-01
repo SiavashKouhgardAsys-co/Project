@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MoshaverAmlak.DataLayer.Entity
 {
-    public class RealEstate_Context : IdentityDbContext<IdentityUser, IdentityRole, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
+    public class RealEstate_Context : IdentityDbContext<RealEstate_User, IdentityRole, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public RealEstate_Context(DbContextOptions<RealEstate_Context> context) : base(context)
         {
