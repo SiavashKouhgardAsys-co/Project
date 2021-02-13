@@ -1,0 +1,52 @@
+﻿@model IEnumerable<HomeFileType>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a asp-area="Admin" asp-controller="HomeFileType" asp-action="Create">
+                ثبت نوع خانه جدید
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        <span>ردیف</span>
+                    </th>
+                    <th>
+                        <span>نوع خانه</span>
+                    </th>
+                    <th>
+                        <span>عملیات</span>
+                    </th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        اسم
+                    </td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="HomeFileType" asp-action="Delete">
+                            حذف
+                        </a>
+                        <a asp-area="Admin" asp-controller="HomeFileType" asp-action="Edit">
+                            ویرایش
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

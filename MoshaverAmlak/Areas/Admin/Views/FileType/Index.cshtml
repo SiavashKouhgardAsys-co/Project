@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FileType>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a asp-area="Admin" asp-controller="FileType" asp-action="Create">
+                ثبت نوع فایل جدید
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        <span>ردیف</span>
+                    </th>
+                    <th>
+                        <span>نوع فایل</span>
+                    </th>
+                    <th>
+                        <span>عملیات</span>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        نام فایل
+                    </td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="FileType" asp-action="Delete">
+                            حذف
+                        </a>
+                        <a asp-area="Admin" asp-controller="FileType" asp-action="Edit">
+                            ویرایش
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

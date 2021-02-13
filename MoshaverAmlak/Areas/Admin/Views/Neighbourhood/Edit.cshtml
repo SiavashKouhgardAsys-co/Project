@@ -1,0 +1,37 @@
+﻿@model Neighbourhood
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container m-1">
+    <div class="row">
+        <div class="col">
+            <form asp-area="Admin" asp-controller="Neighbourhood" asp-action="Edit">
+                <div class="row">
+                    <div class="col-4">
+                        <span>
+                            ویرایش نام :
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        <input type="text" asp-for="@Model.Name" />
+                    </div>
+
+                    <div class="col-4">
+                        <input type="submit" value="ثبت تغییرات" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12 ">
+                        <a asp-area="Admin" asp-controller="Neighbourhood" asp-action="Index">
+                            بازگشت
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

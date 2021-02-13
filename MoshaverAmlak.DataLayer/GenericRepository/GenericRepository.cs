@@ -80,7 +80,7 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
                 returnEntity.Result = Result.GenerateResult(Result.Status.Failed);
             }
             return returnEntity;
-        }
+        }   
 
         // CREATE
         public Result AddEntity(T entity)

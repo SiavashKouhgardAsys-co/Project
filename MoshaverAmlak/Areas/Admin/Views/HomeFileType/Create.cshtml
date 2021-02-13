@@ -1,0 +1,33 @@
+﻿@model HomeFileType
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container m-1">
+    <div class="row">
+        <div class="col">
+            <form asp-area="Admin" asp-controller="HomeFileType" asp-action="Create" method="post">
+                <div class="row">
+                    <div class="col-4">
+                        <span>ورود اطلاعات</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="text" asp-for="Name" />
+                    </div>
+                    <div class="col-2">
+                        <input type="submit" value="ثبت اطلاعات" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12 ">
+                        <a asp-area="Admin" asp-controller="FileType" asp-action="Index">
+                            بازگشت
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

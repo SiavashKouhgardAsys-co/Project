@@ -20,7 +20,7 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
         Result DeleteEntity(T entity);
         Result DeleteRangeEntity(List<T> entities);
         Result DeleteEntityById(int entityId);
-        object AddEntity(MoshaverAmlak.Core.Repository.Repository.Class.CWTypeRepository cWTypeRepository);
+        
         Task<Result> SaveChangeAsync();
         Result SaveChange();
     }

@@ -1,0 +1,54 @@
+﻿@model Neighbourhood
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a asp-area="Admin" asp-controller="Neighbourhood" asp-action="Create">
+                ثبت همسایه جدید
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        <span>ردیف</span>
+                    </th>
+                    <th>
+                        <span> همسایه</span>
+                    </th>
+                    <th>
+                        <span>عملیات</span>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        نوع همسایه
+                    </td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="Neighbourhood" asp-action="Delete">
+                            حذف
+                        </a>
+                        <a asp-area="Admin" asp-controller="Neighbourhood" asp-action="Edit">
+                            ویرایش
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

@@ -10,6 +10,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
     public class ManagedUserController : Controller
     {
         [HttpGet()]
+
         // SHOW ALL USERS
         public IActionResult Index()
         {
@@ -19,5 +20,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         [HttpGet()]
         // ADD NEW USER
         public IActionResult Register() => View();
+
+        
     }
 }
