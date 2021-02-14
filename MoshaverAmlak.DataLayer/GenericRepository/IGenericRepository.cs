@@ -20,7 +20,6 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
         Result DeleteEntity(T entity);
         Result DeleteRangeEntity(List<T> entities);
         Result DeleteEntityById(int entityId);
-        
         Task<Result> SaveChangeAsync();
         Result SaveChange();
     }
