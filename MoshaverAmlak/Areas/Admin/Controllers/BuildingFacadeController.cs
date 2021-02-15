@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace MoshaverAmlak.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BalconyPlaceController : Controller
+    public class BuildingFacadeController : Controller
     {
-        
         public IActionResult Index()
         {
             return View();
         }
-        
+
         [HttpGet]
         public IActionResult Create() => View();
+
         [HttpGet]
         public IActionResult Delete() => View();
         [HttpGet]

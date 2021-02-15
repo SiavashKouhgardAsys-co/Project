@@ -55,21 +55,14 @@ namespace MoshaverAmlak.DataLayer.Entity
         public int FileTypeId { get; set; }
 
         public Region Region { get; set; }
-        public Room Room { get; set; }
-        public BalconyPlace BalconyPlace { get; set; }
+
+
         public Neighbourhood Neighbourhood { get; set; }
         public Rebuilt Rebuilt { get; set; }
         public City City { get; set; }
-        public TypeHome TypeHome { get; set; }
+
         public HomeDirection HomeDirection { get; set; }
-        public Cupboard Cupboard { get; set; }
-        public CWType CWType { get; set; }
-        public BuildingFacade BuildingFacade { get; set; }
-        public FloorMaterial FloorMaterial { get; set; }
-        public DoorOpenerType DoorOpenerType { get; set; }
-        public AirConditioner AirConditioner { get; set; }
-        public HotWaterType HotWaterType { get; set; }
-        public HeatingType HeatingType { get; set; }
+
         public TypeOfDocument TypeOfDocument { get; set; }
         public HomeFileType HomeFileType { get; set; }
         public FileType FileType { get; set; }
@@ -96,18 +89,7 @@ namespace MoshaverAmlak.DataLayer.Entity
         public ICollection<HomeFile> HomeFiles { get; set; }
         public ICollection<UserRegion> UserRegions { get; set; }
     }
-    public class Room : BaseEntity
-    {
-        public string Name { get; set; }
 
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
-    public class BalconyPlace : BaseEntity
-    {
-        public string Name { get; set; }
-
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
     public class Neighbourhood : BaseEntity
     {
         public string Name { get; set; }
@@ -136,12 +118,7 @@ namespace MoshaverAmlak.DataLayer.Entity
 
         public ICollection<City> Cities { get; set; }
     }
-    public class TypeHome : BaseEntity
-    {
-        public string Name { get; set; }
 
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
     public class ImageHome : BaseEntity
     {
         public string ImagePath { get; set; }
@@ -156,64 +133,23 @@ namespace MoshaverAmlak.DataLayer.Entity
 
         public ICollection<HomeFile> HomeFiles { get; set; }
     }
-    public class Cupboard : BaseEntity
-    {
-        public string Name { get; set; }
 
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
-    public class CWType : BaseEntity
-    {
-        public string Name { get; set; }
-
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
-    public class BuildingFacade : BaseEntity
-    {
-        public string Name { get; set; }
-
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
-    public class FloorMaterial : BaseEntity
-    {
-        public string Name { get; set; }
-
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
-    public class DoorOpenerType : BaseEntity
-    {
-        public string Name { get; set; }
-
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
-    public class AirConditioner : BaseEntity
-    {
-        public string Name { get; set; }
-
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
-    public class HotWaterType : BaseEntity
-    {
-        public string Name { get; set; }
-
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
-    public class HeatingType : BaseEntity
-    {
-        public string Name { get; set; }
-
-        public ICollection<HomeFile> HomeFiles { get; set; }
-    }
     public class TypeOfDocument : BaseEntity
     {
         public string Name { get; set; }
 
         public ICollection<HomeFile> HomeFiles { get; set; }
     }
+    public class CategoryFacilities : BaseEntity
+    {
+        public string Name { get; set; }
+        public ICollection<Facilities> Facilities { get; set; }
+    }
     public class Facilities : BaseEntity
     {
         public string Name { get; set; }
-
+        public int CategoryFacilityId { get; set; }
+        public CategoryFacilities CategoryFacilities { get; set; }
         public ICollection<FacilitiesHomeFile> FacilitiesHomeFiles { get; set; }
     }
     public class FacilitiesHomeFile : BaseEntity

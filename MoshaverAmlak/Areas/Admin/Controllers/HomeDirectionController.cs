@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MoshaverAmlak.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class RoomController : Controller
+    public class HomeDirectionController : Controller
     {
         public IActionResult Index()
         {
@@ -16,10 +16,10 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
 
         [HttpGet]
         public IActionResult Create() => View();
-
         [HttpGet]
         public IActionResult Delete() => View();
         [HttpGet]
         public IActionResult Edit() => View();
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Room
+﻿@model Facilities
 @{
     ViewData["Title"] = "Create";
 }
@@ -6,10 +6,17 @@
 <div class="container m-1">
     <div class="row">
         <div class="col">
-            <form asp-area="Admin" asp-controller="Room" asp-action="Create" method="post">
+            <form asp-area="Admin" asp-controller="Facilities" asp-action="Create" method="post">
                 <div class="row">
                     <div class="col-3">
                         <span>ورود اطلاعات</span>
+                    </div>
+                    <div class="col-4">
+                        <select>
+                            <option value="0">تهویه هوا</option>
+                            <option value="0">گرمایش</option>
+                            <option value="0">درب ورودی</option>
+                        </select>
                     </div>
                     <div class="col-4">
                         <input type="text" asp-for="Name" />
@@ -21,7 +28,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 ">
-                        <a asp-area="Admin" asp-controller="Room" asp-action="Index">
+                        <a asp-area="Admin" asp-controller="Facilities" asp-action="Index">
                             بازگشت
                         </a>
                     </div>

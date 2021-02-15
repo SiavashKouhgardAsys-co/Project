@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Room>
+﻿@model IEnumerable<Facilities>
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,8 +6,8 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <a asp-area="Admin" asp-controller="Room" asp-action="Create">
-                ثبت خواب جدید
+            <a asp-area="Admin" asp-controller="Facilities" asp-action="Create">
+                ثبت امکانات جدید
             </a>
         </div>
     </div>
@@ -20,8 +20,12 @@
                         <span>ردیف</span>
                     </th>
                     <th>
-                        <span> خواب</span>
+                        <span>دسته بندی امکانات</span>
                     </th>
+                    <th>
+                        <span>مدل امکانات</span>
+                    </th>
+
                     <th>
                         <span>عملیات</span>
                     </th>
@@ -34,13 +38,16 @@
                         1
                     </td>
                     <td>
-                       تعداد خواب 
+                        تهویه هوا
                     </td>
                     <td>
-                        <a asp-area="Admin" asp-controller="Room" asp-action="Delete">
+                        چیلر
+                    </td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="Facilities" asp-action="Delete" >
                             حذف
                         </a>
-                        <a asp-area="Admin" asp-controller="Room" asp-action="Edit">
+                        <a asp-area="Admin" asp-controller="Facilities" asp-action="Edit">
                             ویرایش
                         </a>
                     </td>
@@ -49,4 +56,7 @@
         </table>
     </div>
 </div>
+
+
+
 
