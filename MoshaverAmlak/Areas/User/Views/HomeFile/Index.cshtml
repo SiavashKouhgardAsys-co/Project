@@ -1,0 +1,95 @@
+﻿@model IEnumerable<HomeFile>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-left mt-5">
+            <a asp-area="User" asp-controller="HomeFile" asp-action="Create">
+                ثبت فایل جدید
+            </a>
+        </div>
+        <div class="col-12 text-left mt-2">
+            <span>جست و جو</span>
+        </div>
+        <div class="col-12 mt-5">
+            <div class="row">
+                <div class="col-2">
+                    <label>شناسه فایل</label>
+                    <input type="text" />
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <label> از متراژ</label>
+                            <input type="text" placeholder="متر" />
+                            <label> تا متراژ</label>
+                            <input type="text" placeholder="متر" />
+                        </div>
+                        <div class="col-12">
+                            <label> از قیمت</label>
+                            <input type="text" placeholder="تومان" />
+                            <label> تا قیمت</label>
+                            <input type="text" placeholder="تومان" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4"></div>
+            </div>
+        </div>
+        <div class="col-12 mt-5 ">
+            <div class="col-4 border border-dark">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="~/dist/img/user1-128x128.jpg" />
+                    </div>
+                    <div class="col-12">
+                        <span>قیمت</span>
+                        <span>200</span>
+
+                    </div>
+                    <div class="col-12">
+                        <span>نوع خونه</span>
+                        <span>اپارتمان</span>
+                    </div>
+                    <div class="col-12">
+                        <span>متراژ</span>
+                        <span>300 متر</span>
+                    </div>
+                    <div class="col-12">
+                        <span>شناسه</span>
+                        <span>30001</span>
+                    </div>
+                    <div class="col-12">
+                        <span>ناحیه</span>
+                        <span>2</span>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4">
+                                <a asp-area="User" asp-controller="HomeFile" asp-action="Detail">
+                                    جزئیات
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a asp-area="User" asp-controller="HomeFile" asp-action="Delete">
+                                    حذف
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a asp-area="User" asp-controller="HomeFile" asp-action="Edit">
+                                    ویرایش
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
