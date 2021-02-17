@@ -1,4 +1,5 @@
-﻿using MoshaverAmlak.DataLayer.Common;
+﻿using MoshaverAmlak.Core.Repository.Repository.Interface;
+using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using MoshaverAmlak.DataLayer.GenericRepository;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Class
 {
-    class RegionRepository
+    public class RegionRepository : IRegionRepository
     {
         private readonly IGenericRepository<Region> _regionRepository;
         public RegionRepository(IGenericRepository<Region> regionRepository)

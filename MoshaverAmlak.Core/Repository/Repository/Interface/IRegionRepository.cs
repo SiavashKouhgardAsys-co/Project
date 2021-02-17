@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Interface
 {
-    interface IRegionRepository
+    public interface IRegionRepository
     {
         ReturnEntity_IQueryable<Region> GetAllRegion();
         ReturnEntity<Region> GetRegionById(int regionId);

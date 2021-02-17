@@ -6,8 +6,6 @@
 
 	<ItemGroup>
 		<Folder Include="Common\" />
-		<Folder Include="Repository\Service\Class\" />
-		<Folder Include="Repository\Service\Interface\" />
 	</ItemGroup>
 
 	<ItemGroup>

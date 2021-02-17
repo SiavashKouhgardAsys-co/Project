@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Interface
 {
-    interface INeighbourhoodRepository : IDisposable
+    public interface INeighbourhoodRepository : IDisposable
     {
         ReturnEntity_IQueryable<Neighbourhood> GetAllNeighbourhood();
         ReturnEntity<Neighbourhood> GetNeighbourhoodById(int neighbourhoodId);

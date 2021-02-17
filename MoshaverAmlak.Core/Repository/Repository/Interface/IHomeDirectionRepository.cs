@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Interface
 {
-    interface IHomeDirectionRepository : IDisposable
+    public interface IHomeDirectionRepository : IDisposable
     {
         ReturnEntity_IQueryable<HomeDirection> GetAllHomeDirection();
         ReturnEntity<HomeDirection> GetHomeDirectionById(int homeDirectionId);

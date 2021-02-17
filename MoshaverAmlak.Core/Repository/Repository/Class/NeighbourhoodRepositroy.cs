@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Class
 {
-    class NeighbourhoodRepositroy : INeighbourhoodRepository
+    public class NeighbourhoodRepositroy : INeighbourhoodRepository
     {
         private readonly IGenericRepository<Neighbourhood> _neighbourhoodRepository;
         public NeighbourhoodRepositroy(IGenericRepository<Neighbourhood> neighbourhoodRepository)

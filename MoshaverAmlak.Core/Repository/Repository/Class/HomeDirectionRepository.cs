@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Class
 {
-    class HomeDirectionRepository : IHomeDirectionRepository
+    public class HomeDirectionRepository : IHomeDirectionRepository
     {
         private readonly IGenericRepository<HomeDirection> _homeDirectionRepository;
 

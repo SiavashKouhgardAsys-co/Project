@@ -1,4 +1,4 @@
-﻿@model Buyer
+﻿@model Owner
 @{
     ViewData["Title"] = "Create";
 }
@@ -7,14 +7,21 @@
     <div class="row">
         <div class="col-4">
             <lable>
-                نام و نام خانوادگی
+                نام مالک
             </lable>
             <input type="text" />
         </div>
+        <div class="col-4">
+            <lable>
+                شناسه 
+            </lable>
+            <input type="text" />
+        </div>
+
         <div class="col-4"></div>
         <div class="col-12">
             <label class="d-block">توضیحات</label>
-            <textarea placeholder="توضیحات مربوط به خریدار" rows="4" cols="50">
+            <textarea placeholder="توضیحات مربوط به مالک" rows="4" cols="50">
 
             </textarea>
         </div>
@@ -22,7 +29,7 @@
             <lable class="d-block">
                 تلفن
             </lable>
-            <textarea placeholder="آدرس مربوط به خریدار" rows="1" cols="20">
+            <textarea rows="1" cols="20">
                   
             </textarea>
         </div>
@@ -30,19 +37,20 @@
             <lable class="d-block">
                 آدرس
             </lable>
-            <textarea placeholder="آدرس مربوط به خریدار" rows="4" cols="50">
+            <textarea placeholder="آدرس مربوط به مالک" rows="4" cols="50">
                   
             </textarea>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <button>ثبت خریدار</button>
+            <button>ثبت مالک</button>
         </div>
         <div class="col-12">
-            <a asp-area="User" asp-controller="Buyer" asp-action="Index">
+            <a asp-area="User" asp-controller="RealEstate" asp-action="Index">
                 بازگشت
             </a>
         </div>
     </div>
 </div>
+

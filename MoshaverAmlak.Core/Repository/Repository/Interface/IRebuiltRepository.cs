@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Interface
 {
-    interface IRebuiltRepository : IDisposable
+    public interface IRebuiltRepository : IDisposable
     {
         Task<Result> EditRebuilt(Rebuilt rebuilt);
         Task<Result> DeleteRebuiltById(int rebuiltId);

@@ -10,7 +10,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MoshaverAmlak.Core.Repository.Repository.Class;
+using MoshaverAmlak.Core.Repository.Repository.Interface;
+using MoshaverAmlak.Core.Repository.Service.Class;
+using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Entity;
+using MoshaverAmlak.DataLayer.GenericRepository;
 
 namespace MoshaverAmlak
 {
@@ -34,7 +39,22 @@ namespace MoshaverAmlak
                 opt.IdleTimeout = TimeSpan.FromMilliseconds(20);
             });
 
+            //Contex
+            services.AddTransient<RealEstate_Context>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            //Repositories
+            //services.AddScoped<IFacilitiesRepository , FacilitiesRepository>();
+            //services.AddScoped<IHomeDirectionRepository, HomeDirectionRepository>();
+            services.AddScoped<IHomeFileTypeRepository, HomeFileTypeRepository>();
+            //services.AddScoped<INeighbourhoodRepository, NeighbourhoodRepositroy>();
+            //services.AddScoped<IRebuiltRepository, RebuiltRepository>();
+            //services.AddScoped<IRegionRepository, RegionRepository>();
+            //services.AddScoped<ITypeOfDocumentRepository, TypeOfDocumentRepository>();
+            //Services
+            services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
+            
             services.AddDbContext<RealEstate_Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefualtConnection")));
+
 
             services.AddIdentity<RealEstate_User, IdentityRole>(opt =>
             {

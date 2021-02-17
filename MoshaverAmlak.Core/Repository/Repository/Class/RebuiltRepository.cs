@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Class
 {
-    class RebuiltRepository : IRebuiltRepository
+    public class RebuiltRepository : IRebuiltRepository
     {
         private readonly IGenericRepository<Rebuilt> _rebuiltRepository;
         public RebuiltRepository(IGenericRepository<Rebuilt> rebuiltRepository)
