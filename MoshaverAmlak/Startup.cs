@@ -39,21 +39,10 @@ namespace MoshaverAmlak
                 opt.IdleTimeout = TimeSpan.FromMilliseconds(20);
             });
 
-            //Contex
-            services.AddTransient<RealEstate_Context>();
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            //Repositories
-            //services.AddScoped<IFacilitiesRepository , FacilitiesRepository>();
-            //services.AddScoped<IHomeDirectionRepository, HomeDirectionRepository>();
-            services.AddScoped<IHomeFileTypeRepository, HomeFileTypeRepository>();
-            //services.AddScoped<INeighbourhoodRepository, NeighbourhoodRepositroy>();
-            //services.AddScoped<IRebuiltRepository, RebuiltRepository>();
-            //services.AddScoped<IRegionRepository, RegionRepository>();
-            //services.AddScoped<ITypeOfDocumentRepository, TypeOfDocumentRepository>();
-            //Services
-            services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
-            
+
+
             services.AddDbContext<RealEstate_Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefualtConnection")));
+
 
 
             services.AddIdentity<RealEstate_User, IdentityRole>(opt =>
@@ -66,7 +55,23 @@ namespace MoshaverAmlak
 
                 opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             }).AddEntityFrameworkStores<RealEstate_Context>().AddDefaultTokenProviders();
+
+            
+            //Contex
+            services.AddTransient<RealEstate_Context>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            //Repositories
+            services.AddScoped<IFacilitiesRepository, FacilitiesRepository>();
+            services.AddScoped<IHomeDirectionRepository, HomeDirectionRepository>();
+            services.AddScoped<IHomeFileTypeRepository, HomeFileTypeRepository>();
+            services.AddScoped<INeighbourhoodRepository, NeighbourhoodRepositroy>();
+            services.AddScoped<IRebuiltRepository, RebuiltRepository>();
+            services.AddScoped<IRegionRepository, RegionRepository>();
+            services.AddScoped<ITypeOfDocumentRepository, TypeOfDocumentRepository>();
+            //Services
+            services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();    
         }
+
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

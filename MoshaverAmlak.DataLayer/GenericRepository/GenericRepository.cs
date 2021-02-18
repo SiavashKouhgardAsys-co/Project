@@ -11,10 +11,10 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        private readonly DbContext _context;
+        private readonly RealEstate_Context _context;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(RealEstate_Context context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
