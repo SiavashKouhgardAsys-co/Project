@@ -14,6 +14,10 @@ namespace MoshaverAmlak.DataLayer.Common
         {
             OK,
             Failed,
+            NotRecognizedUser,
+            NotRecognizedRole,
+            LoginOk,
+            LoginFailed
         }
 
         private Result(Status status)
