@@ -7,10 +7,10 @@ namespace MoshaverAmlak.Core.Repository.Repository.Interface
 {
     public interface IFacilitiesRepository : IDisposable
     {
-        ReturnEntity_IQueryable<Facilities> GetAllEntity();
+        ReturnEntity_IQueryable<Facilities> GetAllFacilities();
         ReturnEntity<Facilities> GetFacilityById(int facilityId);
         Task<Result> CreateFacility(Facilities facilities);
         Task<Result> DeleteFacilityById(int facilityId);
-        Task<Result> UpdateFacility(Facilities facilities);
+        Task<Result> EditFacility(Facilities facilities);
     }
 }

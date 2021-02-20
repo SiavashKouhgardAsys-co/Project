@@ -15,7 +15,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             _facilitiesRepository = facilitiesRepository;
         }
 
-        public ReturnEntity_IQueryable<Facilities> GetAllEntity() => _facilitiesRepository.GetAllEntity();
+        public ReturnEntity_IQueryable<Facilities> GetAllFacilities() => _facilitiesRepository.GetAllEntity();
         public ReturnEntity<Facilities> GetFacilityById(int facilityId) => _facilitiesRepository.GetEntityById(facilityId);
         public async Task<Result> CreateFacility(Facilities facilities)
         {
@@ -29,7 +29,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _facilitiesRepository.SaveChangeAsync();
         }
-        public async Task<Result> UpdateFacility(Facilities facilities)
+        public async Task<Result> EditFacility(Facilities facilities)
         {
             var entity = GetFacilityById(facilities.Id);
             if (entity.Result.StatusResult != (int)Result.Status.OK) return entity.Result;

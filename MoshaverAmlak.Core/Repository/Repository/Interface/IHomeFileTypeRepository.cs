@@ -16,7 +16,5 @@ namespace MoshaverAmlak.Core.Repository.Repository.Interface
         Task<Result> DeleteHomeFileTypeById(int homeFileTypeId);
         Task<Result> EditHomeFileType(HomeFileType homeFileType);
 
-
-
     }
 }
