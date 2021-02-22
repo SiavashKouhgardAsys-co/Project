@@ -31,13 +31,13 @@ namespace MoshaverAmlak.DataLayer.Common
             return _result;
         }
 
-        public string GetMessage(Status status)
+        public static string GetMessage(string status)
         {
             switch (status)
             {
-                case Status.OK:
+                case "OK":
                     return "عملیات با موفقیت انجام شد.";
-                case Status.Failed:
+                case "Failed":
                     return "عملیات با خطا رو به رو شد.";
                 default:
                     return "وضعیت عملیات نامعلوم است.";
