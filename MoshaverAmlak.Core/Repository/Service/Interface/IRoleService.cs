@@ -14,6 +14,6 @@ namespace MoshaverAmlak.Core.Repository.Service.Interface
         Task<Result> DeleteRoleByIdAsync(string roleId);
         Task<Result> UpdateRoleAsync(RoleViewmodel roleViewmodel);
         List<RoleViewmodel> GetAllRoles();
-        Task<IdentityRole> GetRoleById(string roleId);
+        Task<RoleViewmodel> GetRoleById(string roleId);
     }
 }

@@ -16,7 +16,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         {
             _role = role;
         }
-        
+
         public IActionResult Index(string resultStatus)
         {
             SendDataToView<List<RoleViewmodel>> data = new SendDataToView<List<RoleViewmodel>>();
@@ -29,22 +29,25 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
 
         [HttpGet]
         public IActionResult Create() => View();
-
         [HttpPost]
         public async Task<IActionResult> Create(RoleViewmodel roleViewmodel)
         {
-            var data =  await _role.AddRole(roleViewmodel);
-            return RedirectToAction("Index",new RouteValueDictionary(new { resultStatus = data.StatusResult.ToString()}));
-        } 
+            var data = await _role.AddRole(roleViewmodel);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.StatusResult.ToString() }));
+        }
 
 
         [HttpGet]
-
         public async Task<IActionResult> Delete(string id)
         {
             var data = await _role.GetRoleById(id);
-
             return View(data);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(RoleViewmodel roleViewmodel)
+        {
+            var role = await _role.DeleteRoleByIdAsync(roleViewmodel.Id);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = role.StatusResult }));
         }
 
 
@@ -54,7 +57,11 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
             var data = await _role.GetRoleById(id);
             return View(data);
         }
-        
-
+        [HttpPost]
+        public async Task<IActionResult> Edit(RoleViewmodel roleViewmodel)
+        {
+            var role = await _role.UpdateRoleAsync(roleViewmodel);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = role.StatusResult }));
+        }
     }
 }

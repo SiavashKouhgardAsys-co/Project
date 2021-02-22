@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Service.Class
 {
-    public class RoleService : RoleManager<IdentityRole> , IRoleService
+    public class RoleService : RoleManager<IdentityRole>, IRoleService
     {
         private readonly IdentityErrorDescriber _errors;
         private readonly ILookupNormalizer _keyNormalize;
@@ -50,7 +50,6 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
             else
                 return Result.GenerateResult(Result.Status.Failed);
         }
-
         public async Task<Result> UpdateRoleAsync(RoleViewmodel roleViewmodel)
         {
             var findRole = await FindByIdAsync(roleViewmodel.Id);
@@ -63,15 +62,19 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
             else
                 return Result.GenerateResult(Result.Status.Failed);
         }
-
         public List<RoleViewmodel> GetAllRoles() => Roles.Select(x => new RoleViewmodel()
         {
             Id = x.Id,
             Name = x.Name
         }).ToList();
-
-        public async Task<IdentityRole> GetRoleById(string roleId) => await FindByIdAsync(roleId);
-        
-        
+        public async Task<RoleViewmodel> GetRoleById(string roleId)
+        {
+            var role = await FindByIdAsync(roleId);
+            return new RoleViewmodel()
+            {
+                Id = role.Id,
+                Name = role.Name
+            };
+        }
     }
 }
