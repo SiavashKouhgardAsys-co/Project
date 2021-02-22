@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\User\Data\" />
@@ -12,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="compilerconfig.json" />
     <None Include="wwwroot\dist\css\adminlte.css.map" />
     <None Include="wwwroot\dist\fonts\Vazir-Black.woff2" />
     <None Include="wwwroot\dist\fonts\Vazir-Bold.woff2" />
@@ -100,6 +105,7 @@
     <None Include="wwwroot\dist\js\plugins\popper\umd\popper.js.map" />
     <None Include="wwwroot\dist\js\plugins\popper\umd\popper.min.js" />
     <None Include="wwwroot\dist\js\plugins\popper\umd\popper.min.js.map" />
+    <None Include="wwwroot\dist\sass\CustomStyle.scss" />
     <None Include="wwwroot\plugins\bootstrap-slider\bootstrap-slider.js" />
     <None Include="wwwroot\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
     <None Include="wwwroot\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />

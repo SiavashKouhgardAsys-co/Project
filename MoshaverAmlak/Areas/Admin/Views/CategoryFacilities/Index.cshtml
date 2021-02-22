@@ -3,10 +3,10 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container">
+<div class="container categoryIndex">
     <div class="row">
         <div class="col">
-            <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Create">
+            <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Create" class="btnReg">
                 ثبت طبقه بندی امکانات جدید
             </a>
         </div>
@@ -15,7 +15,6 @@
         <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
-
                     <th>
                         <span>ردیف</span>
                     </th>
@@ -37,10 +36,10 @@
                         تهویه هوا
                     </td>
                     <td>
-                        <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Delete">
+                        <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Delete" class="btnDele">
                             حذف
                         </a>
-                        <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Edit">
+                        <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Edit" class="btnEdit">
                             ویرایش
                         </a>
                     </td>
