@@ -1,0 +1,60 @@
+﻿@model SendDataToView<List<RoleViewmodel>>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a asp-area="Admin" asp-controller="ManagedRole" asp-action="Create">
+                ثبت نقش جدید
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        <span>ردیف</span>
+                    </th>
+                    <th>
+                        <span> نام نقش</span>
+                    </th>
+                    <th>
+                        <span>عملیات</span>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int index = 1;
+                    foreach (var item in Model.Entity)
+                    {
+                        <tr>
+                            <td>
+                                @index
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                <a asp-area="Admin" asp-controller="ManagedRole" asp-action="Delete" asp-route-id="@item.Id">
+                                    حذف
+                                </a>
+                                <a asp-area="Admin" asp-controller="ManagedRole" asp-action="Edit" asp-route-id="@item.Id">
+                                    ویرایش
+                                </a>
+                            </td>
+                        </tr>
+                        index++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

@@ -1,0 +1,25 @@
+﻿@model RoleViewmodel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container m-1">
+    <div class="row">
+        <div class="col">
+            <form asp-area="Admin" asp-controller="ManagedRole" asp-action="Delete" method="post">
+                <div class="row">
+                    <div class="col-12">
+                        ایا مایل به حذف نقش هستید؟
+                    </div>
+                </div>
+                <div class="col-12">
+                    <input type="submit" value="بله" />
+                    <a asp-area="Admin" asp-controller="ManagedRole" asp-action="Index">
+                        خیر
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

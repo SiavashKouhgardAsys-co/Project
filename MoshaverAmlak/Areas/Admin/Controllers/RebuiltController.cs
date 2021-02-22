@@ -10,57 +10,65 @@ using System.Threading.Tasks;
 namespace MoshaverAmlak.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class FacilitiesController : Controller
+    public class RebuiltController : Controller
     {
-        private readonly IFacilitiesService _facilities;
-        public FacilitiesController(IFacilitiesService facilities)
+        private readonly IRebuiltService _rebuilt;
+        public RebuiltController(IRebuiltService rebuilt)
         {
-            _facilities = facilities;
+            _rebuilt = rebuilt;
         }
+
+
         public IActionResult Index()
         {
-            var data = _facilities.GetAllFacilities();
+            var data = _rebuilt.GetAllRebuilt();
             if (data.Result.StatusResult != (int)Result.Status.OK) return NotFound();
-            return View(data.Entity);
+            return View();
+
         }
+
 
         [HttpGet]
         public IActionResult Create() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Create(Facilities facilities)
+        public async Task<IActionResult> Create(Rebuilt rebuilt)
         {
-            var result = await _facilities.CreateFacilities(facilities);
+            var result = await _rebuilt.CreateRebuilt(rebuilt);
             return RedirectToAction("Index");
         }
+
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var data = _facilities.GetFacilitiesById(id);
+            var data = _rebuilt.GetRebuiltById(id);
             return View(data.Entity);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(Facilities facilities)
+        public async Task<IActionResult> Delete(Rebuilt rebuilt)
         {
-            var data = await _facilities.DeleteFacilities(facilities.Id);
+            var data = await _rebuilt.DeleteRebuilt(rebuilt.Id);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _facilities.GetFacilitiesById(id);
+            var data = _rebuilt.GetRebuiltById(id);
             return View(data.Entity);
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> Edit(Facilities facilities)
+        public async Task<IActionResult> Edit(Rebuilt rebuilt)
         {
-            var data = await _facilities.EditFacilities(facilities);
+            var data = await _rebuilt.EditRebuilt(rebuilt);
             return RedirectToAction("Index");
         }
+
+
 
     }
 }

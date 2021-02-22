@@ -56,7 +56,8 @@ namespace MoshaverAmlak
                 opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             }).AddEntityFrameworkStores<RealEstate_Context>().AddDefaultTokenProviders();
 
-            
+            services.AddScoped<IdentityErrorDescriber>();
+
             //Contex
             services.AddTransient<RealEstate_Context>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -69,7 +70,9 @@ namespace MoshaverAmlak
             services.AddScoped<IRegionRepository, RegionRepository>();
             services.AddScoped<ITypeOfDocumentRepository, TypeOfDocumentRepository>();
             //Services
-            services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();    
+            services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
 
