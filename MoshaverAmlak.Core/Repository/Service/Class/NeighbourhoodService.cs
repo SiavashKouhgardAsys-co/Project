@@ -1,15 +1,12 @@
-﻿using MoshaverAmlak.Core.Repository.Repository.Interface;
+﻿using System.Threading.Tasks;
+using MoshaverAmlak.Core.Repository.Repository.Interface;
 using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Service.Class
 {
-    class NeighbourhoodService : INeighbourhoodService
+    public class NeighbourhoodService : INeighbourhoodService
     {
         private readonly INeighbourhoodRepository _neighbourhood;
         public NeighbourhoodService(INeighbourhoodRepository neighbourhood)
