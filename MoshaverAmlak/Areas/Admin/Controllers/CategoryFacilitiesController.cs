@@ -2,10 +2,7 @@
 using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Areas.Admin.Controllers
 {
@@ -17,11 +14,12 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         {
             _categoryFacilitiesService = categoryFacilities;
         }
+
         //public IActionResult Index(string resultStatus)
         //{
-        //    SendDataToView<List<CategoryFacilities>> data = new SendDataToView<List<CategoryFacilities>>();
+        //    SendDataToView<IQueryable<CategoryFacilities>> data = new SendDataToView<IQueryable<CategoryFacilities>>();
         //    data.Entity = _categoryFacilitiesService.GetAllCategoryFacilities();
-        //    if(resultStatus != null)
+        //    if (resultStatus != null)
         //        data.Message = Result.GetMessage(resultStatus);
         //    return View(data);
         //}
