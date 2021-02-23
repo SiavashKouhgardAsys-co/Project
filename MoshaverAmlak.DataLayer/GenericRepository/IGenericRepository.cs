@@ -13,8 +13,8 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
         ReturnEntity<T> GetEntityById(int entityId);
         ReturnEntity_IQueryable<T> GetAllEntityByOtherColumn(Expression<Func<T, bool>> exception);
         ReturnEntity<T> GetEntityByOtherColumn(Expression<Func<T, bool>> exception);
-        Result AddEntity(T entity);
-        Result AddRangeEntity(List<T> entities);
+        Task<Result> AddEntity(T entity);
+        Task<Result> AddRangeEntity(List<T> entities);
         Result UpdateEntity(T entity);
         Result UpdateRangeEntity(List<T> entities);
         Result DeleteEntity(T entity);

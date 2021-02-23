@@ -26,7 +26,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
         public async Task<Result> CreateHomeFileType(HomeFileType homeFileType)
         {
             var entity = _homeFileTypeRepository.AddEntity(homeFileType);
-            if (entity.StatusResult != (int)Result.Status.OK) return entity;
+            if (entity.Status != (int)Result.Status.OK) return await entity;
             return await _homeFileTypeRepository.SaveChangeAsync();
         }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
@@ -17,11 +18,16 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         {
             _neighbourhood = neighbourhood;
         }
-        public IActionResult Index()
+        public IActionResult Index(string resultStatus)
         {
+            SendDataToView<IQueryable<Neighbourhood>> sendDataToView = new SendDataToView<IQueryable<Neighbourhood>>();
             var data = _neighbourhood.GetAllNeighbourhood();
             if (data.Result.StatusResult != (int)Result.Status.OK) return NotFound();
-            return View(data.Entity);
+            sendDataToView.Entity = data.Entity;
+            if (resultStatus != null)
+                sendDataToView.Message = Result.GetMessage(resultStatus);
+            return View(sendDataToView);
+
         }
 
 
@@ -32,7 +38,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         public async Task<IActionResult> Create(Neighbourhood neighbourhood)
         {
             var result = await _neighbourhood.CreateNeighbourhood(neighbourhood);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index" , new RouteValueDictionary(new {resultStatus = result.StatusResult }));
         }
         [HttpGet]
         public IActionResult Delete(int id)

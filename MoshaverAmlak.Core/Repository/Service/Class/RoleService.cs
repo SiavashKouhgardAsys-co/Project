@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Service.Class
 {
-    public class RoleService : RoleManager<IdentityRole>, IRoleService
+    public class RoleService : RoleManager<IdentityRole> , IRoleService
     {
         private readonly IdentityErrorDescriber _errors;
         private readonly ILookupNormalizer _keyNormalize;

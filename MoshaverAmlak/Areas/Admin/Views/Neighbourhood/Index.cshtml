@@ -1,4 +1,4 @@
-﻿@model Neighbourhood
+﻿@model SendDataToView<IQueryable<Neighbourhood>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -29,22 +29,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        نوع همسایه
-                    </td>
-                    <td>
-                        <a asp-area="Admin" asp-controller="Neighbourhood" asp-action="Delete">
-                            حذف
-                        </a>
-                        <a asp-area="Admin" asp-controller="Neighbourhood" asp-action="Edit">
-                            ویرایش
-                        </a>
-                    </td>
-                </tr>
+                @{
+                    int index = 1;
+                    foreach (var item in Model.Entity)
+                    {
+                        <tr>
+                            <td>
+                                @index
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                <a asp-area="Admin" asp-controller="Neighbourhood" asp-action="Delete" asp-route-Id="@item.Id">
+                                    حذف
+                                </a>
+                                <a asp-area="Admin" asp-controller="Neighbourhood" asp-action="Edit" asp-route-Id="@item.Id">
+                                    ویرایش
+                                </a>
+                            </td>
+                        </tr>
+                        index++;
+                    }
+                }
             </tbody>
         </table>
     </div>

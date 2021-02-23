@@ -21,7 +21,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
         public async Task<Result> CreateRebuilt(Rebuilt rebuilt)
         {
             var entity = _rebuiltRepository.AddEntity(rebuilt);
-            if (entity.StatusResult != (int)Result.Status.OK) return entity;
+            if (entity.Status != (int)Result.Status.OK) return await entity;
             return await _rebuiltRepository.SaveChangeAsync();
 
         }

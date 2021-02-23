@@ -13,6 +13,11 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
     {
         private readonly IGenericRepository<HomeDirection> _homeDirectionRepository;
 
+        public HomeDirectionRepository(IGenericRepository<HomeDirection> homeDirectionRepository)
+        {
+            _homeDirectionRepository = homeDirectionRepository;
+        }
+
         public ReturnEntity_IQueryable<HomeDirection> GetAllHomeDirection()
             => _homeDirectionRepository.GetAllEntity();
         public ReturnEntity<HomeDirection> GetHomeDirectionById(int homeDirectionId)
@@ -20,7 +25,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
         public async Task<Result> CreateHomeDirection(HomeDirection homeDirection)
         {
             var entity = _homeDirectionRepository.AddEntity(homeDirection);
-            if (entity.StatusResult != (int)Result.Status.OK) return entity;
+            if (entity.Status != (int)Result.Status.OK) return await entity;
             return await _homeDirectionRepository.SaveChangeAsync();
         }
 

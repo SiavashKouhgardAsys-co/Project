@@ -25,6 +25,6 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
 
         public async Task<Result> EditHomeDirection(HomeDirection homeDirection) => await
             _homeDirection.EditHomeDirection(homeDirection);
+
     }
 }
- 

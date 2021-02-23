@@ -1,4 +1,5 @@
 ﻿using MoshaverAmlak.Core.Repository.Repository.Interface;
+using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Service.Class
 {
-    public class FacilitiesService
+    public class FacilitiesService : IFacilitiesService
     {
         private readonly IFacilitiesRepository _facilities;
         public FacilitiesService(IFacilitiesRepository facilities)

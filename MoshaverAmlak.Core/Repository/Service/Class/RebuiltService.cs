@@ -1,4 +1,5 @@
 ﻿using MoshaverAmlak.Core.Repository.Repository.Interface;
+using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using System;
@@ -8,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Service.Class
 {
-    public class RebuiltService
+    public class RebuiltService : IRebuiltService
     {
-
         private readonly IRebuiltRepository _rebuilt;
         public RebuiltService(IRebuiltRepository rebuilt)
         {

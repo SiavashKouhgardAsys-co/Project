@@ -83,14 +83,14 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
         }   
 
         // CREATE
-        public Result AddEntity(T entity)
+        public async Task<Result> AddEntity(T entity)
         {
             try
             {
                 entity.CreateDate = DateTime.Now;
                 entity.LastUpdate = entity.CreateDate;
-                _dbSet.Add(entity);
-                return Result.GenerateResult(Result.Status.Failed);
+                await _dbSet.AddAsync(entity);
+                return Result.GenerateResult(Result.Status.OK);
             }
             catch (Exception e)
             {
@@ -98,7 +98,7 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
                 return Result.GenerateResult(Result.Status.Failed);
             }
         }
-        public Result AddRangeEntity(List<T> entities)
+        public async Task<Result> AddRangeEntity(List<T> entities)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
                     item.CreateDate = DateTime.Now;
                     item.LastUpdate = item.CreateDate;
                 }
-                _dbSet.AddRange(entities);
+                await _dbSet.AddRangeAsync(entities);
                 return Result.GenerateResult(Result.Status.OK);
             }
             catch (Exception e)

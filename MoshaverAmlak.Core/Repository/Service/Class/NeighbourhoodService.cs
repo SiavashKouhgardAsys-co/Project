@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Service.Class
 {
-    public class NeighbourhoodService : INeighbourhoodService
+    class NeighbourhoodService : INeighbourhoodService
     {
         private readonly INeighbourhoodRepository _neighbourhood;
         public NeighbourhoodService(INeighbourhoodRepository neighbourhood)

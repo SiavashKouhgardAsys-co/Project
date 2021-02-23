@@ -20,7 +20,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
         public async Task<Result> CreateTypeOfDocument(TypeOfDocument typeOfDocument)
         {
             var entity = _typeOfDocumentRepository.AddEntity(typeOfDocument);
-            if (entity.StatusResult != (int)Result.Status.OK) return entity;
+            if (entity.Status != (int)Result.Status.OK) return await entity;
             return await _typeOfDocumentRepository.SaveChangeAsync();
         }
         public async Task<Result> DeleteTypeOfDocument(int typeOfDocumentId)

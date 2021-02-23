@@ -71,6 +71,7 @@ namespace MoshaverAmlak
             services.AddScoped<ITypeOfDocumentRepository, TypeOfDocumentRepository>();
             //Services
             services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
+            services.AddScoped<INeighbourhoodService, NeighbourhoodService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IUserService, UserService>();
         }

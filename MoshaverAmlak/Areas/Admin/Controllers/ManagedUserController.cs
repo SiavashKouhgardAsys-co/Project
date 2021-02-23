@@ -31,7 +31,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(UserViewmodel_Register register)
         {
-            return RedirectToAction("");
+            return  RedirectToAction("");
         }
         
     }
