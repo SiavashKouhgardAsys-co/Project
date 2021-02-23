@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CategoryFacilities>
+﻿@model SendDataToView<IQueryable<CategoryFacilities>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -28,22 +28,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        تهویه هوا
-                    </td>
-                    <td>
-                        <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Delete" class="btnDele">
-                            حذف
-                        </a>
-                        <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Edit" class="btnEdit">
-                            ویرایش
-                        </a>
-                    </td>
-                </tr>
+                @{
+                    int index = 1;
+                    foreach (var item in Model.Entity)
+                    {
+                        <tr>
+                            <td>
+                                @index
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Delete" class="btnDele" asp-route-Id="@item.Id">
+                                    حذف
+                                </a>
+                                <a asp-area="Admin" asp-controller="CategoryFacilities" asp-action="Edit" class="btnEdit" asp-route-Id="@item.Id">
+                                    ویرایش
+                                </a>
+                            </td>
+                        </tr>
+                        index++;
+                    }
+                }
             </tbody>
         </table>
     </div>

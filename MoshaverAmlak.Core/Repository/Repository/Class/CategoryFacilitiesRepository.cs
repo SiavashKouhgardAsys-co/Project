@@ -1,14 +1,12 @@
-﻿using MoshaverAmlak.DataLayer.Common;
+﻿using System.Threading.Tasks;
+using MoshaverAmlak.Core.Repository.Repository.Interface;
+using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using MoshaverAmlak.DataLayer.GenericRepository;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Class
 {
-    public class CategoryFacilitiesRepository
+    public class CategoryFacilitiesRepository : ICategoryFacilitiesRepository
     {
         private readonly IGenericRepository<CategoryFacilities> _categoryFacilitiesRepository;
         public CategoryFacilitiesRepository(IGenericRepository<CategoryFacilities> categoryFacilitiesRepository)
@@ -22,8 +20,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public async Task<Result> CreateCategoryFacilities(CategoryFacilities categoryFacilities)
         {
-            var entity = _categoryFacilitiesRepository.AddEntity(categoryFacilities);
-            if (entity.Status != (int)Result.Status.OK) return await entity;
+            var entity = await _categoryFacilitiesRepository.AddEntity(categoryFacilities);
+            if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _categoryFacilitiesRepository.SaveChangeAsync();
         }
 
