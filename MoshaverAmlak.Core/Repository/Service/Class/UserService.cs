@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using MoshaverAmlak.DataLayer.Viewmodel;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Service.Class
 {
@@ -93,6 +93,26 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
                 return Result.GenerateResult(Result.Status.OK);
             else
                 return Result.GenerateResult(Result.Status.Failed);
+        }
+        public IQueryable<UserViewmodel> GetAllUsers() => Users.Select(x => new UserViewmodel()
+        {
+             Email = x.Email,
+             FullName = x.FullName,
+             Phone = x.PhoneNumber,
+             UserId = x.Id,
+        }).AsQueryable();
+        public async Task<UserViewmodel> GetAllUserById(string userId)
+        {
+            var roles = await GetRolesAsync(await FindByIdAsync(userId));
+            return Users.Where(x => x.Id == userId).Select(x => new UserViewmodel()
+            {
+                UserId = x.Id,
+                Username = x.UserName,
+                FullName = x.FullName,
+                Email = x.Email,
+                Phone = x.PhoneNumber,
+                Roles = roles
+            }).FirstOrDefault();
         }
         public async Task<Result> Login(UserViewmodel_Login login)
         {

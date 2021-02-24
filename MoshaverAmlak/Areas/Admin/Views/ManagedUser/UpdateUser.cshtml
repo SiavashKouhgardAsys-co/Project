@@ -1,11 +1,10 @@
-﻿
-@model UserRolesViewmodel
+﻿@model UserViewmodel_Edit
 
 @{
-    ViewData["Title"] = "ثبت نام";
+    ViewData["Title"] = "UpdateUser";
 }
 
-<form asp-area="Admin" asp-controller="ManagedUser" asp-action="Register" method="post">
+<form asp-area="Admin" asp-controller="ManagedUser" asp-action="UpdateUser" asp-route-UserId="@Model.User.UserId" method="post">
     <div class="row">
         <div class="col-6">
             <label>نام و نام خانوادگی</label>
@@ -17,21 +16,20 @@
         </div>
         <div class="col-6">
             <label>موبایل</label>
-            <input type="text" asp-for="@Model.User.Phone" />
-        </div>
-        <div class="col-6">
-            <label>رمز عبور</label>
-            <input type="password" asp-for="@Model.User.Password" />
-        </div>
-        <div class="col-6">
-            <label>تکرار رمز عبور</label>
-            <input type="password" asp-for="@Model.User.ConfirmPassword" />
+            <input type="text" asp-for="@Model.User.Phone" readonly />
         </div>
         <div class="col-12">
             <label>نقش ها</label>
             @foreach (var item in Model.Roles)
             {
-                <input type="checkbox" name="roleNmae" value="@item.Name" />
+                if (Model.User.Roles.Any(x => x.Equals(item.Name)))
+                {
+                    <input type="checkbox" name="roleNmae" value="@item.Name" checked />
+                }
+                else
+                {
+                    <input type="checkbox" name="roleNmae" value="@item.Name" />
+                }
                 <span>@item.Name</span>
             }
         </div>

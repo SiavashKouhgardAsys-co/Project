@@ -51,6 +51,7 @@ namespace MoshaverAmlak
                 opt.Password.RequireDigit = false;
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireUppercase = false;
+                opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequiredUniqueChars = 0;
 
                 opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
@@ -103,8 +104,8 @@ namespace MoshaverAmlak
             {
                 endpoints.MapControllerRoute(
                     name: "areas",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                    //pattern: "{area=user}/{controller=HomeFile}/{action=Index}/{id?}"
+                    pattern: "{area=Admin}/{controller=ManagedUser}/{action=Index}/{id?}"
+                  //pattern: "{area=user}/{controller=HomeFile}/{action=Index}/{id?}"
                   );
             });
         }
