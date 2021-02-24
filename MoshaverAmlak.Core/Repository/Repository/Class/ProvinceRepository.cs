@@ -1,10 +1,7 @@
-﻿using MoshaverAmlak.DataLayer.Common;
+﻿using System.Threading.Tasks;
+using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using MoshaverAmlak.DataLayer.GenericRepository;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Class
 {
@@ -18,22 +15,18 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public ReturnEntity_IQueryable<Province> GetAllProvince() => _provinceRepository.GetAllEntity();
         public ReturnEntity<Province> GetProvinceById(int provinceId) => _provinceRepository.GetEntityById(provinceId);
-
         public async Task<Result> CreateProvince(Province province)
         {
-            var entity = _provinceRepository.AddEntity(province);
-            if (entity.Status != (int)Result.Status.OK) return await entity;
+            var entity = await _provinceRepository.AddEntity(province);
+            if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _provinceRepository.SaveChangeAsync();
         }
-
-
         public async Task<Result> DeleteProvince(int provinceId)
         {
             var entity = _provinceRepository.DeleteEntityById(provinceId);
             if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _provinceRepository.SaveChangeAsync();
         }
-
         public async Task<Result> EditProvince(Province province)
         {
             var entity = GetProvinceById(province.Id);
@@ -43,8 +36,6 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             if (update_entity.StatusResult != (int)Result.Status.OK) return update_entity;
             return await _provinceRepository.SaveChangeAsync();
         }
-
-
         public void Dispose()
         {
             _provinceRepository?.Dispose();
