@@ -1,4 +1,4 @@
-﻿@model FileType
+﻿@model Rebuilt
 @{
     ViewData["Title"] = "Create";
 }
@@ -6,7 +6,7 @@
 <div class="container m-1">
     <div class="row">
         <div class="col">
-            <form asp-area="Admin" asp-controller="FileType" asp-action="Create" method="post">
+            <form asp-area="Admin" asp-controller="Rebuilt" asp-action="Create" method="post">
                 <div class="row">
                     <div class="col-3">
                         <span>ورود اطلاعات</span>
@@ -17,8 +17,8 @@
                     <div class="col-2">
                         <input type="submit" value="ثبت اطلاعات" />
                     </div>
-                    <div class="col-2">
-                        <a asp-area="Admin" asp-controller="FileType" asp-action="Index">
+                    <div class="col-3">
+                        <a asp-area="Admin" asp-controller="Rebuilt" asp-action="Index">
                             بازگشت
                         </a>
                     </div>
@@ -28,4 +28,3 @@
         </div>
     </div>
 </div>
-

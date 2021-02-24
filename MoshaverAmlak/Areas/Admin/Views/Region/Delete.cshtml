@@ -9,8 +9,8 @@
             <form asp-area="Admin" asp-controller="Region" asp-action="Delete" method="post">
                 <div class="row">
                     <div class="col-12">
-                        ایا مایل به حذف ناحیه با نام ... هستید؟
-                    </div>
+                        ایا مایل به حذف ناحیه " @Model.Name"  هستید؟
+                    </div> 
                 </div>
                 <div class="col-12">
                     <input type="submit" value="بله" />

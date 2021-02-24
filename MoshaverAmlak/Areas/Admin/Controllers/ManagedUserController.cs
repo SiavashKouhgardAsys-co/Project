@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MoshaverAmlak.Core.Repository.Service.Interface;
+using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Viewmodel;
 
 namespace MoshaverAmlak.Areas.Admin.Controllers
@@ -21,6 +22,8 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         // SHOW ALL USERS
         public IActionResult Index()
         {
+            SendDataToView<List<UserViewmodel>> data = new SendDataToView<List<UserViewmodel>>();
+            data.Entity = _userService.
             return View();
         }
 

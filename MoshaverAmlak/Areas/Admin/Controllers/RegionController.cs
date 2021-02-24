@@ -39,10 +39,33 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = resultRegion.StatusResult }));
         }
         [HttpGet]
-        public IActionResult Delete() => View();
+        public IActionResult Delete(int id)
+        {
+            var region = _regionService.GetRegionById(id);
+            if (region.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = region.Result.StatusResult}));
+            return View(region.Entity);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Region region)
+        {
+            var result = await _regionService.DeleteRegion(region.Id);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+        }
 
         [HttpGet]
-        public IActionResult Edit() => View();
+        public IActionResult Edit(int id)
+        {
+            var region = _regionService.GetRegionById(id);
+            if (region.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("index", new RouteValueDictionary(new { statusResult = region.Result.StatusResult }));
+            return View(region.Entity);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Region region)
+        {
+            var result = await _regionService.EditRegion(region);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+        }
 
     }
 }

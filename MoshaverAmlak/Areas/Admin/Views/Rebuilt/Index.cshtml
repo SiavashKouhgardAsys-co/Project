@@ -1,4 +1,4 @@
-﻿@model SendDataToView<IQueryable<HomeDirection>>
+﻿@model SendDataToView<IQueryable<Rebuilt>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,8 +6,8 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <a asp-area="Admin" asp-controller="HomeDirection" asp-action="Create">
-                ثبت جهت خانه جدید
+            <a asp-area="Admin" asp-controller="Rebuilt" asp-action="Create">
+                ثبت بازسازی جدید
             </a>
         </div>
     </div>
@@ -20,7 +20,7 @@
                         <span>ردیف</span>
                     </th>
                     <th>
-                        <span> جهت خانه</span>
+                        <span> بازسازی</span>
                     </th>
                     <th>
                         <span>عملیات</span>
@@ -33,32 +33,29 @@
                     int index = 1;
                     foreach (var item in Model.Entity)
                     {
-
                         <tr>
+
                             <td>
-                                1
+                                @index
                             </td>
                             <td>
                                 @item.Name
                             </td>
                             <td>
-                                <a asp-area="Admin" asp-controller="HomeDirection" asp-action="Delete" asp-route-id="@item.Id">
+                                <a asp-area="Admin" asp-controller="Rebuilt" asp-action="Delete" asp-route-id="@item.Id">
                                     حذف
                                 </a>
-                                <a asp-area="Admin" asp-controller="HomeDirection" asp-action="Edit" asp-route-id="@item.Id" >
+                                <a asp-area="Admin" asp-controller="Rebuilt" asp-action="Edit" asp-route-id="@item.Id">
                                     ویرایش
                                 </a>
                             </td>
                         </tr>
                         index++;
+
                     }
                 }
             </tbody>
         </table>
     </div>
 </div>
-
-
-
-
 

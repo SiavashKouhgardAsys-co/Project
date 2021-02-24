@@ -63,6 +63,7 @@ namespace MoshaverAmlak
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             //Repositories
             services.AddScoped<IFacilitiesRepository, FacilitiesRepository>();
+            services.AddScoped<IFileTypeRepository , FileTypeRepository>();
             services.AddScoped<ICategoryFacilitiesRepository, CategoryFacilitiesRepository>();
             services.AddScoped<IHomeDirectionRepository, HomeDirectionRepository>();
             services.AddScoped<IHomeFileTypeRepository, HomeFileTypeRepository>();
@@ -75,6 +76,8 @@ namespace MoshaverAmlak
 
             //Services
             services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
+            services.AddScoped<IFileTypeService, FileTypeService>();
+            services.AddScoped<IHomeDirectionService, HomeDirectionService>();
             services.AddScoped<INeighbourhoodService, NeighbourhoodService>();
             services.AddScoped<ICategoryFacilitiesService, CategoryFacilitiesService>();
             services.AddScoped<IRoleService, RoleService>();
@@ -82,6 +85,7 @@ namespace MoshaverAmlak
             services.AddScoped<IRegionService, RegionService>();
             services.AddScoped<IProvinceService, ProvinceService>();
             services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IRebuiltService, RebuiltService>();
         }
 
 

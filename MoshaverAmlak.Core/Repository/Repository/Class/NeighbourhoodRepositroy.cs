@@ -25,8 +25,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public async Task<Result> CreateNeighbourhood(Neighbourhood neighbourhood)
         {
-            var entity = _neighbourhoodRepository.AddEntity(neighbourhood);
-            if (entity.Status != (int)Result.Status.OK) return await entity;
+            var entity = await _neighbourhoodRepository.AddEntity(neighbourhood);
+            if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _neighbourhoodRepository.SaveChangeAsync();
         }
         public async Task<Result> DeleteNeighbourhoodById(int neighbourhoodId)

@@ -2,9 +2,6 @@
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using MoshaverAmlak.DataLayer.GenericRepository;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Class
@@ -22,8 +19,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public async Task<Result> CreateFileType(FileType fileType)
         {
-            var entity = _fileTypeRepository.AddEntity(fileType);
-            if (entity.Status != (int)Result.Status.OK) return await entity;
+            var entity = await _fileTypeRepository.AddEntity(fileType);
+            if (entity.StatusResult != (int)Result.Status.OK) return  entity;
             return await _fileTypeRepository.SaveChangeAsync();
         }
 

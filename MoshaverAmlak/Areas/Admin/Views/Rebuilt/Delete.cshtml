@@ -1,4 +1,4 @@
-﻿@model FileType
+﻿@model Rebuilt
 @{
     ViewData["Title"] = "Delete";
 }
@@ -6,15 +6,15 @@
 <div class="container m-1">
     <div class="row">
         <div class="col">
-            <form asp-area="Admin" asp-controller="FileType" asp-action="Delete" method="post">
+            <form asp-area="Admin" asp-controller="Rebuilt" asp-action="Delete" method="post">
                 <div class="row">
                     <div class="col-12">
-                        ایا مایل به حذف "@Model.Name" هستید؟
+                        ایا مایل به حذف بازسازی " @Model.Name"  هستید؟
                     </div>
                 </div>
                 <div class="col-12">
                     <input type="submit" value="بله" />
-                    <a asp-area="Admin" asp-controller="FileType" asp-action="Index">
+                    <a asp-area="Admin" asp-controller="Rebuilt" asp-action="Index">
                         خیر
                     </a>
                 </div>
@@ -22,3 +22,4 @@
         </div>
     </div>
 </div>
+

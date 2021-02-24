@@ -24,8 +24,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             => _homeDirectionRepository.GetEntityById(homeDirectionId);
         public async Task<Result> CreateHomeDirection(HomeDirection homeDirection)
         {
-            var entity = _homeDirectionRepository.AddEntity(homeDirection);
-            if (entity.Status != (int)Result.Status.OK) return await entity;
+            var entity = await _homeDirectionRepository.AddEntity(homeDirection);
+            if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _homeDirectionRepository.SaveChangeAsync();
         }
 

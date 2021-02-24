@@ -30,7 +30,6 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
 
         }
 
-
         [HttpGet]
         public IActionResult Create() => View();
 
@@ -44,6 +43,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         public IActionResult Delete(int id)
         {
             var data = _neighbourhood.GetNeighbourhoodById(id);
+            if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
             return View(data.Entity);
         }
 
@@ -51,22 +51,24 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Neighbourhood neighbourhood)
         {
-            var data = await _neighbourhood.DeleteNeighbourhoodById(neighbourhood.Id);
-            return RedirectToAction("Index");
+            var result = await _neighbourhood.DeleteNeighbourhoodById(neighbourhood.Id);
+            return RedirectToAction("Index" , new RouteValueDictionary(new { resultStatus =  result.StatusResult}));
+
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
             var data = _neighbourhood.GetNeighbourhoodById(id);
+            if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult })); 
             return View(data.Entity);
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(Neighbourhood neighbourhood)
         {
-            var data = await _neighbourhood.EditNeighbourhood(neighbourhood);
-            return RedirectToAction("Index");
+            var result = await _neighbourhood.EditNeighbourhood(neighbourhood);
+            return RedirectToAction("Index" , new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
     }
 }

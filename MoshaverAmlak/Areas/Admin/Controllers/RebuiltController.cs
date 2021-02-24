@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
@@ -19,13 +20,17 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index(string resultStatus)
         {
-            var data = _rebuilt.GetAllRebuilt();
-            if (data.Result.StatusResult != (int)Result.Status.OK) return NotFound();
-            return View();
-
+            SendDataToView<IQueryable<Rebuilt>> data = new SendDataToView<IQueryable<Rebuilt>>();
+            var rebuilt = _rebuilt.GetAllRebuilt();
+            if (rebuilt.Result.StatusResult != (int)Result.Status.OK) return NoContent();
+            data.Entity = rebuilt.Entity;
+            if (resultStatus != null)
+                data.Message = Result.GetMessage(resultStatus);
+            return View(data);
         }
+            
 
 
         [HttpGet]
@@ -34,38 +39,39 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Rebuilt rebuilt)
         {
-            var result = await _rebuilt.CreateRebuilt(rebuilt);
-            return RedirectToAction("Index");
+            var resultRebuilt = await _rebuilt.CreateRebuilt(rebuilt);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = resultRebuilt.StatusResult }));
         }
 
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var data = _rebuilt.GetRebuiltById(id);
-            return View(data.Entity);
+            var rebuilt = _rebuilt.GetRebuiltById(id);
+            if (rebuilt.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = rebuilt.Result.StatusResult }));
+            return View(rebuilt.Entity);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(Rebuilt rebuilt)
         {
-            var data = await _rebuilt.DeleteRebuilt(rebuilt.Id);
-            return RedirectToAction("Index");
+            var result = await _rebuilt.DeleteRebuilt(rebuilt.Id);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _rebuilt.GetRebuiltById(id);
-            return View(data.Entity);
+            var rebuilt = _rebuilt.GetRebuiltById(id);
+            if (rebuilt.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = rebuilt.Result.StatusResult }));
+            return View(rebuilt.Entity);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Edit(Rebuilt rebuilt)
         {
-            var data = await _rebuilt.EditRebuilt(rebuilt);
-            return RedirectToAction("Index");
+            var result = await _rebuilt.EditRebuilt(rebuilt);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
 
