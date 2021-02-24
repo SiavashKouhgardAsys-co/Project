@@ -70,6 +70,9 @@ namespace MoshaverAmlak
             services.AddScoped<IRebuiltRepository, RebuiltRepository>();
             services.AddScoped<IRegionRepository, RegionRepository>();
             services.AddScoped<ITypeOfDocumentRepository, TypeOfDocumentRepository>();
+            services.AddScoped<IProvinceRepository, ProvinceRepository>();
+            services.AddScoped<ICityRepository, CityRepository>();
+
             //Services
             services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
             services.AddScoped<INeighbourhoodService, NeighbourhoodService>();

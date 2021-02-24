@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
+using MoshaverAmlak.Core.Repository.Repository.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using MoshaverAmlak.DataLayer.GenericRepository;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Class
 {
-    class ProvinceRepository
+    public class ProvinceRepository : IProvinceRepository
     {
         private readonly IGenericRepository<Province> _provinceRepository;
         public ProvinceRepository(IGenericRepository<Province> provinceRepository)
