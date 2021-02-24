@@ -1,4 +1,4 @@
-﻿@model City
+﻿@model CityViewmodel
 @{
     ViewData["Title"] = "Delete";
 }
@@ -6,10 +6,10 @@
 <div class="container m-1">
     <div class="row">
         <div class="col">
-            <form asp-area="Admin" asp-controller="City" asp-action="Delete" method="post">
+            <form asp-area="Admin" asp-controller="City" asp-action="Delete" asp-route-CityId="@Model.CityId" method="post">
                 <div class="row">
                     <div class="col-12">
-                        ایا مایل به حذف شهر هستید؟
+                        ایا مایل به حذف شهر " @Model.CityName " در استان " @Model.ProvinceName " هستید؟
                     </div>
                 </div>
                 <div class="col-12">

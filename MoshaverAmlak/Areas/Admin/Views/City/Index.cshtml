@@ -1,4 +1,4 @@
-﻿@model IEnumerable<City>
+﻿@model SendDataToView<List<CityViewmodel>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -20,7 +20,10 @@
                         <span>ردیف</span>
                     </th>
                     <th>
-                        <span> شهر</span>
+                        <span>شهر</span>
+                    </th>
+                    <th>
+                        <span>استان</span>
                     </th>
                     <th>
                         <span>عملیات</span>
@@ -29,22 +32,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                       شهر
-                    </td>
-                    <td>
-                        <a asp-area="Admin" asp-controller="City" asp-action="Delete">
-                            حذف
-                        </a>
-                        <a asp-area="Admin" asp-controller="City" asp-action="Edit">
-                            ویرایش
-                        </a>
-                    </td>
-                </tr>
+                @{
+                    int index = 1;
+                    foreach (var item in Model.Entity)
+                    {
+                        <tr>
+                            <td>
+                                @index
+                            </td>
+                            <td>
+                                @item.CityName
+                            </td>
+                            <td>
+                                @item.ProvinceName
+                            </td>
+                            <td>
+                                <a asp-area="Admin" asp-controller="City" asp-action="Delete" asp-route-Id="@item.CityId">
+                                    حذف
+                                </a>
+                                <a asp-area="Admin" asp-controller="City" asp-action="Edit" asp-route-Id="@item.CityId">
+                                    ویرایش
+                                </a>
+                            </td>
+                        </tr>
+                        index++;
+                    }
+                }
             </tbody>
         </table>
     </div>

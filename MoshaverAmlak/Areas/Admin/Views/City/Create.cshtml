@@ -1,4 +1,4 @@
-﻿@model City
+﻿@model CityViewmodel_Create
 @{
     ViewData["Title"] = "Create";
 }
@@ -12,15 +12,19 @@
                         <span>ورود اطلاعات</span>
                     </div>
                     <div class="col-4">
-                        <input type="text" asp-for="Name" />
+                        <input type="text" asp-for="@Model.City.Name" />
+                    </div>
+                    <div class="col-4">
+                        <select asp-for="@Model.City.ProvinceId">
+                            <option value="0">انتخاب کیند . . . </option>
+                            @foreach (var item in Model.Provinces)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
                     </div>
                     <div class="col-2">
                         <input type="submit" value="ثبت اطلاعات" />
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-12 ">
                         <a asp-area="Admin" asp-controller="City" asp-action="Index">
                             بازگشت
                         </a>
