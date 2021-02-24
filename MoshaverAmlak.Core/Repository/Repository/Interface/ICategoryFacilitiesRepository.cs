@@ -1,9 +1,7 @@
-﻿using MoshaverAmlak.DataLayer.Common;
-using MoshaverAmlak.DataLayer.Entity;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using MoshaverAmlak.DataLayer.Common;
+using MoshaverAmlak.DataLayer.Entity;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Interface
 {
