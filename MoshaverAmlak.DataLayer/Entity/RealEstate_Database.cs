@@ -84,7 +84,7 @@ namespace MoshaverAmlak.DataLayer.Entity
     }
     public class Region : BaseEntity
     {
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         public ICollection<HomeFile> HomeFiles { get; set; }
         public ICollection<UserRegion> UserRegions { get; set; }
@@ -104,7 +104,7 @@ namespace MoshaverAmlak.DataLayer.Entity
     }
     public class City : BaseEntity
     {
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         public int ProvinceId { get; set; }
 
@@ -114,7 +114,7 @@ namespace MoshaverAmlak.DataLayer.Entity
     }
     public class Province : BaseEntity
     {
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         public ICollection<City> Cities { get; set; }
     }

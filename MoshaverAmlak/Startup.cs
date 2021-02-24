@@ -76,6 +76,7 @@ namespace MoshaverAmlak
             services.AddScoped<ICategoryFacilitiesService, CategoryFacilitiesService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRegionService, RegionService>();
         }
 
 

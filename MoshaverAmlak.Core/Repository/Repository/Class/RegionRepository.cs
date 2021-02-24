@@ -23,8 +23,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public async Task<Result> CreateRegion(Region region)
         {
-            var entity = _regionRepository.AddEntity(region);
-            if (entity.Status != (int)Result.Status.OK) return await entity;
+            var entity = await _regionRepository.AddEntity(region);
+            if (entity.StatusResult != (int)Result.Status.OK) return  entity;
             return await _regionRepository.SaveChangeAsync();
         }
 
