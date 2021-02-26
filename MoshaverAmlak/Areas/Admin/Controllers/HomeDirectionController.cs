@@ -53,7 +53,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(HomeDirection homeDirection)
         {
             var result = await _homeDirectionService.DeleteHomeDirection(homeDirection.Id);
-            return RedirectToAction("Inddex", new RouteValueDictionary(new { resultStatus = result.StatusResult })); 
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult })); 
         }
 
         [HttpGet]

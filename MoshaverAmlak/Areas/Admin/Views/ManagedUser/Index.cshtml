@@ -1,4 +1,4 @@
-﻿
+﻿@model SendDataToView<IQueryable<UserViewmodel>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -19,9 +19,31 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                </tr>
+                @{
+                    int index = 1;
+                    foreach (var item in Model.Entity)
+                    {
+                        <tr>
+                            <td>@index</td>
+                            <td>@item.FullName</td>
+                            <td>
+                               @item.Email
+                            </td>
+                            <td>
+                               @item.Phone
+                            </td>
+                            <td>
+                                <a asp-area="Admin" asp-controller="ManagedUser" asp-action="Delete" asp-route-id="@item.UserId">
+                                    حذف
+                                </a>
+                                <a asp-area="Admin" asp-controller="ManagedUser" asp-action="Edit" asp-route-id="@item.UserId">
+                                    ویرایش
+                                </a>
+                            </td>
+                        </tr>
+                        index++;
+                    }
+                }
             </tbody>
         </table>
     </div>
