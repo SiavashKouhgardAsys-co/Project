@@ -19,8 +19,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
         public ReturnEntity<Facilities> GetFacilityById(int facilityId) => _facilitiesRepository.GetEntityById(facilityId);
         public async Task<Result> CreateFacility(Facilities facilities)
         {
-            var entity = _facilitiesRepository.AddEntity(facilities);
-            if (entity.Status != (int)Result.Status.OK) return await entity;
+            var entity = await _facilitiesRepository.AddEntity(facilities);
+            if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _facilitiesRepository.SaveChangeAsync();
         }
         public async Task<Result> DeleteFacilityById(int facilityId)

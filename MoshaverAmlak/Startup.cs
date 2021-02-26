@@ -78,6 +78,7 @@ namespace MoshaverAmlak
             //Services
             services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
             services.AddScoped<IFileTypeService, FileTypeService>();
+            services.AddScoped<IFacilitiesService, FacilitiesService>();
             services.AddScoped<IHomeDirectionService, HomeDirectionService>();
             services.AddScoped<INeighbourhoodService, NeighbourhoodService>();
             services.AddScoped<ICategoryFacilitiesService, CategoryFacilitiesService>();

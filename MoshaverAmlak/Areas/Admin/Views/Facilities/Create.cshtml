@@ -1,4 +1,4 @@
-﻿@model Facilities
+﻿@model FacilitiesViewmodel_Create
 @{
     ViewData["Title"] = "Create";
 }
@@ -12,27 +12,32 @@
                         <span>ورود اطلاعات</span>
                     </div>
                     <div class="col-4">
-                        <select>
-                            <option value="0">تهویه هوا</option>
-                            <option value="0">گرمایش</option>
-                            <option value="0">درب ورودی</option>
+                        <span>دسته بندی امکانات</span>
+                        <select asp-for="@Model.Facilities.CategoryFacilityId">
+                            <option value="0">انتخاب کنید...</option>                        
+                            @{
+
+                                foreach (var item in Model.CategoryFacilities)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
                         </select>
                     </div>
                     <div class="col-4">
-                        <input type="text" asp-for="Name" />
+                        <span>امکانات</span>
+                        <input type="text" asp-for="@Model.Facilities.Name" />
                     </div>
                     <div class="col-2">
                         <input type="submit" value="ثبت اطلاعات" />
                     </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-12 ">
+                    <div class="col-2">
                         <a asp-area="Admin" asp-controller="Facilities" asp-action="Index">
                             بازگشت
                         </a>
                     </div>
                 </div>
+                
             </form>
         </div>
     </div>
