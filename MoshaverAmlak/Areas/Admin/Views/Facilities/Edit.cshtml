@@ -1,4 +1,4 @@
-﻿@model Facilities
+﻿@model FacilitiesViewmodel_Edit
 @{
     ViewData["Title"] = "Edit";
 }
@@ -6,29 +6,37 @@
 <div class="container m-1">
     <div class="row">
         <div class="col">
-            <form asp-area="Admin" asp-controller="Facilities" asp-action="Edit">
+            <form asp-area="Admin" asp-controller="Facilities" asp-action="Edit" method="post">
                 <div class="row">
                     <div class="col-4">
                         <span>
                             ویرایش نام :
                         </span>
+                        <input type="hidden" asp-for="@Model.Facilities.FacilityId" />
+                        <input type="text" asp-for="@Model.Facilities.FacilityName"/>
                     </div>
+                   
                     <div class="col-4">
-                        <input type="text" asp-for="@Model.Name" />
+                        <span>دسته بندی امکانات</span>
+                        <select asp-for="@Model.Facilities.CategoryFacilityId">
+                            <option value="0">انتخاب کنبد...</option>
+                            @{ 
+                                foreach (var item in Model.CategoryFacilities)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        </select>
                     </div>
-
                     <div class="col-4">
                         <input type="submit" value="ثبت تغییرات" />
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-12 ">
                         <a asp-area="Admin" asp-controller="Facilities" asp-action="Index">
                             بازگشت
                         </a>
                     </div>
+
                 </div>
+                
             </form>
         </div>
     </div>

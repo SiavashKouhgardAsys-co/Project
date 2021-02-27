@@ -72,12 +72,12 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
             var province = _provinceService.GetAllProvinces();
             if (province.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = province.Result.StatusResult }));
             cityViewmodel.Provinces = province.Entity;
-            return View(city.Entity);
+            return View(cityViewmodel);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(CityViewmodel cityViewmodel)
+        public async Task<IActionResult> Edit(CityViewmodel_Edit cityViewmodelEdit)
         {
-            var result = await _cityService.EditCity(cityViewmodel);
+            var result = await _cityService.EditCity(cityViewmodelEdit.City);
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
     }

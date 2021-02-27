@@ -21,4 +21,5 @@ namespace MoshaverAmlak.DataLayer.Viewmodel
         public CityViewmodel City { get; set; }
         public IQueryable<Province> Provinces { get; set; }
     }
+
 }

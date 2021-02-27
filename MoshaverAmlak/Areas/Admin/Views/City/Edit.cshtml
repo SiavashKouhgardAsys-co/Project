@@ -1,4 +1,4 @@
-﻿@model CityViewmodel
+﻿@model CityViewmodel_Edit
 @{
     ViewData["Title"] = "Edit";
 }
@@ -6,20 +6,27 @@
 <div class="container m-1">
     <div class="row">
         <div class="col">
-            <form asp-area="Admin" asp-controller="City" asp-action="Edit" asp-route-CityId="@Model.CityId" method="post">
+            <form asp-area="Admin" asp-controller="City" asp-action="Edit"  method="post">
                 <div class="row">
                     <div class="col-4">
                         <span>
                             ویرایش نام :
                         </span>
-                        <input type="text" asp-for="@Model.CityName" />
+                        <input type="hidden" asp-for="@Model.City.CityId" />
+                        <input type="text" asp-for="@Model.City.CityName" />
                     </div>
                     <div class="col-4">
                         <span>
                             استان
                         </span>
-                        <select asp-for="@Model.ProvinceId">
+                        <select asp-for="@Model.City.ProvinceId">
                             <option value="0">انتخاب کنید . . .</option>
+                            @{
+                                foreach (var item in Model.Provinces)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
                         </select>
                     </div>
                     <div class="col-4">

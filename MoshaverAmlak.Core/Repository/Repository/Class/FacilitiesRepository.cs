@@ -34,6 +34,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             var entity = GetFacilityById(facilities.Id);
             if (entity.Result.StatusResult != (int)Result.Status.OK) return entity.Result;
             entity.Entity.Name = facilities.Name;
+            entity.Entity.CategoryFacilityId = facilities.CategoryFacilityId;
             var update_entity = _facilitiesRepository.UpdateEntity(entity.Entity);
             if (update_entity.StatusResult != (int)Result.Status.OK) return update_entity;
             return await _facilitiesRepository.SaveChangeAsync();

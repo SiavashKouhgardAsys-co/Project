@@ -1,8 +1,5 @@
 ﻿using MoshaverAmlak.DataLayer.Entity;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MoshaverAmlak.DataLayer.Viewmodel
 {
@@ -17,7 +14,13 @@ namespace MoshaverAmlak.DataLayer.Viewmodel
 
     public class FacilitiesViewmodel_Create
     {
-        public IQueryable<CategoryFacilities> CategoryFacilities{ get; set; }
         public Facilities Facilities { get; set; }
+        public IQueryable<CategoryFacilities> CategoryFacilities{ get; set; }
+    }
+
+    public class FacilitiesViewmodel_Edit
+    {
+        public FacilitiesViewmodel_Entity Facilities { get; set; }
+        public IQueryable<CategoryFacilities> CategoryFacilities { get; set; }
     }
 }

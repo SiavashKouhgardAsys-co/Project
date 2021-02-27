@@ -16,7 +16,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
     {
         private readonly IFacilitiesService _facilities;
         private readonly ICategoryFacilitiesService _categoryFacilitiesService;
-        public FacilitiesController(IFacilitiesService facilities , ICategoryFacilitiesService categoryFacilitiesService)
+        public FacilitiesController(IFacilitiesService facilities, ICategoryFacilitiesService categoryFacilitiesService)
         {
             _facilities = facilities;
             _categoryFacilitiesService = categoryFacilitiesService;
@@ -39,7 +39,6 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
             if (category.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = category.Result.StatusResult }));
             FacilitiesViewmodel_Create facilitiesViewmodel_Create = new FacilitiesViewmodel_Create();
             facilitiesViewmodel_Create.CategoryFacilities = category.Entity;
-
             return View(facilitiesViewmodel_Create);
         }
 
@@ -47,7 +46,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         public async Task<IActionResult> Create(FacilitiesViewmodel_Create facilitiesViewmodel_Create)
         {
             var result = await _facilities.CreateFacilities(facilitiesViewmodel_Create.Facilities);
-            return RedirectToAction("Index" , new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
         [HttpGet]
@@ -62,22 +61,38 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(Facilities facilities)
         {
             var result = await _facilities.DeleteFacilities(facilities.Id);
-            return RedirectToAction("Index" , new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            FacilitiesViewmodel_Edit facilitiesViewmodel = new FacilitiesViewmodel_Edit();
             var data = _facilities.GetFacilitiesById(id);
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
-            return View(data.Entity);
+            facilitiesViewmodel.Facilities = new FacilitiesViewmodel_Entity()
+            {
+                FacilityId = data.Entity.Id,
+                FacilityName = data.Entity.Name,
+                CategoryFacilityId = data.Entity.CategoryFacilityId,
+            };
+            var categoryFacility = _categoryFacilitiesService.GetAllCategoryFacilities();
+            if (categoryFacility.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = categoryFacility.Result.StatusResult }));
+            facilitiesViewmodel.CategoryFacilities = categoryFacility.Entity;
+            return View(facilitiesViewmodel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Facilities facilities)
+        public async Task<IActionResult> Edit(FacilitiesViewmodel_Edit facilitiesViewmodel)
         {
+            Facilities facilities = new Facilities()
+            {
+                Id = facilitiesViewmodel.Facilities.FacilityId,
+                Name = facilitiesViewmodel.Facilities.FacilityName,
+                CategoryFacilityId = facilitiesViewmodel.Facilities.CategoryFacilityId
+            };
             var result = await _facilities.EditFacilities(facilities);
-            return RedirectToAction("Index" , new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
 
