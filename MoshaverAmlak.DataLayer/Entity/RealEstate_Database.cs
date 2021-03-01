@@ -220,7 +220,8 @@ namespace MoshaverAmlak.DataLayer.Entity
     {
         public string FullName { get; set; }
         public string Description { get; set; }
-        public string AmountOfInvestiment { get; set; }
+        public string InvestimentFrom { get; set; }
+        public string InvestimentTo { get; set; }
 
         public string UserId { get; set; }
 

@@ -74,6 +74,7 @@ namespace MoshaverAmlak
             services.AddScoped<ITypeOfDocumentRepository, TypeOfDocumentRepository>();
             services.AddScoped<IProvinceRepository, ProvinceRepository>();
             services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IBuyerRepository, BuyerRepository>();
 
             //Services
             services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
@@ -88,6 +89,7 @@ namespace MoshaverAmlak
             services.AddScoped<IProvinceService, ProvinceService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IRebuiltService, RebuiltService>();
+            services.AddScoped<IBuyerService, BuyerService>();
         }
 
 

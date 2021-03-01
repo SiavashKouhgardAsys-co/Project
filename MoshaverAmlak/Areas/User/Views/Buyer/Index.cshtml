@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Buyer>
+﻿@model SendDataToView<IQueryable<Buyer>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,28 +6,29 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-12 my-3">
-            <a asp-area="User" asp-controller="Buyer" asp-action="Create">
+            <a asp-area="User" asp-controller="Buyer" asp-action="Create" >
                 ثبت خریدار جدید
             </a>
         </div>
         <div class="col-12">
-            <table class="table table-hover">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>
                             <span>ردیف</span>
                         </th>
                         <th>
-                            <span>شناسه</span>
-                        </th>
-                        <th>
                             <span>نام خریدار</span>
                         </th>
                         <th>
-                            <span>توضیحات</span>
+                            <span>تلفن</span>
                         </th>
+
                         <th>
                             <span>میزا ن سرمایه</span>
+                        </th>
+                        <th>
+                            <span>توضیحات خریدار</span>
                         </th>
                         <th>
                             عملیات
@@ -35,31 +36,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            30001
-                        </td>
-                        <td>
-                            <span>مسعود فراستی</span>
-                        </td>
-                        <td>
-                            <span>توضیحات مربوط به خریدار مسعود فراستی</span>
-                        </td>
-                        <td>
-                            <span>4 میلیارد تومان</span>
-                        </td>
-                        <td>
-                            <a asp-area="User" asp-controller="Buyer" asp-action="Delete">
-                                حذف
-                            </a>
-                            <a asp-area="User" asp-controller="Buyer" asp-action="Edit">
-                                ویرایش
-                            </a>
-                        </td>
-                    </tr>
+                    @{
+                        int index = 1;
+                        foreach (var item in Model.Entity)
+                        {
+                            <tr>
+                                <td>
+                                    @index
+                                </td>
+                                <td>
+                                    <span>@item.FullName</span>
+                                </td>
+                                <td>
+                                    <span>@item.BuyerTels</span>
+                                </td>
+                                <td>
+                                    <span>از</span>
+                                    <span>@item.InvestimentFrom</span>
+                                    <span>تا</span>
+                                    <span>@item.InvestimentTo</span>
+                                </td>
+                                <td>
+                                    <span>@item.Description</span>
+                                </td>
+                                <td>
+                                    <a asp-area="User" asp-controller="Buyer" asp-action="Delete" asp-route-id="@item.Id">
+                                        حذف
+                                    </a>
+                                    <a asp-area="User" asp-controller="Buyer" asp-action="Edit" asp-route-id="@item.Id">
+                                        ویرایش
+                                    </a>
+                                </td>
+                            </tr>
+                            index++;
+                        }
+                    }
                 </tbody>
             </table>
         </div>
