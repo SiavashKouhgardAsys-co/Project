@@ -1,0 +1,44 @@
+﻿.categoryIndex a.btnReg {
+  background-color: #12e38a;
+  padding: 10px 20px;
+  border: 1px solid #12e38a;
+  border-radius: 20px;
+  transition: all 0.5s;
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 10px; }
+  .categoryIndex a.btnReg:hover, .categoryIndex a.btnReg:focus, .categoryIndex a.btnReg:active {
+    border: 1px solid #63e38a;
+    background-color: #63e38a; }
+
+.categoryIndex a.btnDele {
+  background-color: #F4122D;
+  padding: 5px 10px;
+  border: 1px solid #F4122D;
+  border-radius: 10px;
+  transition: all 0.5s;
+  color: #fff;
+  display: inline-block; }
+  .categoryIndex a.btnDele:hover, .categoryIndex a.btnDele:focus, .categoryIndex a.btnDele:active {
+    border: 1px solid #E15646;
+    background-color: #E15646; }
+
+.categoryIndex a.btnEdit {
+  background-color: #0D47A1;
+  padding: 5px 10px;
+  border: 1px solid #0D47A1;
+  border-radius: 10px;
+  transition: all 0.5s;
+  color: #fff;
+  display: inline-block; }
+  .categoryIndex a.btnEdit:hover, .categoryIndex a.btnEdit:focus, .categoryIndex a.btnEdit:active {
+    border: 1px solid #2979FF;
+    background-color: #2979FF; }
+
+.inputText {
+  border: 2px solid #0D47A1;
+  border-radius: 4px;
+  transition: all 0.5s;
+  outline: none; }
+  .inputText:focus {
+    border: 2px solid #12e38a; }

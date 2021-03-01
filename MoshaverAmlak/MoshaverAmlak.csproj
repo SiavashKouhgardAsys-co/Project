@@ -105,7 +105,7 @@
     <None Include="wwwroot\dist\js\plugins\popper\umd\popper.js.map" />
     <None Include="wwwroot\dist\js\plugins\popper\umd\popper.min.js" />
     <None Include="wwwroot\dist\js\plugins\popper\umd\popper.min.js.map" />
-    <None Include="wwwroot\dist\sass\CustomStyle.scss" />
+    <None Include="wwwroot\dist\sass\CustomStyleAdmin.scss" />
     <None Include="wwwroot\plugins\bootstrap-slider\bootstrap-slider.js" />
     <None Include="wwwroot\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
     <None Include="wwwroot\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />

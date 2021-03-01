@@ -2,5 +2,13 @@
   {
     "outputFile": "wwwroot/dist/css/CustomStyle.css",
     "inputFile": "wwwroot/dist/sass/CustomStyle.scss"
+  },
+  {
+    "outputFile": "wwwroot/dist/css/CustomStyleAdmin.css",
+    "inputFile": "wwwroot/dist/sass/CustomStyleAdmin.scss"
+  },
+  {
+    "outputFile": "wwwroot/dist/css/CustomStyleUser.css",
+    "inputFile": "wwwroot/dist/sass/CustomStyleUser.scss"
   }
 ]
