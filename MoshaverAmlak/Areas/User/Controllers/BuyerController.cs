@@ -7,6 +7,7 @@ using MoshaverAmlak.DataLayer.Viewmodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Areas.User.Controllers
@@ -36,8 +37,10 @@ namespace MoshaverAmlak.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BuyerViewmodel buyerviewmodel)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _buyerService.CreateBuyer(new Buyer()
             {
+                UserId = userId,
                 Id = buyerviewmodel.Id,
                 FullName = buyerviewmodel.FullName,
                 InvestimentFrom = buyerviewmodel.FromInvestment,

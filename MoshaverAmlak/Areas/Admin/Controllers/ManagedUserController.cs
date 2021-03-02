@@ -55,19 +55,6 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
             return View(userRolesViewmodel);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> UpdateUser(string id)
-        {
-            UserViewmodel_Edit userViewmodel = new UserViewmodel_Edit();
-            userViewmodel.User = await _userService.GetAllUserById(id);
-            userViewmodel.Roles = _roleService.GetAllRoles();
-
-            return View(userViewmodel);
-        }
-        [HttpPost]
-        public async Task<IActionResult> UpdateUser()
-        {
-            return RedirectToAction("Index");
-        }
+        
     }
 }
