@@ -5,13 +5,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoshaverAmlak.Core.Repository.Repository.Interface
+namespace MoshaverAmlak.Core.Repository.Service.Interface
 {
-    public interface IOwnerRepository
+    public interface IOwnerService
     {
         ReturnEntity_IQueryable<Owner> GetAllOwners();
         ReturnEntity<Owner> GetOwnerById(int id);
         Task<Result> CreateOwner(Owner owner);
-
     }
 }

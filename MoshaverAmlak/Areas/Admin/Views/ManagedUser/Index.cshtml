@@ -15,7 +15,7 @@
                     <td>نام و نام خانوادگی</td>
                     <td>ایمیل</td>
                     <td>تلفن</td>
-                    <td>عملیات</td>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -32,14 +32,7 @@
                             <td>
                                @item.Phone
                             </td>
-                            <td>
-                                <a asp-area="Admin" asp-controller="ManagedUser" asp-action="Delete" asp-route-id="@item.UserId">
-                                    حذف
-                                </a>
-                                <a asp-area="Admin" asp-controller="ManagedUser" asp-action="Edit" asp-route-id="@item.UserId">
-                                    ویرایش
-                                </a>
-                            </td>
+                           
                         </tr>
                         index++;
                     }

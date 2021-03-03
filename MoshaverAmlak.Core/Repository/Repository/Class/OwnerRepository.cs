@@ -1,4 +1,5 @@
-﻿using MoshaverAmlak.DataLayer.Common;
+﻿using MoshaverAmlak.Core.Repository.Repository.Interface;
+using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using MoshaverAmlak.DataLayer.GenericRepository;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MoshaverAmlak.Core.Repository.Repository.Class
 {
-    public class OwnerRepository
+    public class OwnerRepository : IOwnerRepository
     {
         public readonly IGenericRepository<Owner> _ownerRepository;
         public OwnerRepository(IGenericRepository<Owner> ownerRepository)
@@ -24,6 +25,11 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             var entity = await _ownerRepository.AddEntity(owner);
             if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _ownerRepository.SaveChangeAsync();
+        }
+
+        public void Dispose()
+        {
+            _ownerRepository?.Dispose();
         }
     }
 }

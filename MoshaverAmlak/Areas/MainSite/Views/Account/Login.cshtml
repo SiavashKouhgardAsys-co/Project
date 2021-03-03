@@ -5,19 +5,19 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
-            <form asp-area="MainSite" asp-controller="Account" asp-action="Login" method="post">
-                <div class="form-group col-12" >
+        <div class="col-12">
+            <form  asp-area="MainSite" asp-controller="Account" asp-action="Login" method="post">
+                <div class="form-group col-6">
                     <label for="username">
                         نام کاربری
                     </label>
-                    <input class="form-control" type="text" id="username"/>
+                    <input class="form-control" type="text" asp-for="@Model.Username"/>
                 </div>
-                <div class="form-group col-12">
+                <div class="form-group col-6">
                     <label for="password">
                         رمز عبور
                     </label>
-                    <input class="form-control" type="password" id="password"/>
+                    <input class="form-control" type="password" asp-for="@Model.Password"/>
                 </div>
                 <div class="col-6">
                     <button type="submit" class="btn btn-default">وارد شوید</button>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Owner>
+﻿@model SendDataToView<IQueryable<Owner>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -33,29 +33,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            50001
-                        </td>
-                        <td>
-                            <span>جان اسنو</span>
-                        </td>
-                        <td>
-                            <span>توضیحات مربوط به مالک جان اسنو </span>
-                        </td>
+                    @{
+                        int index = 1;
+                        foreach (var item in Model.Entity)
+                        {
 
-                        <td>
-                            <a asp-area="User" asp-controller="Owner" asp-action="Delete">
-                                حذف
-                            </a>
-                            <a asp-area="User" asp-controller="Owner" asp-action="Edit">
-                                ویرایش
-                            </a>
-                        </td>
-                    </tr>
+                            <tr>
+                                <td>
+                                    @index
+                                </td>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    <span>@item.FullName</span>
+                                </td>
+                                <td>
+                                    <span>@item.Descrption</span>
+                                </td>
+                                <td>
+                                    <a asp-area="User" asp-controller="Owner" asp-action="Delete">
+                                        حذف
+                                    </a>
+                                    <a asp-area="User" asp-controller="Owner" asp-action="Edit">
+                                        ویرایش
+                                    </a>
+                                </td>
+                            </tr>
+                            index++;
+                        }
+                    }
                 </tbody>
             </table>
         </div>
