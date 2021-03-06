@@ -4,8 +4,6 @@ using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
 using MoshaverAmlak.DataLayer.Viewmodel;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -38,7 +36,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BuyerViewmodel buyerviewmodel)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var result = await _buyerService.CreateBuyer(new Buyer()
             {
                 UserId = userId,

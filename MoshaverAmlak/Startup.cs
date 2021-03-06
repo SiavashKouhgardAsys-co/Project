@@ -36,14 +36,10 @@ namespace MoshaverAmlak
             services.AddSession(opt =>
             {
                 opt.Cookie.HttpOnly = true;
-                opt.IdleTimeout = TimeSpan.FromMilliseconds(20);
+                opt.IdleTimeout = TimeSpan.FromMinutes(20);
             });
 
-
-
             services.AddDbContext<RealEstate_Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefualtConnection")));
-
-
 
             services.AddIdentity<RealEstate_User, IdentityRole>(opt =>
             {

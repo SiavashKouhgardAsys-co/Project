@@ -14,7 +14,7 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
             _buyer = buyer;
         }
 
-        public ReturnEntity_IQueryable<Buyer> GetAllBuyers(string userId) => _buyer.GetAllBuyers(userId);
+        public ReturnEntity_IQueryable<Buyer> GetAllBuyers(string userId) => _buyer.GetAllBuyers(userId); 
         public ReturnEntity<Buyer> GetBuyerById(int id , string userId) => _buyer.GetBuyerById(id , userId);
 
         public async Task<Result> CreateBuyer(Buyer buyer) => await _buyer.CreateBuyer(buyer);
