@@ -9,8 +9,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Interface
 {
     public interface IOwnerRepository
     {
-        ReturnEntity_IQueryable<Owner> GetAllOwners();
-        ReturnEntity<Owner> GetOwnerById(int id);
+        ReturnEntity_IQueryable<Owner> GetAllOwners(string userId);
+        ReturnEntity<Owner> GetOwnerById(int id , string userId);
         Task<Result> CreateOwner(Owner owner);
 
     }

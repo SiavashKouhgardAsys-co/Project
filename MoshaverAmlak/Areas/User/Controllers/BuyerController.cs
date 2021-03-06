@@ -23,7 +23,8 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public IActionResult Index(string resultStatus)
         {
             SendDataToView<IQueryable<Buyer>> sendDataToView = new SendDataToView<IQueryable<Buyer>>();
-            var data = _buyerService.GetAllBuyers();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var data = _buyerService.GetAllBuyers(userId);
             if (data.Result.StatusResult != (int)Result.Status.OK) return NotFound();
             sendDataToView.Entity = data.Entity;
             if (resultStatus != null)
@@ -53,7 +54,8 @@ namespace MoshaverAmlak.Areas.User.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var data = _buyerService.GetBuyerById(id);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var data = _buyerService.GetBuyerById(id , userId);
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
             return View(data.Entity);
         }
@@ -69,8 +71,8 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public IActionResult Edit(int id)
         {
 
-            var data = _buyerService.GetBuyerById(id);
-
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var data = _buyerService.GetBuyerById(id , userId);
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
             BuyerViewmodel buyerViewmodel = new BuyerViewmodel()
             {

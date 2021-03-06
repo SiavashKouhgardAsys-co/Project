@@ -17,8 +17,8 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
             _ownerService = ownerService;
         }
 
-        public ReturnEntity_IQueryable<Owner> GetAllOwners() => _ownerService.GetAllOwners();
-        public ReturnEntity<Owner> GetOwnerById(int id) => _ownerService.GetOwnerById(id);
+        public ReturnEntity_IQueryable<Owner> GetAllOwners(string userId) => _ownerService.GetAllOwners(userId);
+        public ReturnEntity<Owner> GetOwnerById(int id , string userId) => _ownerService.GetOwnerById(id , userId);
 
         public async Task<Result> CreateOwner(Owner owner) => await _ownerService.CreateOwner(owner);
     }

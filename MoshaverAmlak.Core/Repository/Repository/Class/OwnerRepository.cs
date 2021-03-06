@@ -17,8 +17,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             _ownerRepository = ownerRepository;
         }
 
-        public ReturnEntity_IQueryable<Owner> GetAllOwners() => _ownerRepository.GetAllEntity();
-        public ReturnEntity<Owner> GetOwnerById(int id) => _ownerRepository.GetEntityById(id);
+        public ReturnEntity_IQueryable<Owner> GetAllOwners(string userId) => _ownerRepository.GetAllEntityByOtherColumn(x=>x.UserId == userId);
+        public ReturnEntity<Owner> GetOwnerById(int id, string userId) => _ownerRepository.GetEntityByOtherColumn(x => x.UserId == userId && x.Id == id);
         
         public async Task<Result> CreateOwner(Owner owner)
         {

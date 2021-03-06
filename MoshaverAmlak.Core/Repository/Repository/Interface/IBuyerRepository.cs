@@ -10,8 +10,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Interface
 {
     public interface IBuyerRepository
     {
-        ReturnEntity_IQueryable<Buyer> GetAllBuyers();
-        ReturnEntity<Buyer> GetBuyerById(int id);
+        ReturnEntity_IQueryable<Buyer> GetAllBuyers(string userId);
+        ReturnEntity<Buyer> GetBuyerById(int id , string userId);
         Task<Result> CreateBuyer(Buyer buyer);
         Task<Result> DeleteBuyer(int buyerId);
         Task<Result> EditBuyer(Buyer buyer);
