@@ -10,5 +10,13 @@
   {
     "outputFile": "wwwroot/dist/css/CustomStyleUser.css",
     "inputFile": "wwwroot/dist/sass/CustomStyleUser.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/userLayout.css",
+    "inputFile": "wwwroot/scss/userLayout.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/defaultStyle.css",
+    "inputFile": "wwwroot/scss/defaultStyle.scss"
   }
 ]
