@@ -1,4 +1,4 @@
-﻿@model SendDataToView<IQueryable<Buyer>>
+﻿@model SendDataToView<List<BuyerViewmodel>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -11,7 +11,7 @@
             </a>
         </div>
         <div class="col-12">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>
@@ -21,14 +21,11 @@
                             <span>نام خریدار</span>
                         </th>
                         <th>
-                            <span>تلفن</span>
+                            <span>تلفن ها</span>
                         </th>
 
                         <th>
-                            <span>میزا ن سرمایه</span>
-                        </th>
-                        <th>
-                            <span>توضیحات خریدار</span>
+                            <span>میزان سرمایه</span>
                         </th>
                         <th>
                             عملیات
@@ -46,18 +43,16 @@
                                 </td>
                                 <td>
                                     <span>@item.FullName</span>
+
                                 </td>
                                 <td>
-                                    <span>@item.BuyerTels</span>
+                                    <span>@item.Tel</span>
                                 </td>
                                 <td>
                                     <span>از</span>
-                                    <span>@item.InvestimentFrom</span>
+                                    <span>@item.FromInvestment</span>
                                     <span>تا</span>
-                                    <span>@item.InvestimentTo</span>
-                                </td>
-                                <td>
-                                    <span>@item.Description</span>
+                                    <span>@item.ToInvestment</span>
                                 </td>
                                 <td>
                                     <a asp-area="User" asp-controller="Buyer" asp-action="Delete" asp-route-id="@item.Id">
@@ -66,6 +61,11 @@
                                     <a asp-area="User" asp-controller="Buyer" asp-action="Edit" asp-route-id="@item.Id">
                                         ویرایش
                                     </a>
+                                    <a asp-area="User" asp-controller="Buyer" asp-action="Details" asp-route-id="@item.Id">
+                                        جزئیات
+                                    </a>
+                                    <a asp-area="User" asp-controller="Buyer" asp-action="CreateBuyerTel">
+                                        عملیات تلفن                                    </a>
                                 </td>
                             </tr>
                             index++;

@@ -71,6 +71,7 @@ namespace MoshaverAmlak
             services.AddScoped<IProvinceRepository, ProvinceRepository>();
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IBuyerRepository, BuyerRepository>();
+            services.AddScoped<IBuyerTelRepository, BuyerTelRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
 
             //Services

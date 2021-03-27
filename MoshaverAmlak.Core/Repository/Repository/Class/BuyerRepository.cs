@@ -26,7 +26,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _buyerRepository.SaveChangeAsync();
         }
-
+        
         public async Task<Result> DeleteBuyer(int buyerId)
         {
             var entity =  _buyerRepository.DeleteEntityById(buyerId);

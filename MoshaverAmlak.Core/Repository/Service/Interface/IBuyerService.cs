@@ -10,11 +10,17 @@ namespace MoshaverAmlak.Core.Repository.Service.Interface
 {
     public interface IBuyerService
     {
-        ReturnEntity_IQueryable<Buyer> GetAllBuyers(string userId);
+        ReturnEntity_List<BuyerViewmodel> GetAllBuyers(string userId);
         ReturnEntity<Buyer> GetBuyerById(int id , string userId);
+        ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTels();
+        ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTelByUserId(int id);
+        ReturnEntity<BuyerTel> GetBuyerTelById(int id);
         Task<Result> CreateBuyer(Buyer buyer);
         Task<Result> DeleteBuyer(int id);
         Task<Result> EditBuyer(Buyer buyer);
+        Task<Result> CreateBuyerTel(BuyerTel buyerTel);
+        Task<Result> DeleteBuyerTel(int id);
+        Task<Result> EditBuyerTel(BuyerTel buyerTel);
 
     }
 }
