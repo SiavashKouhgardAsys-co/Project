@@ -20,7 +20,6 @@ namespace MoshaverAmlak.DataLayer.Viewmodel
     public class BuyerTelViewmodel
     {
         public Buyer Buyer { get; set; }
-
         public BuyerTel BuyerInfo { get; set; }
         public IQueryable<BuyerTel> Tels { get; set; }
     }

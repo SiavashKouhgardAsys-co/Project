@@ -36,10 +36,10 @@ namespace MoshaverAmlak.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BuyerViewmodel buyerviewmodel)
         {
-            //var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var result = await _buyerService.CreateBuyer(new Buyer()
             {
-                //UserId = userId,
+                UserId = userId,    
                 Id = buyerviewmodel.Id,
                 FullName = buyerviewmodel.FullName,
                 InvestimentFrom = buyerviewmodel.FromInvestment,
@@ -52,7 +52,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
         [HttpGet]
         public IActionResult CreateBuyerTel(int buyerId)
         {
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var data = _buyerService.GetBuyerById(buyerId , userId);
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
@@ -69,9 +69,8 @@ namespace MoshaverAmlak.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBuyerTel(BuyerTelViewmodel buyerTelViewmodel)
         {
-
             var result = await _buyerService.CreateBuyerTel(new BuyerTel()
-            {
+            {  
                 BuyerId = buyerTelViewmodel.BuyerInfo.BuyerId,
                 Tel = buyerTelViewmodel.BuyerInfo.Tel
             });

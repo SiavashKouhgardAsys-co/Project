@@ -30,7 +30,6 @@ namespace MoshaverAmlak.Areas.MainSite.Controllers
             var login = await _user.Login(userViewmodel_Login);
             if (login.StatusResult != (int)Result.Status.LoginOk) return RedirectToAction("Login");
             return RedirectToAction("Index", "Dashboard", new { area = "User" });
-
         }
     }
 }

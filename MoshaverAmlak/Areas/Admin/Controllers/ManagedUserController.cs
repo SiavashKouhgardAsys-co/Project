@@ -38,7 +38,6 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         {
             UserRolesViewmodel userRolesViewmodel = new UserRolesViewmodel();
             userRolesViewmodel.Roles = _roleService.GetAllRoles();
-
             return View(userRolesViewmodel);
         }
         [HttpPost]
@@ -55,6 +54,5 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
             return View(userRolesViewmodel);
         }
 
-        
     }
 }
