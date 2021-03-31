@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RealEstate>
+﻿@model SendDataToView<IQueryable<RealEstate>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -26,7 +26,6 @@
                         <th>
                             <span>توضیحات</span>
                         </th>
-                       
                         <th>
                             عملیات
                         </th>

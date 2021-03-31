@@ -36,7 +36,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BuyerViewmodel buyerviewmodel)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var result = await _buyerService.CreateBuyer(new Buyer()
             {
                 UserId = userId,    
@@ -53,7 +53,6 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public IActionResult CreateBuyerTel(int buyerId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             var data = _buyerService.GetBuyerById(buyerId , userId);
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
             var tels = _buyerService.GetAllBuyerTelByUserId(buyerId);
@@ -85,7 +84,6 @@ namespace MoshaverAmlak.Areas.User.Controllers
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
             return View(data.Entity);
         }
-
         
         [HttpPost]
         public async Task<IActionResult> Delete(Buyer buyer)
@@ -124,13 +122,11 @@ namespace MoshaverAmlak.Areas.User.Controllers
                 Description = data.Entity.Description
             };
             return View(buyerViewmodel);
-
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var data = _buyerService.GetBuyerById(id, userId);
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
@@ -155,7 +151,6 @@ namespace MoshaverAmlak.Areas.User.Controllers
                 InvestimentFrom = buyerViewmodel.FromInvestment,
                 InvestimentTo = buyerViewmodel.ToInvestment,
                 Description = buyerViewmodel.Description,
-
             });
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }

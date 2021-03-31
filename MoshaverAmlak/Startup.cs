@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MoshaverAmlak.Core.Repository.Repository;
 using MoshaverAmlak.Core.Repository.Repository.Class;
 using MoshaverAmlak.Core.Repository.Repository.Interface;
 using MoshaverAmlak.Core.Repository.Service.Class;
@@ -32,7 +33,7 @@ namespace MoshaverAmlak
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-
+            
             services.AddSession(opt =>
             {
                 opt.Cookie.HttpOnly = true;
@@ -73,7 +74,7 @@ namespace MoshaverAmlak
             services.AddScoped<IBuyerRepository, BuyerRepository>();
             services.AddScoped<IBuyerTelRepository, BuyerTelRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
-
+            services.AddScoped<IHomeFileRepository, HomeFileRepository>();
             //Services
             services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
             services.AddScoped<IFileTypeService, FileTypeService>();
@@ -89,6 +90,7 @@ namespace MoshaverAmlak
             services.AddScoped<IRebuiltService, RebuiltService>();
             services.AddScoped<IBuyerService, BuyerService>();
             services.AddScoped<IOwnerService, OwnerService>();
+            services.AddScoped<IHomeFileService, HomeFileService>();
 
         }
 
@@ -101,13 +103,14 @@ namespace MoshaverAmlak
             }
             app.UseStaticFiles();
             app.UseRouting();
-
             app.UseSession();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "areas",
-                    pattern: "{area=Admin}/{controller=ManagedUser}/{action=Index}/{id?}"
+                    pattern: "{area=MainSite}/{controller=Account}/{action=Login}/{id?}"
                   //pattern: "{area=user}/{controller=HomeFile}/{action=Index}/{id?}"
                   );
             });

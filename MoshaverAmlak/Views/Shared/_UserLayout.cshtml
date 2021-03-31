@@ -40,10 +40,11 @@
             <div class="row pt-4">
                 <div class="col-2 pt-5 ps-0 mainMenu">
                     <ul class="sideMenu  m-0 bg-light">
-                        <li><a href="#"><i></i><span>فایل</span></a></li>
-                        <li><a href="#"><i></i><span>خریدار</span></a></li>
-                        <li><a href="#"><i></i><span>فروشنده</span></a></li>
-                        <li><a href="#"><i></i><span>سایر</span></a></li>
+                        <li><a asp-area="User" asp-controller="HomeFile" asp-action="Index" method="post"><i></i><span>فایل ها</span></a></li>
+                        <li><a asp-area="User" asp-controller="Buyer" asp-action="Index" method="post"><i></i><span>خریدار ها</span></a></li>
+                        <li><a asp-area="User" asp-controller="Owner" method="post"><i></i><span>فروشنده ها</span></a></li>
+                        <li><a asp-area="User" asp-controller="Investor" asp-action="Index" method="post"><i></i><span>سرمایه گذارها</span></a></li>
+                        <li><a asp-area="User" asp-controller="RealEstate" asp-action="Index" method="post"><i></i><span>مشاوره املاک ها </span></a></li>
                     </ul>
                 </div>
                 <div class="col-10 pt-5">
