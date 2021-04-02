@@ -36,7 +36,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BuyerViewmodel buyerviewmodel)
         {
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var result = await _buyerService.CreateBuyer(new Buyer()
             {
                 UserId = userId,    

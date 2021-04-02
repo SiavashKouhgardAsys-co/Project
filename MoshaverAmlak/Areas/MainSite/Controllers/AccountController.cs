@@ -27,7 +27,7 @@ namespace MoshaverAmlak.Areas.MainSite.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(UserViewmodel_Login userViewmodel_Login)
         {
-            var login = await _user.Login(userViewmodel_Login);
+            var login = await _user.Login(userViewmodel_Login); 
             if (login.StatusResult != (int)Result.Status.LoginOk) return RedirectToAction("Login");
             return RedirectToAction("Index", "Dashboard", new { area = "User" });
         }
