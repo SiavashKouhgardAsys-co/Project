@@ -60,7 +60,8 @@ namespace MoshaverAmlak.Areas.User.Controllers
             BuyerTelViewmodel buyerTelViewmodel = new BuyerTelViewmodel()
             {
                 Buyer = data.Entity,
-                Tels = tels.Entity
+                Tels = tels.Entity,
+                BuyerInfo = new BuyerTel()
             };
             return View(buyerTelViewmodel);
         }

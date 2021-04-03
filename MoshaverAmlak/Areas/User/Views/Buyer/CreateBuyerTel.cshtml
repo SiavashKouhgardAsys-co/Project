@@ -9,8 +9,8 @@
             <form asp-area="User" asp-controller="Buyer" asp-action="CreateBuyerTel" method="post">
                 <div class="row">
                     <div class="col-4">
-                        <label class="d-block">نام خریدار</label>
-                        <label>@Model.Buyer.FullName</label>
+                        <label class="fw-bolder">نام خریدار :</label>
+                        <label class="fw-bold">@Model.Buyer.FullName</label>
                     </div>
                     
                 </div>
@@ -18,7 +18,7 @@
                     <div class="col-4">
                         <label class="d-block"> ورود تلفن جدید </label>
                         <input type="text" asp-for="@Model.BuyerInfo.Tel" />
-                        <input type="hidden" name="@Model.BuyerInfo.BuyerId" value="@Model.Buyer.Id" />
+                        <input type="hidden" asp-for="@Model.BuyerInfo.BuyerId" value="@Model.Buyer.Id" />
                         <input class="d-block mt-3" type="submit" value="افزودن" />
                     </div>
                     <div class="col-8">
