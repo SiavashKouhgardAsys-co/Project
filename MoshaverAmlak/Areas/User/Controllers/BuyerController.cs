@@ -93,19 +93,19 @@ namespace MoshaverAmlak.Areas.User.Controllers
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
-        [HttpGet]
-        public IActionResult DeleteBuyerTel(int id)
-        {
-            var data = _buyerService.GetBuyerTelById(id);
-            if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
-            return View(data.Entity);
-        }
+        //[HttpGet]
+        //public IActionResult DeleteBuyerTel(int id)
+        //{
+        //    var data = _buyerService.GetBuyerTelById(id);
+        //    if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
+        //    return RedirectToAction("");
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> DeleteBuyerTel(BuyerTelViewmodel buyerTelViewmodel)
+        [HttpGet]
+        public async Task<IActionResult> DeleteBuyerTel(int id)
         {
-            var result = await _buyerService.DeleteBuyerTel(buyerTelViewmodel.BuyerInfo.Id);
-            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+            var result = await _buyerService.DeleteBuyerTel(id);
+            return RedirectToAction("CreateBuyerTel", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
         
         [HttpGet]

@@ -28,17 +28,14 @@
                                 foreach (var item in Model.Tels)
                                 {
 
-
-                                    <div class="col-6">
-                                        <a asp-area="User" asp-controller="Buyer" asp-action="DeleteBuyerTel">
-                                            <i class="fa fa-trash"></i>
+                                    <div class="col-4 my-3">
+                                        <a asp-area="User" asp-controller="Buyer" asp-action="DeleteBuyerTel" asp-route-id="@Model.BuyerInfo.Id">
+                                            <i class="fa fa-trash-alt"></i> 
                                         </a>
                                         <label asp-for="@Model.Tels">
                                             @item.Tel
                                         </label>
-
                                     </div>
-
                                 }
                             }
                         </div>
