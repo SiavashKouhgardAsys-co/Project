@@ -12,7 +12,7 @@
                         <label class="fw-bolder">نام خریدار :</label>
                         <label class="fw-bold">@Model.Buyer.FullName</label>
                     </div>
-                    
+
                 </div>
                 <div class="row">
                     <div class="col-4">
@@ -27,10 +27,17 @@
                             @{
                                 foreach (var item in Model.Tels)
                                 {
+                                    var data = new Dictionary<string, string>()
+                                                                                                                                                           {
+                                        { "buyerId" , Model.Buyer.Id.ToString()},
+                                        { "telId" , item.Id.ToString() }
+
+                                    };
+
 
                                     <div class="col-4 my-3">
-                                        <a asp-area="User" asp-controller="Buyer" asp-action="DeleteBuyerTel" asp-route-id="@Model.BuyerInfo.Id">
-                                            <i class="fa fa-trash-alt"></i> 
+                                        <a asp-area="User" asp-controller="Buyer" asp-action="DeleteBuyerTel" asp-all-route-data="data">
+                                            <i class="fa fa-trash-alt"></i>
                                         </a>
                                         <label asp-for="@Model.Tels">
                                             @item.Tel

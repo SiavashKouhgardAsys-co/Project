@@ -27,6 +27,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
             sendDataToView.Entity = data.Entity;
             if (resultStatus != null)
                 sendDataToView.Message = Result.GetMessage(resultStatus);
+            
             return View(sendDataToView);
         }
 
@@ -50,8 +51,9 @@ namespace MoshaverAmlak.Areas.User.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateBuyerTel(int buyerId)
+        public IActionResult CreateBuyerTel(int buyerId , string statusResult = null)
         {
+            SendDataToView<List<BuyerTelViewmodel>> sendDataToView = new SendDataToView<List<BuyerTelViewmodel>>();
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var data = _buyerService.GetBuyerById(buyerId , userId);
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
@@ -63,6 +65,8 @@ namespace MoshaverAmlak.Areas.User.Controllers
                 Tels = tels.Entity,
                 BuyerInfo = new BuyerTel()
             };
+            if (statusResult != null)
+                sendDataToView.Message = Result.GetMessage(statusResult);
             return View(buyerTelViewmodel);
         }
 
@@ -93,7 +97,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
-        //[HttpGet]
+        //[HttpGet] Get nemkhad chon View ro mkhaym az hamun View ActionMethode : CreateBuyerTel estefade konim!!!
         //public IActionResult DeleteBuyerTel(int id)
         //{
         //    var data = _buyerService.GetBuyerTelById(id);
@@ -102,10 +106,10 @@ namespace MoshaverAmlak.Areas.User.Controllers
         //}
 
         [HttpGet]
-        public async Task<IActionResult> DeleteBuyerTel(int id)
+        public async Task<IActionResult> DeleteBuyerTel(string telId,string buyerId)
         {
-            var result = await _buyerService.DeleteBuyerTel(id);
-            return RedirectToAction("CreateBuyerTel", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+            var result = await _buyerService.DeleteBuyerTel(int.Parse(telId));
+            return RedirectToAction("CreateBuyerTel" , new RouteValueDictionary (new { buyerId = buyerId , resultStatus = result.StatusResult}));
         }
         
         [HttpGet]

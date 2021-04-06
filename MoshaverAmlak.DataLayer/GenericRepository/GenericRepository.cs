@@ -56,7 +56,7 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
             ReturnEntity_IQueryable<T> returnEntity = new ReturnEntity_IQueryable<T>();
             try
             {
-                returnEntity.Entity = _dbSet.Where(exception).AsQueryable();
+                returnEntity.Entity = _dbSet.Where(x=>x.IsDelete == false).Where(exception).AsQueryable();
                 returnEntity.Result = Result.GenerateResult(Result.Status.OK);
             }
             catch (Exception e)
@@ -71,7 +71,7 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
             ReturnEntity<T> returnEntity = new ReturnEntity<T>();
             try
             {
-                returnEntity.Entity = _dbSet.Where(exception).FirstOrDefault();
+                returnEntity.Entity = _dbSet.Where(x => x.IsDelete == false).Where(exception).FirstOrDefault();
                 returnEntity.Result = Result.GenerateResult(Result.Status.OK);
             }
             catch (Exception e)

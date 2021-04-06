@@ -51,7 +51,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public async Task<Result> DeleteBuyerTel(int buyerId)
         {
-            var entity = _buyerTelRepository.DeleteEntityById(buyerId);
+            var entity =  _buyerTelRepository.DeleteEntityById(buyerId);
             if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _buyerTelRepository.SaveChangeAsync();
         }
