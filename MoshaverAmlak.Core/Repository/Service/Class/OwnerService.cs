@@ -21,5 +21,7 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
         public ReturnEntity<Owner> GetOwnerById(int id , string userId) => _ownerService.GetOwnerById(id , userId);
 
         public async Task<Result> CreateOwner(Owner owner) => await _ownerService.CreateOwner(owner);
+        public async Task<Result> DeleteOwner(int ownerId) => await _ownerService.DeleteOwner(ownerId);
+        public async Task<Result> EditOwner(Owner owner) => await _ownerService.EditOwner(owner); 
     }
 }

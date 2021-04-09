@@ -3,52 +3,35 @@
     ViewData["Title"] = "Edit";
 }
 
-<div class="container mt-5">
+<div class="container m-4">
     <div class="row">
-        <div class="col-6">
-            <span>ویرایش اطلاعات مالک</span>
+        <div class="col-10">
+            <form asp-area="User" asp-controller="Owner" asp-action="Edit" asp-route-Id=""> 
+                <div class="row">
+                    <div class="col-6">
+                        <label class="d-block">
+                            ویرایش نام:
+                        </label>
+                        <input type="text" asp-for="@Model.FullName"/>
+                    </div>
+                    <div class="col-6">
+                        <label class="d-block">
+                            ویرایش توضیحات
+                        </label>
+                        <input type="text" asp-for="@Model.Descrption"/>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <input type="submit" value="ثبت تغییرات" />
+                    </div>
+                    <div class="col-6">
+                        <a asp-area="User" asp-controller="Owner" asp-action="Index">
+                            بازگشت
+                        </a>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="col-6">
-            <a asp-area="User" asp-controller="Owner" asp-action="Index">
-                بازگشت
-            </a>
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-4">
-            <lable>
-                نام مالک
-            </lable>
-            <input type="text" />
-        </div>
-        <div class="col-4"></div>
-        <div class="col-12">
-            <label class="d-block">توضیحات</label>
-            <textarea placeholder="توضیحات مربوط به مالک" rows="4" cols="50">
-
-            </textarea>
-        </div>
-        <div class="col-12">
-            <lable class="d-block">
-                تلفن
-            </lable>
-            <textarea rows="1" cols="20">
-                  
-            </textarea>
-        </div>
-        <div class="col-12">
-            <lable class="d-block">
-                آدرس
-            </lable>
-            <textarea placeholder="آدرس مربوط به مالک" rows="4" cols="50">
-                  
-            </textarea>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-12">
-            <button>ثبت تغییرات</button>
-        </div>
-
     </div>
 </div>

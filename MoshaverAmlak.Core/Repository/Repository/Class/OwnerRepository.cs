@@ -27,6 +27,23 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             return await _ownerRepository.SaveChangeAsync();
         }
 
+        public async Task<Result> DeleteOwner(int ownerId)
+        {
+            var entity = _ownerRepository.DeleteEntityById(ownerId);
+            if (entity.StatusResult != (int)Result.Status.OK) return entity;
+            return await _ownerRepository.SaveChangeAsync();
+        }
+        
+        public async Task<Result> EditOwner(Owner owner)
+        {
+            var entity = _ownerRepository.GetEntityById(owner.Id);
+            if (entity.Result.StatusResult != (int)Result.Status.OK) return entity.Result;
+            entity.Entity.FullName = owner.FullName;
+            var updateEntity = _ownerRepository.UpdateEntity(entity.Entity);
+            if (updateEntity.StatusResult != (int)Result.Status.OK) return updateEntity;
+            return await _ownerRepository.SaveChangeAsync();
+        }
+
         public void Dispose()
         {
             _ownerRepository?.Dispose();

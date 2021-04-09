@@ -27,7 +27,6 @@ namespace MoshaverAmlak.Areas.User.Controllers
             sendDataToView.Entity = data.Entity;
             if (resultStatus != null)
                 sendDataToView.Message = Result.GetMessage(resultStatus);
-            
             return View(sendDataToView);
         }
 

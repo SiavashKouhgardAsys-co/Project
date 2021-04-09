@@ -12,5 +12,9 @@ namespace MoshaverAmlak.Core.Repository.Service.Interface
         ReturnEntity_IQueryable<Owner> GetAllOwners(string userId);
         ReturnEntity<Owner> GetOwnerById(int id , string userId);
         Task<Result> CreateOwner(Owner owner);
+        Task<Result> DeleteOwner(int ownerId);
+        Task<Result> EditOwner(Owner owner);
+        
+
     }
 }
