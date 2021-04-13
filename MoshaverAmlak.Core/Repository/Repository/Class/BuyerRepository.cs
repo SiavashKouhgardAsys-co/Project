@@ -43,6 +43,11 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             if (updateEnttiy.StatusResult != (int)Result.Status.OK) return updateEnttiy;
             return await _buyerRepository.SaveChangeAsync();
         }
-        
+
+        public void Dispose()
+        {
+            _buyerRepository?.Dispose();
+        }
+
     }
 }

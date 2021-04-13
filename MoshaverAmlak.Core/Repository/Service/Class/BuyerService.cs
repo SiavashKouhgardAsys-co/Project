@@ -19,7 +19,6 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
             _buyerTel = buyerTel;
         }
 
-
         public ReturnEntity_List<BuyerViewmodel> GetAllBuyers(string userId)
         {
             ReturnEntity_List<BuyerViewmodel> returnEntity = new ReturnEntity_List<BuyerViewmodel>();
@@ -49,6 +48,7 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
         public ReturnEntity<Buyer> GetBuyerById(int id, string userId) => _buyer.GetBuyerById(id, userId);
         public ReturnEntity<BuyerTel> GetBuyerTelById(int id) => _buyerTel.GetBuyerTelById(id);
         public ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTelByUserId(int id) => _buyerTel.GetAllBuyerTelByUserId(id);
+
         public async Task<Result> CreateBuyer(Buyer buyer) => await _buyer.CreateBuyer(buyer);
         public async Task<Result> CreateBuyerTel(BuyerTel buyerTel) => await _buyerTel.CreateBuyerTel(buyerTel);
         public async Task<Result> DeleteBuyer(int id) => await _buyer.DeleteBuyer(id);

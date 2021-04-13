@@ -74,6 +74,7 @@ namespace MoshaverAmlak
             services.AddScoped<IBuyerRepository, BuyerRepository>();
             services.AddScoped<IBuyerTelRepository, BuyerTelRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IOwnerTelRepository, OwnerTelRepository>();
             services.AddScoped<IHomeFileRepository, HomeFileRepository>();
             //Services
             services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();

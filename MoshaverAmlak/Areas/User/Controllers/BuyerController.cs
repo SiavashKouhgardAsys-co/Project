@@ -104,7 +104,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
         //    return RedirectToAction("");
         //}
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> DeleteBuyerTel(string telId,string buyerId)
         {
             var result = await _buyerService.DeleteBuyerTel(int.Parse(telId));
