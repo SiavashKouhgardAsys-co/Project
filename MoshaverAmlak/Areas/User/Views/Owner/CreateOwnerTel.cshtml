@@ -1,24 +1,23 @@
-﻿@model BuyerTelViewmodel
+﻿@model OwnerTelViewmodel
 @{
-    ViewData["Title"] = "CreateBuyerTel";
+    ViewData["Title"] = "CreateOwnerTel";
 }
 
 <div class="container m-5">
     <div class="row">
         <div class="col">
-            <form asp-area="User" asp-controller="Buyer" asp-action="CreateBuyerTel" method="post">
+            <form asp-area="User" asp-controller="Owner" asp-action="CreateOwnerTel" method="post">
                 <div class="row">
-                    <div class="col-4"> 
-                        <label class="fw-bolder">نام خریدار :</label>
-                        <label class="fw-bold">@Model.Buyer.FullName</label>
+                    <div class="col-4">
+                        <label class="fw-bolder">نام مالک :</label>
+                        <label class="fw-bold">@Model.Owner.FullName</label>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="col-4">
                         <label class="d-block"> ورود تلفن جدید </label>
-                        <input type="text" asp-for="@Model.BuyerInfo.Tel" />
-                        <input type="hidden" asp-for="@Model.BuyerInfo.BuyerId" value="@Model.Buyer.Id" />
+                        <input type="text" asp-for="@Model.OwnerInfo.Tel" />
+                        <input type="hidden" asp-for="@Model.OwnerInfo.OwnerId" value="@Model.Owner.Id" />
                         <input class="d-block mt-3" type="submit" value="افزودن" />
                     </div>
                     <div class="col-8">
@@ -28,15 +27,15 @@
                                 foreach (var item in Model.Tels)
                                 {
                                     var data = new Dictionary<string, string>()
-                                                                                                                                                           {
-                                        { "buyerId" , Model.Buyer.Id.ToString()},
+                                                                                                                                                                               {
+                                        { "ownerId" , Model.Owner.Id.ToString()},
                                         { "telId" , item.Id.ToString() }
 
                                     };
 
 
                                     <div class="col-4 my-3">
-                                        <a asp-area="User" asp-controller="Buyer" asp-action="DeleteBuyerTel" asp-all-route-data="data">
+                                        <a asp-area="User" asp-controller="Owner" asp-action="DeleteOwnerTel" asp-all-route-data="data">
                                             <i class="fa fa-trash-alt"></i>
                                         </a>
                                         <label asp-for="@Model.Tels">
@@ -49,7 +48,7 @@
                     </div>
                 </div>
                 <div class="row mt-4">
-                    <a asp-area="User" asp-controller="Buyer" asp-action="Index">
+                    <a asp-area="User" asp-controller="Owner" asp-action="Index">
                         بازگشت
                     </a>
                 </div>
@@ -57,4 +56,3 @@
         </div>
     </div>
 </div>
-

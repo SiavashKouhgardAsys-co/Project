@@ -1,4 +1,4 @@
-﻿@model Owner
+﻿@model OwnerViewmodel
 @{
     ViewData["Title"] = "Edit";
 }
@@ -6,7 +6,7 @@
 <div class="container m-4">
     <div class="row">
         <div class="col-10">
-            <form asp-area="User" asp-controller="Owner" asp-action="Edit" asp-route-Id=""> 
+            <form asp-area="User" asp-controller="Owner" asp-action="Edit" asp-route-Id="@Model.Id" method="post"> 
                 <div class="row">
                     <div class="col-6">
                         <label class="d-block">
@@ -18,7 +18,7 @@
                         <label class="d-block">
                             ویرایش توضیحات
                         </label>
-                        <input type="text" asp-for="@Model.Descrption"/>
+                        <input type="text" asp-for="@Model.Description"/>
                     </div>
                 </div>
                 <div class="row mt-5">

@@ -1,4 +1,4 @@
-﻿@model SendDataToView<IQueryable<Owner>>
+﻿@model SendDataToView<List<OwnerViewmodel>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -46,22 +46,22 @@
                                     <span>@item.FullName</span>
                                 </td>
                                 <td>
-                                    <span>@item.OwnerTels</span>
+                                    <span>@item.Tel</span>
                                 </td>
                                 <td>
-                                    <span>@item.Descrption</span>
+                                    <span>@item.Description</span>
                                 </td>
                                 <td>
-                                    <a asp-area="User" asp-controller="Owner" asp-action="Delete">
+                                    <a asp-area="User" asp-controller="Owner" asp-action="Delete" asp-route-id="@item.Id">
                                         حذف
                                     </a>
-                                    <a asp-area="User" asp-controller="Owner" asp-action="Edit">
+                                    <a asp-area="User" asp-controller="Owner" asp-action="Edit" asp-route-id="@item.Id">
                                         ویرایش
                                     </a>
-                                    <a asp-area="User" asp-controller="Owner" asp-action="Details">
+                                    <a asp-area="User" asp-controller="Owner" asp-action="Details" asp-route-id="@item.Id">
                                         جزئیات
                                     </a>
-                                    <a asp-area="User" asp-controller="Owner" asp-action="CreateOwnerTel">
+                                    <a asp-area="User" asp-controller="Owner" asp-action="CreateOwnerTel" asp-route-ownerId="@item.Id">
                                         افزودن تلفن
                                     </a>
                                 </td>

@@ -1,4 +1,4 @@
-﻿@model Owner
+﻿@model OwnerViewmodel
 @{
     ViewData["Title"] = "Details";
 }
@@ -8,19 +8,19 @@
         <div class="col">
             <form asp-area="User" asp-controller="Owner" asp-action="Details" method="post">
                 <div class="row">
-                    <div class="col-3">
-                        <label class="d-block">نام خریدار</label>
+                    <div class="col-6">
+                        <label class="d-block fw-bold"> نام خریدار :</label>
                         <label>@Model.FullName</label>
                     </div>
                     <div class="col-6">
-                        <label class="d-block">تلفن ها</label>
-                        <label>@Model.OwnerTels</label>
+                        <label class="d-block fw-bold">تلفن ها : </label>
+                        <label>@Model.Tel</label>
                     </div>
-                    <div class="col-3">
-                        <label class="d-block">توضیحات</label>
-                        <label>@Model.Descrption</label>
+                    <div class="col-12 mt-5">
+                        <label class="d-block fw-bold"> توضیحات :</label>
+                        <label>@Model.Description</label>
                     </div>
-                    <div class="col-12 mt-4">
+                    <div class="col-12 mt-5">
                         <a asp-area="User" asp-controller="Owner" asp-action="Index">
                             بازگشت
                         </a>
