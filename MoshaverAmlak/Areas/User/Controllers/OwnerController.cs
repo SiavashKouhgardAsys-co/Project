@@ -109,7 +109,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public async Task<IActionResult> Delete(Owner owner)
         {
             var result = await _ownerService.DeleteOwner(owner.Id);
-            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatsu = result.StatusResult }));
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
         [HttpPost]

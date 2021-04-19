@@ -32,7 +32,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
                 tels += telList[i].Tel;
                 if (i < telList.Count())
                 {
-                    tels = " - ";
+                    tels += " - ";
                 }
             }
             returnEntity.Entity = tels;

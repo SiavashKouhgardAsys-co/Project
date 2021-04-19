@@ -21,7 +21,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
         public ReturnEntity<string> GetAllTels(int id)
         {
             ReturnEntity<string> returnEntity = new ReturnEntity<string>();
-            var data = _buyerTelRepository.GetAllEntity();
+            var data = _buyerTelRepository.GetAllEntityByOtherColumn(x=>x.BuyerId == id);
             returnEntity.Result = data.Result;
 
             if (data.Result.StatusResult != (int)Result.Status.OK) return returnEntity ;

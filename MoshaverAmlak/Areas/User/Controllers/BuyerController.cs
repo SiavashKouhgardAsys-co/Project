@@ -77,7 +77,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
                 BuyerId = buyerTelViewmodel.BuyerInfo.BuyerId,
                 Tel = buyerTelViewmodel.BuyerInfo.Tel
             });
-            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+            return RedirectToAction("CreateBuyerTel", new RouteValueDictionary(new { resultStatus = result.StatusResult , buyerId = buyerTelViewmodel.BuyerInfo.BuyerId }));
         }
 
         [HttpGet]
@@ -104,8 +104,8 @@ namespace MoshaverAmlak.Areas.User.Controllers
         //    return RedirectToAction("");
         //}
 
-        [HttpPost]
-        public async Task<IActionResult> DeleteBuyerTel(string telId,string buyerId)
+        [HttpGet]
+        public async Task<IActionResult> DeleteBuyerTel(string telId, string buyerId)
         {
             var result = await _buyerService.DeleteBuyerTel(int.Parse(telId));
             return RedirectToAction("CreateBuyerTel" , new RouteValueDictionary (new { buyerId = buyerId , resultStatus = result.StatusResult}));

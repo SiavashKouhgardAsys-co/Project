@@ -6,7 +6,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-12 my-3">
-            <a asp-area="User" asp-controller="Owner" asp-action="Create">
+            <a asp-area="User" asp-controller="Owner" asp-action="Create" class="btnRegister">
                 ثبت مالک جدید
             </a>
         </div>
@@ -36,12 +36,10 @@
                         int index = 1;
                         foreach (var item in Model.Entity)
                         {
-
                             <tr>
                                 <td>
                                     @index
                                 </td>
-                                
                                 <td>
                                     <span>@item.FullName</span>
                                 </td>
@@ -62,7 +60,7 @@
                                         جزئیات
                                     </a>
                                     <a asp-area="User" asp-controller="Owner" asp-action="CreateOwnerTel" asp-route-ownerId="@item.Id">
-                                        افزودن تلفن
+                                        عملیات تلفن
                                     </a>
                                 </td>
                             </tr>
