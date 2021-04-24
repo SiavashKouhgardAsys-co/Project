@@ -11,7 +11,8 @@ namespace MoshaverAmlak.Core.Repository.Service.Interface
     public interface IBuyerService
     {
         ReturnEntity_List<BuyerViewmodel> GetAllBuyers(string userId);
-        ReturnEntity<Buyer> GetBuyerById(int id , string userId);
+        ReturnEntity<Buyer> GetBuyerById(int id, string userId);
+        ReturnEntity<BuyerDetailsViewmodel> GetBuyerByIdForDetails(int id , string userId);
         ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTels();
         ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTelByUserId(int id);
         ReturnEntity<BuyerTel> GetBuyerTelById(int id);

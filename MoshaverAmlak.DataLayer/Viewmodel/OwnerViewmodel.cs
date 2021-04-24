@@ -20,4 +20,12 @@ namespace MoshaverAmlak.DataLayer.Viewmodel
         public OwnerTel OwnerInfo { get; set; }
         public IQueryable<OwnerTel> Tels { get; set; }
     }
+
+    public class OwnerDetailsViewmodel
+    {
+        public int Id { get; set; }
+        public string FullName { get; set; }
+        public string Description { get; set; }
+        public IQueryable<OwnerTel> Tels { get; set; }
+    }
 }

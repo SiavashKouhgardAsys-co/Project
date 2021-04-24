@@ -1,4 +1,4 @@
-﻿@model BuyerViewmodel
+﻿@model BuyerDetailsViewmodel
 @{
     ViewData["Title"] = "Details";
 }
@@ -6,22 +6,36 @@
 <div class="container m-5">
     <div class="row">
         <div class="col">
-            <form asp-area="User" asp-controller="Buyer" asp-action="Details" method="post">
+            <form asp-area="User" asp-controller="Buyer" asp-action="Details" asp-route-Id="@Model.Id" method="post">
                 <div class="row">
                     <div class="col-3">
-                        <label class="d-block">نام خریدار</label>
+                        <label class="d-block fw-bold mb-2">نام خریدار :</label>
                         <label >@Model.FullName</label> 
                     </div>
-                    <div class="col-6">
-                        <label class="d-block">مقدار سرمایه</label>
+                    <div class="col-3">
+                        <label class="d-block fw-bold mb-2"> مقدار سرمایه :</label>
                         <span>از</span>
                         <label>@Model.FromInvestment</label>  
-                        <span>تا</span>
+                        <span class="fw-bold">تا</span>
                         <label>@Model.ToInvestment</label>
                     </div>
-                    <div class="col-3">
-                        <label class="d-block">توضیحات</label>
-                        <label>@Model.Description</label>
+                    <div class="col-6 fw-bold">
+                        <label class="d-block mb-2">
+                           تلفنها : 
+                        </label>
+                        @{
+                            int index = 1;
+                            foreach (var item in Model.Tels)
+                            {
+                                
+                                <label class="d-block mt-1">@index ) @item.Tel </label>
+                                index++;
+                            }
+                        }
+                    </div>
+                    <div class="col-12 mt-5">
+                        <label class="d-block fw-bold mt-2">توضیحات : </label>
+                        <p>@Model.Description</p>
                     </div>
                     <div class="col-12 mt-4">
                         <a asp-area="User" asp-controller="Buyer" asp-action="Index">

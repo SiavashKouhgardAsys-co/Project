@@ -39,6 +39,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             var entity = _buyerRepository.GetEntityById(buyer.Id);
             if (entity.Result.StatusResult != (int)Result.Status.OK) return entity.Result;
             entity.Entity.FullName = buyer.FullName;
+            entity.Entity.InvestimentFrom = buyer.InvestimentFrom;
+            entity.Entity.InvestimentTo = buyer.InvestimentTo;
             var updateEnttiy = _buyerRepository.UpdateEntity(entity.Entity);
             if (updateEnttiy.StatusResult != (int)Result.Status.OK) return updateEnttiy;
             return await _buyerRepository.SaveChangeAsync();

@@ -6,13 +6,12 @@
 <div class="container m-4">
     <div class="row">
         <div class="col">
-            <form asp-area="User" asp-controller="Buyer" asp-action="Edit" asp-route-Id="@Model.Id"  method="post">
+            <form asp-area="User" asp-controller="Buyer" asp-action="Edit" asp-route-Id="@Model.Id" method="post">
                 <div class="row">
                     <div class="col-4">
                         <label class="d-block">
                              ویرایش نام :
                         </label>
-                        
                         <input type="text" asp-for="@Model.FullName"/>
                     </div> 
                     <div class="col-8">

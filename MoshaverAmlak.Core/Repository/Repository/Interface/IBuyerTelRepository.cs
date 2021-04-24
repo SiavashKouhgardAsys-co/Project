@@ -7,7 +7,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Interface
     public interface IBuyerTelRepository
     {
         ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTel();
-        ReturnEntity<BuyerTel> GetBuyerTelById(int id);
+        ReturnEntity<BuyerTel> GetBuyerTelById(int buyerId);
         ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTelByUserId(int id);
         Task<Result> CreateBuyerTel(BuyerTel buyerTel);
         Task<Result> DeleteBuyerTel(int buyerId);

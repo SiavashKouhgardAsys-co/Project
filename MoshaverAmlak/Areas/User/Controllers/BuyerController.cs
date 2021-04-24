@@ -96,14 +96,6 @@ namespace MoshaverAmlak.Areas.User.Controllers
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
-        //[HttpGet] Get nemkhad chon View ro mkhaym az hamun View ActionMethode : CreateBuyerTel estefade konim!!!
-        //public IActionResult DeleteBuyerTel(int id)
-        //{
-        //    var data = _buyerService.GetBuyerTelById(id);
-        //    if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
-        //    return RedirectToAction("");
-        //}
-
         [HttpGet]
         public async Task<IActionResult> DeleteBuyerTel(string telId, string buyerId)
         {
@@ -115,17 +107,9 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public IActionResult Details(int id)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var data = _buyerService.GetBuyerById(id, userId);
-            if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
-            BuyerViewmodel buyerViewmodel = new BuyerViewmodel()
-            {
-                Id = data.Entity.Id,
-                FullName = data.Entity.FullName,
-                FromInvestment = data.Entity.InvestimentFrom,
-                ToInvestment = data.Entity.InvestimentTo,
-                Description = data.Entity.Description
-            };
-            return View(buyerViewmodel);
+            var data = _buyerService.GetBuyerByIdForDetails(id, userId);
+            //if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
+            return View(data.Entity);
         }
 
         [HttpGet]

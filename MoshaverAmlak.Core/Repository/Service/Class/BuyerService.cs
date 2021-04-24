@@ -27,25 +27,49 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
             if (data.Result.StatusResult != (int)Result.Status.OK) return returnEntity;
             List<BuyerViewmodel> buyerViewmodels = new List<BuyerViewmodel>();
             foreach (var item in data.Entity)
-            {                
-                var telInfo = _buyerTel.GetAllTels(item.Id);
+            {
+                Buyer buyer = new Buyer()
+                {
+                    Id = item.Id
+                };
+
+                var telInfo = _buyerTel.GetBuyerTelById(buyer.Id);
                 returnEntity.Result = telInfo.Result;
                 if (telInfo.Result.StatusResult != (int)Result.Status.OK) return returnEntity;
+
                 buyerViewmodels.Add(new BuyerViewmodel()
                 {
                     Id = item.Id,
                     FullName = item.FullName,
                     FromInvestment = item.InvestimentFrom,
                     ToInvestment = item.InvestimentTo,
-                    Tel = telInfo.Entity 
+                    Tel = telInfo.Entity.Tel
                 });
             }
             returnEntity.Entity = buyerViewmodels;
+            
             return returnEntity;
         }
 
         public ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTels() => _buyerTel.GetAllBuyerTel();
-        public ReturnEntity<Buyer> GetBuyerById(int id, string userId) => _buyer.GetBuyerById(id, userId);
+        public ReturnEntity<Buyer> GetBuyerById(int id, string userId) => _buyer.GetBuyerById(id, userId); 
+        public ReturnEntity<BuyerDetailsViewmodel> GetBuyerByIdForDetails(int id, string userId)
+        {
+            ReturnEntity<BuyerDetailsViewmodel> returnEntity = new ReturnEntity<BuyerDetailsViewmodel>();
+            var dataBuyerTel = _buyerTel.GetAllBuyerTelByUserId(id);
+            if (dataBuyerTel.Result.StatusResult != (int)Result.Status.OK) return returnEntity;
+            var dataBuyer = _buyer.GetBuyerById(id, userId);
+            if (dataBuyer.Result.StatusResult != (int)Result.Status.OK) return returnEntity;
+            returnEntity.Entity = new BuyerDetailsViewmodel()
+            {
+                Tels = dataBuyerTel.Entity,
+                Description = dataBuyer.Entity.Description,
+                FromInvestment = dataBuyer.Entity.InvestimentFrom,
+                ToInvestment = dataBuyer.Entity.InvestimentTo,
+                FullName = dataBuyer.Entity.FullName
+            };
+            return returnEntity;
+        }
         public ReturnEntity<BuyerTel> GetBuyerTelById(int id) => _buyerTel.GetBuyerTelById(id);
         public ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTelByUserId(int id) => _buyerTel.GetAllBuyerTelByUserId(id);
 

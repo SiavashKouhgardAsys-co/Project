@@ -41,7 +41,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTel() => _buyerTelRepository.GetAllEntity();
         public ReturnEntity_IQueryable<BuyerTel> GetAllBuyerTelByUserId(int id) => _buyerTelRepository.GetAllEntityByOtherColumn(x => x.BuyerId == id);
-        public ReturnEntity<BuyerTel> GetBuyerTelById(int id) => _buyerTelRepository.GetEntityById(id);
+        public ReturnEntity<BuyerTel> GetBuyerTelById(int buyerId) => _buyerTelRepository.GetEntityByOtherColumn(x => x.BuyerId == buyerId);
         public async Task<Result> CreateBuyerTel(BuyerTel buyerTel)
         {
             var entity = await _buyerTelRepository.AddEntity(buyerTel);

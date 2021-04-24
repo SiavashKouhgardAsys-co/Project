@@ -3,6 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
+ 
 <div class="container mt-5">
     <div class="row">
         <div class="col-12 my-3">
@@ -21,13 +22,10 @@
                             <span>نام مالک</span>
                         </th>
                         <th>
-                            <span>تلفن ها</span>
+                            <span>تلفن</span>
                         </th>
                         <th>
-                            <span>توضیحات</span>
-                        </th>
-                        <th>
-                            عملیات
+                            <span>عملیات</span>
                         </th>
                     </tr>
                 </thead>
@@ -45,9 +43,6 @@
                                 </td>
                                 <td>
                                     <span>@item.Tel</span>
-                                </td>
-                                <td>
-                                    <span>@item.Description</span>
                                 </td>
                                 <td>
                                     <a asp-area="User" asp-controller="Owner" asp-action="Delete" asp-route-id="@item.Id">

@@ -9,6 +9,7 @@ namespace MoshaverAmlak.DataLayer.Viewmodel
     
     public class BuyerViewmodel
     {
+        
         public int Id { get; set; }
         public string FullName { get; set; }
         public string FromInvestment { get; set; }
@@ -24,4 +25,13 @@ namespace MoshaverAmlak.DataLayer.Viewmodel
         public IQueryable<BuyerTel> Tels { get; set; }
     }
     
+    public class BuyerDetailsViewmodel
+    {
+        public int Id { get; set; }
+        public string FullName { get; set; }
+        public string FromInvestment { get; set; }
+        public string ToInvestment { get; set; }
+        public string Description { get; set; }
+        public IQueryable<BuyerTel> Tels { get; set; }
+    }
 }

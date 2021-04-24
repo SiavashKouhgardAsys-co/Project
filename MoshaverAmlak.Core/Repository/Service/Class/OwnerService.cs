@@ -49,7 +49,7 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
         public async Task<Result> CreateOwner(Owner owner) => await _owner.CreateOwner(owner);
         public async Task<Result> CreateOwnerTel(OwnerTel ownerTel) => await _ownerTel.CreateOwnerTel(ownerTel);
         public async Task<Result> DeleteOwner(int ownerId) => await _owner.DeleteOwner(ownerId);
-        public async Task<Result> DeleteOwnerTel(int id) => await _owner.DeleteOwner(id);
+        public async Task<Result> DeleteOwnerTel(int id) => await _ownerTel.DeleteOwnerTel(id);
         public async Task<Result> EditOwner(Owner owner) => await _owner.EditOwner(owner);
         public async Task<Result> EditOwnerTel(OwnerTel ownerTel) => await _ownerTel.EditOwnerTel(ownerTel);
 

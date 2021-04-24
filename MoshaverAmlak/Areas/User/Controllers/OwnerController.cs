@@ -16,6 +16,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
     public class OwnerController : Controller
     {
         private readonly IOwnerService _ownerService;
+
         public OwnerController(IOwnerService ownerService)
         {
             _ownerService = ownerService;
@@ -54,13 +55,12 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public async Task<IActionResult> Create(OwnerViewmodel ownerViewmodel)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //owner.UserId = userId;
             var result = await _ownerService.CreateOwner(new Owner() 
             {
+                UserId = userId,
                 Id = ownerViewmodel.Id,
                 FullName = ownerViewmodel.FullName,
                 Descrption = ownerViewmodel.Description
-                
             });
             return RedirectToAction("Index" , new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
@@ -112,7 +112,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> DeleteOwnerTel(string telId, string ownerId)
         {
             var result = await _ownerService.DeleteOwnerTel(int.Parse(telId));
