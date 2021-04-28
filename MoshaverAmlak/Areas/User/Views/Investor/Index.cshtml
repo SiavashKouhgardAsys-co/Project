@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Investor>
+﻿@model SendDataToView<List<InvestorViewmodel>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,7 +6,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-12 my-3">
-            <a asp-area="User" asp-controller="Investor" asp-action="Create">
+            <a asp-area="User" asp-controller="Investor" asp-action="Create" class="btnRegister">
                 ثبت سرمایه گذار جدید
             </a>
         </div>
@@ -18,44 +18,57 @@
                             <span>ردیف</span>
                         </th>
                         <th>
-                            <span>شناسه </span>
-                        </th>
-                        <th>
                             <span>نام سرمایه گذار</span>
                         </th>
                         <th>
-                            <span>توضیحات</span>
+                            <span>میزان سرمایه</span>
                         </th>
-
+                        <th>
+                            <span>تلفن</span>
+                        </th>
                         <th>
                             عملیات
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            50001
-                        </td>
-                        <td>
-                            <span>ند استارک</span>
-                        </td>
-                        <td>
-                            <span>توضیحات مربوط به سرمایه گذار </span>
-                        </td>
+                    @{
+                        int index = 1;
 
-                        <td>
-                            <a asp-area="User" asp-controller="Investor" asp-action="Delete">
-                                حذف
-                            </a>
-                            <a asp-area="User" asp-controller="Investor" asp-action="Edit">
-                                ویرایش
-                            </a>
-                        </td>
-                    </tr>
+                        foreach (var item in Model.Entity)
+                        {
+
+                            <tr>
+                                <td>
+                                    @index
+                                </td>
+                                <td>
+                                    <span>@item.FullName</span>
+                                </td>
+                                <td>
+                                    <span>@item.AmountOfInvestiment</span>
+                                </td>
+                                <td>
+                                    <span>@item.Tel</span>
+                                </td>
+                                <td>
+                                    <a asp-area="User" asp-controller="Investor" asp-action="Delete" asp-route-id="@item.Id">
+                                        حذف
+                                    </a>
+                                    <a asp-area="User" asp-controller="Investor" asp-action="Edit" asp-route-id="@item.Id">
+                                        ویرایش
+                                    </a>
+                                    <a asp-area="User" asp-controller="Investor" asp-action="Details" asp-route-id="@item.Id">
+                                        جزیئات
+                                    </a>
+                                    <a asp-area="User" asp-controller="Investor" asp-action="CreateInvestorTel" asp-route-investorId="@item.Id">
+                                        عملیات تلفن
+                                    </a>
+                                </td>
+                            </tr>
+                            index++;
+                        }
+                    }
                 </tbody>
             </table>
         </div>

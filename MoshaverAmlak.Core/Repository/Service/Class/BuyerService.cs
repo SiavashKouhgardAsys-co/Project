@@ -32,22 +32,26 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
                 {
                     Id = item.Id
                 };
-
                 var telInfo = _buyerTel.GetBuyerTelById(buyer.Id);
                 returnEntity.Result = telInfo.Result;
-                if (telInfo.Result.StatusResult != (int)Result.Status.OK) return returnEntity;
 
+                string tempTel = "";
+                if (telInfo.Entity == null)
+                    tempTel = " - ";
+                else
+                    tempTel = telInfo.Entity.Tel;
+                
+                if (telInfo.Result.StatusResult != (int)Result.Status.OK) return returnEntity;
                 buyerViewmodels.Add(new BuyerViewmodel()
                 {
                     Id = item.Id,
                     FullName = item.FullName,
                     FromInvestment = item.InvestimentFrom,
                     ToInvestment = item.InvestimentTo,
-                    Tel = telInfo.Entity.Tel
+                    Tel = tempTel
                 });
             }
             returnEntity.Entity = buyerViewmodels;
-            
             return returnEntity;
         }
 

@@ -12,7 +12,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Interface
         public ReturnEntity<string> GetAllTels(int id);
         ReturnEntity_IQueryable<OwnerTel> GetAllOwnerTel();
         ReturnEntity_IQueryable<OwnerTel> GetAllOwnerTelByUserId(int id);
-        ReturnEntity<OwnerTel> GetOwnerTelById(int id);
+        ReturnEntity<OwnerTel> GetOwnerTelById(int ownerId);
         Task<Result> CreateOwnerTel(OwnerTel ownerTel);
         Task<Result> DeleteOwnerTel(int ownerId);
         Task<Result> EditOwnerTel(OwnerTel ownerTel);

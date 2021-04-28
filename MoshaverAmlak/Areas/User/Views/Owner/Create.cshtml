@@ -13,14 +13,11 @@
                         <input type="text" asp-for="@Model.FullName" />
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12">
                         <label class="d-block">توضیحات</label>
-                        <input type="text" asp-for="@Model.Description" />
+                        <textarea rows="5" cols="50" asp-for="@Model.Description"></textarea> 
                     </div>
-                    @*<div class="col-6">
-                        <label class="d-block">تلفن</label>
-                        <input type="text" asp-for="@Model.Tel" />
-                    </div>*@
+                    
                     <div class="col-6 mt-4">
                         <input type="submit" value="ثبت اطلاعات" />
                     </div>

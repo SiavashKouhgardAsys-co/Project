@@ -21,11 +21,11 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
         public ReturnEntity<string> GetAllTels(int id)
         {
             ReturnEntity<string> returnEntity = new ReturnEntity<string>();
-            var data = _buyerTelRepository.GetAllEntityByOtherColumn(x=>x.BuyerId == id);
+            var data = _buyerTelRepository.GetAllEntityByOtherColumn(x => x.BuyerId == id);
             returnEntity.Result = data.Result;
 
-            if (data.Result.StatusResult != (int)Result.Status.OK) return returnEntity ;
-            string tels = "";
+            if (data.Result.StatusResult != (int)Result.Status.OK) return returnEntity;
+            string tels = ""; 
             var telList = data.Entity.ToList();
             for (int i = 0; i < telList.Count(); i++)
             {

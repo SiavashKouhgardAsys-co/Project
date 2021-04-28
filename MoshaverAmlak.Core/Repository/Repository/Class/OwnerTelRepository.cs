@@ -21,7 +21,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
         public ReturnEntity<string> GetAllTels(int id)
         {
             ReturnEntity<string> returnEntity = new ReturnEntity<string>();
-            var data = _ownerTelRepository.GetAllEntity();
+            var data = _ownerTelRepository.GetAllEntityByOtherColumn(x => x.OwnerId == id);
             returnEntity.Result = data.Result;
 
             if (data.Result.StatusResult != (int)Result.Status.OK) return returnEntity;
@@ -41,7 +41,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public ReturnEntity_IQueryable<OwnerTel> GetAllOwnerTel() => _ownerTelRepository.GetAllEntity();
         public ReturnEntity_IQueryable<OwnerTel> GetAllOwnerTelByUserId(int id) => _ownerTelRepository.GetAllEntityByOtherColumn(x => x.OwnerId == id);
-        public ReturnEntity<OwnerTel> GetOwnerTelById(int id) => _ownerTelRepository.GetEntityById(id);
+        public ReturnEntity<OwnerTel> GetOwnerTelById(int ownerId) => _ownerTelRepository.GetEntityByOtherColumn(x => x.OwnerId == ownerId);
         public async Task<Result> CreateOwnerTel(OwnerTel ownerTel)
         {
             var entity = await _ownerTelRepository.AddEntity(ownerTel);

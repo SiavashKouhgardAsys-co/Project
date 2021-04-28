@@ -8,9 +8,9 @@
         <div class="col">
             <form  asp-area="User" asp-controller="Buyer" asp-action="Create" method="post">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-6">
                         <label class="d-block">نام خریدار</label>
-                        <input type="text" asp-for="@Model.FullName" />
+                        <input type="text" asp-for="@Model.FullName"/>
                     </div>
                     <div class="col-6">
                         <label  class="d-block">مقدار سرمایه</label>
@@ -19,12 +19,12 @@
                         <span>تا</span>
                         <input type="text" asp-for="@Model.ToInvestment"/>
                     </div>
-                    <div class="col-3">
-                        <label class="d-block">توضیحات</label>
-                        <input type="text" asp-for="@Model.Description"/>
+                    <div class="col-12 mt-3">
+                        <label class="d-block mt-2">توضیحات</label>
+                        <textarea rows="5" cols="50" type="text" asp-for="@Model.Description"></textarea>
                     </div>
                     <div class="col-12 mt-4">
-                        <input type="submit" value="ثبت اطلاعات"  />
+                        <input type="submit" value="ثبت اطلاعات"/>
                         <a asp-area="User" asp-controller="Buyer" asp-action="Index">
                             بازگشت
                         </a>

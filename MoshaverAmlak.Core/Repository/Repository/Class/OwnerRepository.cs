@@ -39,6 +39,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
             var entity = _ownerRepository.GetEntityById(owner.Id);
             if (entity.Result.StatusResult != (int)Result.Status.OK) return entity.Result;
             entity.Entity.FullName = owner.FullName;
+            entity.Entity.Descrption = owner.Descrption;
             var updateEntity = _ownerRepository.UpdateEntity(entity.Entity);
             if (updateEntity.StatusResult != (int)Result.Status.OK) return updateEntity;
             return await _ownerRepository.SaveChangeAsync();

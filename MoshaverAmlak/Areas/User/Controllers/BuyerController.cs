@@ -39,7 +39,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var result = await _buyerService.CreateBuyer(new Buyer()
             {
-                UserId = userId,    
+                UserId = userId,
                 Id = buyerviewmodel.Id,
                 FullName = buyerviewmodel.FullName,
                 InvestimentFrom = buyerviewmodel.FromInvestment,
@@ -50,11 +50,11 @@ namespace MoshaverAmlak.Areas.User.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateBuyerTel(int buyerId , string statusResult = null)
+        public IActionResult CreateBuyerTel(int buyerId, string statusResult = null)
         {
             SendDataToView<List<BuyerTelViewmodel>> sendDataToView = new SendDataToView<List<BuyerTelViewmodel>>();
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var data = _buyerService.GetBuyerById(buyerId , userId);
+            var data = _buyerService.GetBuyerById(buyerId, userId);
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
             var tels = _buyerService.GetAllBuyerTelByUserId(buyerId);
             if (tels.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = tels.Result.StatusResult }));
@@ -73,22 +73,22 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public async Task<IActionResult> CreateBuyerTel(BuyerTelViewmodel buyerTelViewmodel)
         {
             var result = await _buyerService.CreateBuyerTel(new BuyerTel()
-            {  
+            {
                 BuyerId = buyerTelViewmodel.BuyerInfo.BuyerId,
                 Tel = buyerTelViewmodel.BuyerInfo.Tel
             });
-            return RedirectToAction("CreateBuyerTel", new RouteValueDictionary(new { resultStatus = result.StatusResult , buyerId = buyerTelViewmodel.BuyerInfo.BuyerId }));
+            return RedirectToAction("CreateBuyerTel", new RouteValueDictionary(new { resultStatus = result.StatusResult, buyerId = buyerTelViewmodel.BuyerInfo.BuyerId }));
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var data = _buyerService.GetBuyerById(id , userId);
+            var data = _buyerService.GetBuyerById(id, userId);
             if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
             return View(data.Entity);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Delete(Buyer buyer)
         {
@@ -100,9 +100,9 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public async Task<IActionResult> DeleteBuyerTel(string telId, string buyerId)
         {
             var result = await _buyerService.DeleteBuyerTel(int.Parse(telId));
-            return RedirectToAction("CreateBuyerTel" , new RouteValueDictionary (new { buyerId = buyerId , resultStatus = result.StatusResult}));
+            return RedirectToAction("CreateBuyerTel", new RouteValueDictionary(new { buyerId = buyerId, resultStatus = result.StatusResult }));
         }
-        
+
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -143,5 +143,6 @@ namespace MoshaverAmlak.Areas.User.Controllers
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
+        
     }
 }

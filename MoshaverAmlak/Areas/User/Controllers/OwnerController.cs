@@ -24,9 +24,9 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public IActionResult Index(string resultStatus)
         {
             SendDataToView<List<OwnerViewmodel>> sendDataToView = new SendDataToView<List<OwnerViewmodel>>();
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var data = _ownerService.GetAllOwners(userId);
-            if (data.Result.StatusResult != (int)Result.Status.OK) return NotFound();
+            //if (data.Result.StatusResult != (int)Result.Status.OK) return NotFound();
             sendDataToView.Entity = data.Entity;
             if (resultStatus != null)
                 sendDataToView.Message = Result.GetMessage(resultStatus);
@@ -36,16 +36,10 @@ namespace MoshaverAmlak.Areas.User.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var data = _ownerService.GetOwnerById(id, userId);
-            if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
-            OwnerViewmodel ownerViewmodel = new OwnerViewmodel()
-            {
-                Id = data.Entity.Id,
-                FullName = data.Entity.FullName,
-                Description = data.Entity.Descrption
-            };
-            return View(ownerViewmodel);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var data = _ownerService.GetOwnerByIdForDetails(id, userId);
+            //if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
+            return View(data.Entity);
         }
 
         [HttpGet]

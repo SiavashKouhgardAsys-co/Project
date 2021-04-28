@@ -10,12 +10,12 @@ namespace MoshaverAmlak.Core.Repository.Service.Interface
 {
     public interface IOwnerService
     {
-        public ReturnEntity_List<OwnerViewmodel> GetAllOwners(string ownerId);
+        public ReturnEntity_List<OwnerViewmodel> GetAllOwners(string userId);
         public ReturnEntity_IQueryable<OwnerTel> GetAllOwnerTels();
         public ReturnEntity<Owner> GetOwnerById(int id, string userId);
         public ReturnEntity<OwnerTel> GetOwnerTelById(int id);
         ReturnEntity_IQueryable<OwnerTel> GetAllOwnerTelByUserId(int id);
-
+        ReturnEntity<OwnerDetailsViewmodel> GetOwnerByIdForDetails(int id, string userId);
         Task<Result> CreateOwner(Owner owner);
         Task<Result> CreateOwnerTel(OwnerTel ownerTel);
         Task<Result> DeleteOwner(int ownerId);
