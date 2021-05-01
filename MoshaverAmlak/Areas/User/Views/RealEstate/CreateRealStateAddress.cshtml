@@ -1,0 +1,61 @@
+﻿@model RealStateAddressViewmodel
+@{
+    ViewData["Title"] = "CreateRealStateAddress";
+}
+
+<div class="container m-5">
+    <div class="row">
+        <div class="col">
+            <form asp-area="User" asp-controller="RealEstate" asp-action="CreateRealStateAddress" method="post">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="fw-bolder">نام مشاورین املاک :</label>
+                        <label class="fw-bold">@Model.RealState.Name</label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="d-block fw-bold my-3"> ورود آدرس جدید :</label>
+                        <textarea rows="4" cols="50" type="text" asp-for="@Model.AddressInfo.Address"></textarea>
+                        <input type="hidden" asp-for="@Model.AddressInfo.RealEstateId" value="@Model.RealState.Id" />
+                        <input class="d-block mt-3" type="submit" value="افزودن" />
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+
+                            @{
+                                foreach (var item in Model.Addresses)
+                                {
+                                    var data = new Dictionary<string, string>()
+                                                                                                                                                                                                   {
+                                        { "realStateId" , Model.RealState.Id.ToString()},
+                                        { "addressId" , item.Id.ToString() }
+
+                                    };
+
+                                    <div class="col-12 my-3">
+
+                                        <a asp-area="User" asp-controller="RealEstate" asp-action="DeleteRealStateAddress" asp-all-route-data="data">
+                                            <i class="fa fa-trash-alt"></i>
+                                        </a>
+                                        <label asp-for="@Model.Addresses">
+                                            @item.Address
+                                        </label>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <a asp-area="User" asp-controller="RealEstate" asp-action="Index">
+                        بازگشت
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

@@ -1,56 +1,33 @@
-﻿@model RealEstate
+﻿@model RealStateViewmodel
 @{
     ViewData["Title"] = "Create";
 }
 
-<div class="container mt-5">
+<div class="container m-5">
     <div class="row">
-        <div class="col-4">
-            <lable>
-                نام املاک
-            </lable>
-            <input type="text" />
-        </div>
-        <div class="col-4">
-            <lable>
-                شناسه ثبت 
-            </lable>
-            <input type="text" />
-        </div>
-
-        <div class="col-4"></div>
-        <div class="col-12">
-            <label class="d-block">توضیحات</label>
-            <textarea placeholder="توضیحات مربوط به املاک" rows="4" cols="50">
-
-            </textarea>
-        </div>
-        <div class="col-12">
-            <lable class="d-block">
-                تلفن
-            </lable>
-            <textarea  rows="1" cols="20">
-                  
-            </textarea>
-        </div>
-        <div class="col-12">
-            <lable class="d-block">
-                آدرس
-            </lable>
-            <textarea placeholder="آدرس مربوط به املاک" rows="4" cols="50">
-                  
-            </textarea>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <button>ثبت املاک</button>
-        </div>
-        <div class="col-12">
-            <a asp-area="User" asp-controller="RealEstate" asp-action="Index">
-                بازگشت
-            </a>
+        <div class="col">
+            <form asp-area="User" asp-controller="RealEstate" asp-action="Create" method="post">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="d-block fw-bold mb-2">نام مشاورین املاک : </label>
+                        <input type="text" asp-for="@Model.Name" />
+                    </div>
+                    <div class="col-6">
+                        <label class="d-block fw-bold mb-2">شماره ثبت :</label>
+                        <input type="text" asp-for="@Model.RegistrationNumber" />
+                    </div>
+                    <div class="col-12 mt-3">
+                        <label class="d-block mb-2 fw-bold">توضیحات :</label>
+                        <textarea rows="5" cols="50" type="text" asp-for="@Model.Description"></textarea>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <input type="submit" value="ثبت اطلاعات" />
+                        <a asp-area="User" asp-controller="RealEstate" asp-action="Index">
+                            بازگشت
+                        </a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-

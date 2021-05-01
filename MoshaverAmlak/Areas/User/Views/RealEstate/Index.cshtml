@@ -1,4 +1,4 @@
-﻿@model SendDataToView<IQueryable<RealEstate>>
+﻿@model SendDataToView<List<RealStateViewmodel>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,8 +6,8 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-12 my-3">
-            <a asp-area="User" asp-controller="RealEstate" asp-action="Create">
-                ثبت املاک جدید
+            <a asp-area="User" asp-controller="RealEstate" asp-action="Create" class="btnRegister">
+                ثبت مشاورین املاک جدید
             </a>
         </div>
         <div class="col-12">
@@ -24,7 +24,10 @@
                             <span>نام املاک</span>
                         </th>
                         <th>
-                            <span>توضیحات</span>
+                            <span>تلفن</span>
+                        </th>
+                        <th>
+                            <span>آدرس</span>
                         </th>
                         <th>
                             عملیات
@@ -32,29 +35,47 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            30001
-                        </td>
-                        <td>
-                            <span>املاک وگاس</span>
-                        </td>
-                        <td>
-                            <span>توضیحات مربوط به املاک وگاس </span>
-                        </td>
-                        
-                        <td>
-                            <a asp-area="User" asp-controller="RealEstate" asp-action="Delete">
-                                حذف
-                            </a>
-                            <a asp-area="User" asp-controller="RealEstate" asp-action="Edit">
-                                ویرایش
-                            </a>
-                        </td>
-                    </tr>
+                    @{
+                        int index = 1;
+                        foreach (var item in Model.Entity)
+                        {
+                            <tr>
+                                <td>
+                                    <span>@index</span>
+                                </td>
+                                <td>
+                                    <span>@item.RegistrationNumber</span>
+                                </td>
+                                <td>
+                                    <span>@item.Name</span>
+                                </td>
+                                <td>
+                                    <span>@item.Tel</span>
+                                </td>
+                                <td>
+                                    <span>@item.Address</span>
+                                </td>
+                                <td>
+                                    <a asp-area="User" asp-controller="RealEstate" asp-action="Delete" asp-route-id="@item.Id">
+                                        حذف
+                                    </a>
+                                    <a asp-area="User" asp-controller="RealEstate" asp-action="Edit" asp-route-id="@item.Id">
+                                        ویرایش
+                                    </a>
+                                    <a asp-area="User" asp-controller="RealEstate" asp-action="Details" asp-route-id="@item.Id">
+                                        جزئیات
+                                    </a>
+                                    <a asp-area="User" asp-controller="RealEstate" asp-action="CreateRealStateTel" asp-route-realStateId="@item.Id">
+                                        عملیات تلفن
+                                    </a>
+                                    <a asp-area="User" asp-controller="RealEstate" asp-action="CreateRealStateAddress" asp-route-realStateId="@item.Id">
+                                        عملیات آدرس
+                                    </a>
+                                </td>
+                            </tr>
+                            index++;
+                        }
+                    }
                 </tbody>
             </table>
         </div>

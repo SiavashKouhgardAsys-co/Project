@@ -78,6 +78,9 @@ namespace MoshaverAmlak
             services.AddScoped<IHomeFileRepository, HomeFileRepository>();
             services.AddScoped<IInvestorRepository, InvestorRepository>();
             services.AddScoped<IInvestorTelRepository, InvestorTelRepository>();
+            services.AddScoped<IRealStateRepository, RealEstateRepository>();
+            services.AddScoped<IRealStateTelRepository, RealStateTelRepository>();
+            services.AddScoped<IRealStateAddressRepository, RealStateAddressRepository>();
             //Services
             services.AddScoped<IHomeFileTypeService, HomeFileTypeService>();
             services.AddScoped<IFileTypeService, FileTypeService>();
@@ -95,6 +98,7 @@ namespace MoshaverAmlak
             services.AddScoped<IOwnerService, OwnerService>();
             services.AddScoped<IHomeFileService, HomeFileService>();
             services.AddScoped<IInvestorService, InvestorService>();
+            services.AddScoped<IRealStateService, RealStateService>();
 
         }
 

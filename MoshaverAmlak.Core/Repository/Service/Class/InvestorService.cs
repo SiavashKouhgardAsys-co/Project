@@ -54,6 +54,7 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
                     Id = item.Id,
                     FullName = item.FullName,
                     Description = item.Description,
+                    AmountOfInvestiment = item.AmountOfInvestiment,
                     Tel = tempTel 
                 });
             }

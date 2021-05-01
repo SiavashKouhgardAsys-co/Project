@@ -8,11 +8,11 @@
         <div class="col">
             <form asp-area="User" asp-controller="RealEstate" asp-action="Delete" method="post">
                 <div class="row">
-                    <div class="col-12">
-                        ایا مایل به حذف املاک هستید؟
+                    <div class="col-12 my-2">
+                        ایا مایل به حذف  مشاورین املاک  "@Model.Name" هستید؟
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mt-3">
                     <input type="submit" value="بله" />
                     <a asp-area="User" asp-controller="RealEstate" asp-action="Index">
                         خیر
