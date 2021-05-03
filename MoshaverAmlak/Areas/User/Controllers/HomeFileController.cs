@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
@@ -29,15 +30,54 @@ namespace MoshaverAmlak.Areas.User.Controllers
             return View(sendDataToView);
         }
 
-        [HttpGet]
-        public IActionResult Create() => View();
-       
 
         [HttpGet]
-        public IActionResult Detail() => View();
+        public IActionResult Create() => View();
+        [HttpPost]
+        public async Task<IActionResult> Create(HomeFile homeFile)
+        {
+            var result = await _homeFileService.CreateHomeFile(homeFile);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+        }
+
         [HttpGet]
-        public IActionResult Delete() => View();
+        public IActionResult Detail(int id)
+        {
+            var data = _homeFileService.GetHomeFileById(id);
+            if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
+
+            return View(data.Entity);
+        }
+
         [HttpGet]
-        public IActionResult Edit() => View();
+        public IActionResult Delete(int id)
+        {
+            var data = _homeFileService.GetHomeFileById(id);
+            if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
+            return View(data.Entity);
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(HomeFile homeFile)
+        {
+            var result = await _homeFileService.DeleteHomeFile(homeFile.Id);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+        }
+        
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var data = _homeFileService.GetHomeFileById(id);
+            if (data.Result.StatusResult != (int)Result.Status.OK) return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = data.Result.StatusResult }));
+
+            return View(data.Entity);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(HomeFile homeFile)
+        {
+            var result = await _homeFileService.EditHomeFile(homeFile);
+            return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
+        }
+
     }
 }

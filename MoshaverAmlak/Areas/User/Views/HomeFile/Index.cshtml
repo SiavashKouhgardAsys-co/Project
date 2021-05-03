@@ -11,85 +11,85 @@
             </a>
         </div>
         <div class="col-12 text-left mt-2">
-            <span>جست و جو</span>
+            <span>جست و جو :</span>
         </div>
         <div class="col-12 mt-5">
             <div class="row">
-                <div class="col-2">
-                    <label>شناسه فایل</label>
+                <div class="col-2 mx-2">
+                    <label class="d-block fw-bold">شناسه فایل</label>
                     <input type="text" />
                 </div>
-                <div class="col-6">
-                    <div class="row">
-                        <div class="col-12">
-                            <label> از متراژ</label>
-                            <input type="text" placeholder="متر" />
-                            <label> تا متراژ</label>
-                            <input type="text" placeholder="متر" />
-                        </div>
-                        <div class="col-12">
-                            <label> از قیمت</label>
-                            <input type="text" placeholder="تومان" />
-                            <label> تا قیمت</label>
-                            <input type="text" placeholder="تومان" />
-                        </div>
-                    </div>
-                </div>
+                <div class="col-2">
 
-                <div class="col-4"></div>
+                    <label class="d-block fw-bold"> از متراژ</label>
+                    <input type="text" placeholder="متر مربع" />
+
+                </div>
+                <div class="col-2 mx-2">
+                    <label class="d-block fw-bold"> تا متراژ</label>
+                    <input type="text" placeholder="متر مریع" />
+                </div>
+                <div class="col-2">
+                    <label class="d-block fw-bold"> از قیمت</label>
+                    <input type="text" placeholder="تومان" />
+                </div>
+                <div class="col-2 mx-2">
+                    <label class="d-block fw-bold"> تا قیمت </label>
+                    <input type="text" placeholder="تومان" />
+                </div>
             </div>
+
         </div>
-        <div class="col-12 mt-5 ">
-            <div class="col-4 border border-dark">
-                <div class="row">
-                    <div class="col-12">
-                        <img src="~/dist/img/user1-128x128.jpg" />
-                    </div>
-                    <div class="col-12">
-                        <span>قیمت</span>
+    </div>
+
+    <div class="row mt-5 mx-2">
+        
+        <div class="col-4 border border-warning">
+            <div class="m-1">
+                <div>
+                    <img src="~/dist/img/user1-128x128.jpg" />
+                </div>
+                <ul>
+                    <li>
+                        <label>قیمت</label>
                         <span>200</span>
-
-                    </div>
-                    <div class="col-12">
-                        <span>نوع خونه</span>
+                    </li>
+                    <li>
+                        <label>نوع خونه</label>
                         <span>اپارتمان</span>
-                    </div>
-                    <div class="col-12">
-                        <span>متراژ</span>
+                    </li>
+                    <li>
+                        <label>متراژ</label>
                         <span>300 متر</span>
-                    </div>
-                    <div class="col-12">
-                        <span>شناسه</span>
+                    </li>
+                    <li>
+                        <label>شناسه</label>
                         <span>30001</span>
-                    </div>
-                    <div class="col-12">
-                        <span>ناحیه</span>
+                    </li>
+                    <li>
+                        <label>ناحیه</label>
                         <span>2</span>
-                    </div>
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-4">
-                                <a asp-area="User" asp-controller="HomeFile" asp-action="Detail">
-                                    جزئیات
-                                </a>
-                            </div>
-                            <div class="col-4">
-                                <a asp-area="User" asp-controller="HomeFile" asp-action="Delete">
-                                    حذف
-                                </a>
-                            </div>
-                            <div class="col-4">
-                                <a asp-area="User" asp-controller="HomeFile" asp-action="Edit">
-                                    ویرایش
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="col-4">
+                    <a asp-area="User" asp-controller="HomeFile" asp-action="Detail">
+                        جزئیات
+                    </a>
                 </div>
-
-
+                <div class="col-4">
+                    <a asp-area="User" asp-controller="HomeFile" asp-action="Delete">
+                        حذف
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a asp-area="User" asp-controller="HomeFile" asp-action="Edit">
+                        ویرایش
+                    </a>
+                </div>
             </div>
         </div>
+
     </div>
 </div>

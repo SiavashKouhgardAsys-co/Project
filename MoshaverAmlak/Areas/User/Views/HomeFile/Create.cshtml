@@ -4,56 +4,64 @@
 }
 
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-3">
-            <label>
-                نام مالک
-            </label>
-            <input type="text"/>
-        </div>
-        <div class="col-3">
-            <label>شماره</label>
-            <input type="text"/>
-        </div>
-        <div class="col-3">
-            <label>قیمت</label>
-            <input type="text"/>
-        </div>
-        <div class="col-3">
-            <label>منطقه</label>
-            <input type="text"/>
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-4">
-            <p>پارکینگ</p>
-            
-            <input type="radio" name="isParking"  value="true"/> <span>دارد</span>
-            <input type="radio" name="isParking"  value="false"/> <span>ندارد</span>
-        </div>
-        <div class="col-8">
-            <div class="row">
-                <div class="col-12">
-                    <label class="d-block">تهویه</label>
-                    <input type="radio" name="aircondition"/> <span>چیلر</span>
-                    <input type="radio" name="aircondition"/> <span>پکیج سقفی</span>
-                    <input type="radio" name="aircondition"/> <span>کولر آبی</span>
-                    <input type="radio" name="aircondition"/> <span>کولر گازی</span>
-                </div>
-                <div class="col-12 mt-3">
-                    <label class="d-block">گرمایش</label>
-                    <input type="radio" name="HeatingType"/> <span>شوفاژ</span>
-                    <input type="radio" name="HeatingType"/> <span>گرمایش از کف</span>
-                    <input type="radio" name="HeatingType"/> <span>بخاری</span>
-                </div>
-                
+
+    <form asp-area="User" asp-controller="HomeFile" asp-action="Create" method="post">
+        <div class="row my-2">
+            <div class="col-3">
+                <label class="d-block fw-bold">
+                    نام مالک
+                </label>
+                <input type="text" asp-for="@Model.OwnerName" />
+            </div>
+            <div class="col-3">
+                <label class="d-block fw-bold">شماره</label>
+                <input type="text" />
+            </div>
+            <div class="col-3">
+                <label class="d-block fw-bold">قیمت</label>
+                <input type="text" asp-for="@Model.TotalPrice" />
+            </div>
+            <div class="col-3">
+                <label class="d-block fw-bold">منطقه</label>
+                <input type="text" asp-for="@Model.Region" />
             </div>
         </div>
-    </div>
-    <div class="row mt-5 text-center border brand-image">
-        <div class="col-12">
-            <span>انتخاب عکس</span>
+        <div class="row my-4">
+            <div class="col-2">
+                <label class="d-block fw-bold">پارکینگ</label>
+                <input type="radio" name="isParking" value="true" asp-for="@Model.IsParking" /> <span>دارد</span>
+                <input type="radio" name="isParking" value="false" /> <span>ندارد</span>
+            </div>
+            <div class="col-5">
+                <label class="d-block fw-bold">تهویه</label>
+                <input type="radio" name="aircondition" /> <span>چیلر</span>
+                <input type="radio" name="aircondition" /> <span>پکیج سقفی</span>
+                <input type="radio" name="aircondition" /> <span>کولر آبی</span>
+                <input type="radio" name="aircondition" /> <span>کولر گازی</span>
+            </div>
+            <div class="col-5 mt-3">
+                <label class="d-block fw-bold">گرمایش</label>
+                <input type="radio" name="HeatingType" /> <span>شوفاژ</span>
+                <input type="radio" name="HeatingType" /> <span>گرمایش از کف</span>
+                <input type="radio" name="HeatingType" /> <span>بخاری</span>
+            </div>
+        </div>
+        <div class="row my-4">
 
         </div>
-    </div>
+        <div class="row my-4">
+            <div class="col-12 mt-5 text-center border brand-image">
+                <span>انتخاب عکس</span>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-4">
+                <input type="submit" value="ثبت اطلاعات" />
+                <a asp-area="User" asp-controller="HomeFile" asp-action="Index">
+                    بازگشت
+                </a>
+            </div>
+        </div>
+    </form>
+
 </div>

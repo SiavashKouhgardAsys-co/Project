@@ -27,6 +27,27 @@ namespace MoshaverAmlak.Core.Repository.Repository
             return await _homeFileRepository.SaveChangeAsync();
         }
 
+        public async Task<Result> DeleteHomeFile(int homeFileId)
+        {
+            var entity = _homeFileRepository.DeleteEntityById(homeFileId);
+            if (entity.StatusResult != (int)Result.Status.OK) return entity;
+            return await _homeFileRepository.SaveChangeAsync();
+        }
+
+        public async Task<Result> EditHomeFile(HomeFile homeFile)
+        {
+            var entity = _homeFileRepository.GetEntityById(homeFile.Id);
+            if (entity.Result.StatusResult != (int)Result.Status.OK) return entity.Result;
+
+            entity.Entity.Address = homeFile.Address;
+            entity.Entity.OwnerName = homeFile.OwnerName;
+
+            var updateEntity = _homeFileRepository.UpdateEntity(entity.Entity);
+            if (updateEntity.StatusResult != (int)Result.Status.OK) return updateEntity;
+
+            return await _homeFileRepository.SaveChangeAsync();
+        }
+
         public void Dispose()
         {
             _homeFileRepository?.Dispose();

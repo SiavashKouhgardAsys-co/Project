@@ -12,5 +12,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Interface
         ReturnEntity_IQueryable<HomeFile> GetAllHomeFile();
         ReturnEntity<HomeFile> GetHomeFileById(int id);
         Task<Result> CreateHomeFile(HomeFile homeFile);
+        Task<Result> DeleteHomeFile(int homeFileId);
+        Task<Result> EditHomeFile(HomeFile homeFile);
+        
     }
 }

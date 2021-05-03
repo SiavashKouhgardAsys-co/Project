@@ -22,5 +22,9 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
         public ReturnEntity<HomeFile> GetHomeFileById(int id) => _homeFile.GetHomeFileById(id);
 
         public async Task<Result> CreateHomeFile(HomeFile homeFile) => await _homeFile.CreateHomeFile(homeFile);
+
+        public async Task<Result> DeleteHomeFile(int id) => await _homeFile.DeleteHomeFile(id);
+        public async Task<Result> EditHomeFile(HomeFile homeFile) => await _homeFile.EditHomeFile(homeFile);
+
     }
 }
