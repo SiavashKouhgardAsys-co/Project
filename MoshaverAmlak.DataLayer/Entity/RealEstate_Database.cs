@@ -89,7 +89,6 @@ namespace MoshaverAmlak.DataLayer.Entity
         public ICollection<HomeFile> HomeFiles { get; set; }
         public ICollection<UserRegion> UserRegions { get; set; }
     }
-
     public class Neighbourhood : BaseEntity
     {
         public string Name { get; set; }
@@ -118,7 +117,6 @@ namespace MoshaverAmlak.DataLayer.Entity
 
         public ICollection<City> Cities { get; set; }
     }
-
     public class ImageHome : BaseEntity
     {
         public string ImagePath { get; set; }
@@ -133,7 +131,6 @@ namespace MoshaverAmlak.DataLayer.Entity
 
         public ICollection<HomeFile> HomeFiles { get; set; }
     }
-
     public class TypeOfDocument : BaseEntity
     {
         public string Name { get; set; }

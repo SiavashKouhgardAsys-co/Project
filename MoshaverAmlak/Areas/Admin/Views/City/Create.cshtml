@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-4">
                         <select asp-for="@Model.City.ProvinceId">
-                            <option value="0">انتخاب کیند . . . </option>
+                            <option value="0">انتخاب کنید . . . </option>
                             @foreach (var item in Model.Provinces)
                             {
                                 <option value="@item.Id">@item.Name</option>

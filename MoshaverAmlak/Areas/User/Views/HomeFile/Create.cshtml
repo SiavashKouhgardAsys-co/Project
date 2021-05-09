@@ -1,4 +1,4 @@
-﻿@model HomeFile
+﻿@model HomeFileViewmodel
 @{
     ViewData["Title"] = "Create";
 }
@@ -11,15 +11,15 @@
                 <label class="d-block fw-bold">
                     نام مالک
                 </label>
-                <input type="text" asp-for="@Model.OwnerName" />
+                <input type="text" asp-for="@Model.OnwerName" />
             </div>
             <div class="col-3">
                 <label class="d-block fw-bold">شماره</label>
-                <input type="text" />
+                <input type="text" asp-for="@Model.OwnerNumber" />
             </div>
             <div class="col-3">
                 <label class="d-block fw-bold">قیمت</label>
-                <input type="text" asp-for="@Model.TotalPrice" />
+                <input type="text" asp-for="@Model.FinalPrice" />
             </div>
             <div class="col-3">
                 <label class="d-block fw-bold">منطقه</label>
@@ -29,7 +29,7 @@
         <div class="row my-4">
             <div class="col-2">
                 <label class="d-block fw-bold">پارکینگ</label>
-                <input type="radio" name="isParking" value="true" asp-for="@Model.IsParking" /> <span>دارد</span>
+                <input type="radio" name="isParking" value="true" /> <span>دارد</span>
                 <input type="radio" name="isParking" value="false" /> <span>ندارد</span>
             </div>
             <div class="col-5">
@@ -47,7 +47,84 @@
             </div>
         </div>
         <div class="row my-4">
-
+            <div class="col-3">
+                <label class="d-block fw-bold my-1">انتخاب نوع خونه</label>
+                <input type="radio" name="TypeOfHome" /> <span>ویلایی</span>
+                <input type="radio" name="TypeOfHome" /> <span>آپارتمان</span>
+                <input type="radio" name="TypeOfHome" /> <span>کلنگی</span>
+            </div>
+            <div class="col-3">
+                <label class="d-block fw-bold my-1">انتخاب جنس کابینت</label>
+                <input type="radio" name="Cupboard" /> <span>چوبی</span>
+                <input type="radio" name="Cupboard" /> <span>لمینت</span>
+                <input type="radio" name="Cupboard" /> <span>فلزی</span>
+            </div>
+            <div class="col-2">
+                <label class="d-block fw-bold my-1">انتخاب جهت خونه</label>
+                <input type="radio" name="HomeDirection"/> <span>شمالی</span>
+                <input type="radio" name="HomeDirection" /> <span>جنوبی</span>
+            </div>
+            <div class="col-4">
+                <label class="d-block fw-bold">انتخاب جنس کف</label>
+                <input type="radio" name="FloorMaterial" /> <span>پارکت</span>
+                <input type="radio" name="FloorMaterial" /> <span>موزاییک</span>
+                <input type="radio" name="FloorMaterial" /> <span>کامپوزیت</span>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-4">
+                <label class="d-block fw-bold">انتخاب نما</label>
+                <input type="radio" name="FloorMaterial" /> <span>آجر سه سانتی</span>
+                <input type="radio" name="FloorMaterial" /> <span>سنگ</span>
+                <input type="radio" name="FloorMaterial" /> <span>کاشی سفید</span>
+            </div>
+            <div class="col-2">
+                <label class="d-block fw-bold">انتخاب نوع سرویس</label>
+                <input type="radio" name="FloorMaterial" /> <span>فرنگی</span>
+                <input type="radio" name="FloorMaterial" /> <span>ایرانی</span>
+            </div>
+            <div class="col-2">
+                <label class="d-block fw-bold">انتحاب تعداد سرویس</label>
+                <select>
+                    @{ 
+                        for (int numberOfWcs = 0; numberOfWcs < 11; numberOfWcs++)
+                        {
+                            <option>@numberOfWcs</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="d-block fw-bold">انتخاب تعداد اتاق</label>
+                <select>
+                    @{
+                        for (int numberOfRooms = 0; numberOfRooms < 11; numberOfRooms++)
+                        {
+                            <option>@numberOfRooms</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="d-block fw-bold">وضعیت بازسازی</label>
+                <input type="radio" name="rebuilt"/><span>بازسازی شده</span>
+                <input type="radio" name="rebuilt"/><span>بازسازی نشده</span>
+            </div>
+            <div class="col-2">
+                <label class="d-block fw-bold">تراس</label>
+                <input type="radio" name="rebuilt" /><span>دارد</span>
+                <input type="radio" name="rebuilt" /><span>ندارد</span>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-6">
+                <label class="d-block fw-bold">آدرس</label>
+                <textarea rows="4" cols="50" asp-for="@Model.Address"></textarea>
+            </div>
+            <div class="col-6">
+                <label class="d-block fw-bold">توضیحات</label>
+                <textarea rows="4" cols="50" asp-for="@Model.Description"></textarea>
+            </div>
         </div>
         <div class="row my-4">
             <div class="col-12 mt-5 text-center border brand-image">
@@ -63,5 +140,4 @@
             </div>
         </div>
     </form>
-
 </div>

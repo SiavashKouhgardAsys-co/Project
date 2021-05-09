@@ -1,4 +1,4 @@
-﻿@model SendDataToView<IQueryable<HomeFile>>
+﻿@model SendDataToView<List<HomeFileViewmodel>>
 @{
     ViewData["Title"] = "Index";
 }
@@ -49,7 +49,7 @@
                 <div>
                     <img src="~/dist/img/user1-128x128.jpg" />
                 </div>
-                <ul>
+                <ul class="list-group">
                     <li>
                         <label>قیمت</label>
                         <span>200</span>
@@ -63,10 +63,8 @@
                         <span>300 متر</span>
                     </li>
                     <li>
-                        <label>شناسه</label>
-                        <span>30001</span>
-                    </li>
-                    <li>
+                        <label>اسنان</label>
+                        <label>شهر</label>
                         <label>ناحیه</label>
                         <span>2</span>
                     </li>

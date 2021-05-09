@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Routing;
 using MoshaverAmlak.Core.Repository.Service.Interface;
 using MoshaverAmlak.DataLayer.Common;
 using MoshaverAmlak.DataLayer.Entity;
+using MoshaverAmlak.DataLayer.Viewmodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,38 @@ namespace MoshaverAmlak.Areas.User.Controllers
     public class HomeFileController : Controller
     {
         private readonly IHomeFileService _homeFileService;
-        public HomeFileController(IHomeFileService homeFileService)
+        private readonly IProvinceService _provinceService;
+        private readonly ICityService _cityService;
+        private readonly IFacilitiesService _facilitiesService;
+        private readonly IRegionService _regionService;
+        private readonly IRebuiltService _rebuiltService;
+        private readonly ICategoryFacilitiesService _categoryFacilitiesService;
+        private readonly INeighbourhoodService _neighbourhoodService;
+        private readonly IFileTypeService _fileTypeService;
+        private readonly IHomeFileTypeService _homefileTypeService;
+        private readonly IHomeDirectionService _homeDirectionService;
+        private readonly ITypeOfDocumentService _typeOfDocumentService;
+        public HomeFileController(IHomeFileService homeFileService , IProvinceService provinceService , ICityService cityService , IFacilitiesService facilitiesService , IRegionService regionService , IRebuiltService rebuiltService , ICategoryFacilitiesService categoryFacilitiesService , INeighbourhoodService neighbourhoodService , IFileTypeService fileTypeService , IHomeDirectionService homeDirectionService , IHomeFileTypeService homeFileTypeService , ITypeOfDocumentService typeOfDocumentService)
         {
             _homeFileService = homeFileService;
+            _provinceService = provinceService;
+            _cityService = cityService;
+            _categoryFacilitiesService = categoryFacilitiesService;
+            _facilitiesService = facilitiesService;
+            _homeDirectionService = homeDirectionService;
+            _homefileTypeService = homeFileTypeService;
+            _neighbourhoodService = neighbourhoodService;
+            _rebuiltService = rebuiltService;
+            _regionService = regionService;
+            _rebuiltService = rebuiltService;
+            _fileTypeService = fileTypeService;
+            _typeOfDocumentService = typeOfDocumentService;
         }
 
         public IActionResult Index(string resultStatus)
         {
-            SendDataToView<IQueryable<HomeFile>> sendDataToView = new SendDataToView<IQueryable<HomeFile>>();
-            var data = _homeFileService.GetAllHomeFile();
+            SendDataToView<List<HomeFileViewmodel>> sendDataToView = new SendDataToView<List<HomeFileViewmodel>>();
+            var data = _homeFileService.GetAllHomeFiles();
             if (data.Result.StatusResult != (int)Result.Status.OK) return NotFound();
             sendDataToView.Entity = data.Entity;
             if (sendDataToView != null)
@@ -32,11 +56,57 @@ namespace MoshaverAmlak.Areas.User.Controllers
 
 
         [HttpGet]
-        public IActionResult Create() => View();
-        [HttpPost]
-        public async Task<IActionResult> Create(HomeFile homeFile)
+        public IActionResult Create()
         {
-            var result = await _homeFileService.CreateHomeFile(homeFile);
+            HomeFileCreateViewmodel homeFileCreateViewmodel = new HomeFileCreateViewmodel();
+            
+            var regions = _regionService.GetAllRegions();
+            if(regions.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = regions.Result.StatusResult }));
+            homeFileCreateViewmodel.Region = regions.Entity;
+
+            var typeOfDocument = _typeOfDocumentService.GetAllTypeOfDocument();
+            if (typeOfDocument.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = typeOfDocument.Result.StatusResult }));
+            homeFileCreateViewmodel.TypeOfDocuments = typeOfDocument.Entity;
+
+            //var facilities = _facilitiesService.
+            //if (facilities.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = facilities.Result.StatusResult }));
+            //homeFileCreateViewmodel.Facilities = facilities.Entity;
+
+            var facilitiCategories = _categoryFacilitiesService.GetAllCategoryFacilities();
+            if (facilitiCategories.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = facilitiCategories.Result.StatusResult }));
+            homeFileCreateViewmodel.CategoryFacilities = facilitiCategories.Entity;
+
+            var neighbours = _neighbourhoodService.GetAllNeighbourhood();
+            if (neighbours.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = neighbours.Result.StatusResult }));
+            homeFileCreateViewmodel.Neighbourhoods = neighbours.Entity;
+
+            var rebuilts = _rebuiltService.GetAllRebuilt();
+            if (rebuilts.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = rebuilts.Result.StatusResult }));
+            homeFileCreateViewmodel.Rebuilts = rebuilts.Entity;
+
+            var homeDirections = _homeDirectionService.GetAllHomeDirection();
+            if (homeDirections.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = homeDirections.Result.StatusResult }));
+            homeFileCreateViewmodel.HomeDirections = homeDirections.Entity;
+
+            var fileTypes = _fileTypeService.GetAllFileTypes();
+            if (fileTypes.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = fileTypes.Result.StatusResult }));
+            homeFileCreateViewmodel.FileTypes = fileTypes.Entity;
+
+            var homeFileTypes = _homefileTypeService.GetAllHomeFileType();
+            if (homeFileTypes.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = homeFileTypes.Result.StatusResult }));
+            homeFileCreateViewmodel.HomeFileTypes = homeFileTypes.Entity;
+
+
+            return View(homeFileCreateViewmodel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(HomeFileViewmodel homeFileViewmodel)
+        {
+            var result = await _homeFileService.CreateHomeFile(new HomeFile() 
+            {
+                //yes please...
+            });
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }
 
