@@ -68,13 +68,9 @@ namespace MoshaverAmlak.Areas.User.Controllers
             if (typeOfDocument.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = typeOfDocument.Result.StatusResult }));
             homeFileCreateViewmodel.TypeOfDocuments = typeOfDocument.Entity;
 
-            //var facilities = _facilitiesService.
-            //if (facilities.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = facilities.Result.StatusResult }));
-            //homeFileCreateViewmodel.Facilities = facilities.Entity;
-
-            var facilitiCategories = _categoryFacilitiesService.GetAllCategoryFacilities();
-            if (facilitiCategories.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = facilitiCategories.Result.StatusResult }));
-            homeFileCreateViewmodel.CategoryFacilities = facilitiCategories.Entity;
+            var homeDirections = _homeDirectionService.GetAllHomeDirection();
+            if (homeDirections.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = homeDirections.Result.StatusResult }));
+            homeFileCreateViewmodel.HomeDirections = homeDirections.Entity;
 
             var neighbours = _neighbourhoodService.GetAllNeighbourhood();
             if (neighbours.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = neighbours.Result.StatusResult }));
@@ -83,10 +79,6 @@ namespace MoshaverAmlak.Areas.User.Controllers
             var rebuilts = _rebuiltService.GetAllRebuilt();
             if (rebuilts.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = rebuilts.Result.StatusResult }));
             homeFileCreateViewmodel.Rebuilts = rebuilts.Entity;
-
-            var homeDirections = _homeDirectionService.GetAllHomeDirection();
-            if (homeDirections.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = homeDirections.Result.StatusResult }));
-            homeFileCreateViewmodel.HomeDirections = homeDirections.Entity;
 
             var fileTypes = _fileTypeService.GetAllFileTypes();
             if (fileTypes.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = fileTypes.Result.StatusResult }));
