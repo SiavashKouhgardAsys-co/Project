@@ -1,0 +1,107 @@
+﻿@font-face {
+  font-family: "yekan";
+  src: url(../webfonts/Yekan.eot);
+  src: url(../webfonts/Yekan.eot?#iefix) format("embedded-opentype"), url(../webfonts/Yekan.woff) format("woff"), url(../webfonts/Yekan.ttf) format("truetype"), url(../webfonts/Yekan.svg#BYekan) format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; }
+
+body {
+  background-image: url("/image/bgWallpaper.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  font-family: "yekan";
+  text-decoration: none !important; }
+  body .main {
+    background-color: #f3f3f3;
+    max-width: 400px;
+    height: 400px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 0 85px 10px rgba(0, 0, 0, 0.94); }
+    body .main label {
+      display: none; }
+    body .main .sign {
+      padding-top: 40px;
+      color: #8C55AA;
+      font-weight: bold;
+      font-size: 23px; }
+    body .main form.form1 {
+      padding-top: 40px; }
+      body .main form.form1 .un {
+        width: 76%;
+        color: #263238;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 1px;
+        background: rgba(136, 126, 126, 0.34);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        outline: none;
+        box-sizing: border-box;
+        border: 2px solid rgba(0, 0, 0, 0.02);
+        margin-bottom: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-bottom: 27px; }
+      body .main form.form1 .pass {
+        width: 76%;
+        color: #263238;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 1px;
+        background: rgba(136, 126, 126, 0.34);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        outline: none;
+        box-sizing: border-box;
+        border: 2px solid rgba(0, 0, 0, 0.02);
+        margin-bottom: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-bottom: 27px; }
+      body .main form.form1 .un:focus,
+      body .main form.form1 .pass:focus {
+        border: 2px solid rgba(0, 0, 0, 0.18) !important; }
+      body .main form.form1 .submit {
+        cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        margin: auto;
+        display: block;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        transition: all 600ms;
+        -webkit-transition: all 600ms;
+        -moz-transition: all 600ms;
+        -o-transition: all 600ms; }
+        body .main form.form1 .submit:hover {
+          box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.44);
+          background: linear-gradient(to left, #651574, #E040FB); }
+      body .main form.form1 .forgot {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #E1BEE7;
+        padding-top: 15px; }
+        body .main form.form1 .forgot a {
+          text-decoration: none;
+          color: #651574;
+          transition: all 600ms;
+          -webkit-transition: all 600ms;
+          -moz-transition: all 600ms;
+          -o-transition: all 600ms; }
+          body .main form.form1 .forgot a:hover {
+            color: #E040FB;
+            text-shadow: 0 0 5px #9C27B0; }

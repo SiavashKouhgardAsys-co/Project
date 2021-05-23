@@ -18,5 +18,9 @@
   {
     "outputFile": "wwwroot/css/defaultStyle.css",
     "inputFile": "wwwroot/scss/defaultStyle.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Login.css",
+    "inputFile": "wwwroot/scss/Login.scss"
   }
 ]
