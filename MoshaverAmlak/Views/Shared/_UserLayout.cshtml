@@ -7,29 +7,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/wwwroot/css/userLayout.min.css">
-    <link rel="stylesheet" href="~/wwwroot/css/defaultStyle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/userLayout.min.css">
+    <link rel="stylesheet" href="~/css/defaultStyle.min.css" />
 </head>
 <body class="">
-    <header class="container-fluid bg-light">
-        <div class="row">
+    <header>
+        <div class="container-fluid bg-light">
+            <div class="row">
+                <div class="col-2 logo">
+                    <a href="#"><img src="~/image/logo.png" /></a>
+                </div>
+                <div class="col-8 space"></div>
 
-            <div class="col-2 logo">
-                <a href="#"><img src="~/image/logo.png" /></a>
-            </div>
-            <div class="col-8 space"></div>
-
-            <div class="col-2">
-                <div class="dropdown persInfo">
-                    <button class="btn dropdown-toggle btnPer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        علی دایی
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">پیام ها</a></li>
-                        <li><a class="dropdown-item" href="#">حساب کاربری</a></li>
-                        <li><a class="dropdown-item" href="#">خروج</a></li>
-                    </ul>
+                <div class="col-2">
+                    <div class="dropdown persInfo">
+                        <button class="btn dropdown-toggle btnPer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                            علی دایی
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">پیام ها</a></li>
+                            <li><a class="dropdown-item" href="#">حساب کاربری</a></li>
+                            <li><a class="dropdown-item" href="#">خروج</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,10 +41,12 @@
             <div class="row pt-4">
                 <div class="col-2 pt-5 ps-0 mainMenu">
                     <ul class="sideMenu  m-0 bg-light">
-                        <li><a asp-area="User" asp-controller="Dashboard" asp-action="Index">
-                                <i class="fa fa-box"></i>    
-                            داشبورد
-                            </a></li>
+                        <li>
+                            <a asp-area="User" asp-controller="Dashboard" asp-action="Index">
+                                <i class="fa fa-box"></i>
+                                داشبورد
+                            </a>
+                        </li>
                         <li><a asp-area="User" asp-controller="HomeFile" asp-action="Index" method="post"><i></i><span>فایل ها</span></a></li>
                         <li><a asp-area="User" asp-controller="Buyer" asp-action="Index" method="post"><i></i><span>خریدار ها</span></a></li>
                         <li><a asp-area="User" asp-controller="Owner" method="post"><i></i><span>فروشنده ها</span></a></li>
@@ -57,9 +60,8 @@
             </div>
         </div>
     </content>
-
-    <script src="~/wwwroot/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/wwwroot/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/wwwroot/js/popper/popper.js"></script>
+    <script src="~/js/jquery.js"></script>
+    <script src="~/bootstrap/js/Popper.js"></script>
+    <script src="~/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
