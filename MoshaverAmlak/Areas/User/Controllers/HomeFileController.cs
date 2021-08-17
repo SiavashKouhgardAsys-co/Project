@@ -68,10 +68,6 @@ namespace MoshaverAmlak.Areas.User.Controllers
             if (typeOfDocument.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = typeOfDocument.Result.StatusResult }));
             homeFileCreateViewmodel.TypeOfDocuments = typeOfDocument.Entity;
 
-            //var facilities = _facilitiesService.
-            //if (facilities.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = facilities.Result.StatusResult }));
-            //homeFileCreateViewmodel.Facilities = facilities.Entity;
-
             var facilitiCategories = _categoryFacilitiesService.GetAllCategoryFacilities();
             if (facilitiCategories.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = facilitiCategories.Result.StatusResult }));
             homeFileCreateViewmodel.CategoryFacilities = facilitiCategories.Entity;
@@ -96,6 +92,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
             if (homeFileTypes.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = homeFileTypes.Result.StatusResult }));
             homeFileCreateViewmodel.HomeFileTypes = homeFileTypes.Entity;
 
+             
 
             return View(homeFileCreateViewmodel);
         }
