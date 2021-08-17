@@ -17,10 +17,10 @@ namespace MoshaverAmlak.DataLayer.Viewmodel
     public class HomeFileCreateViewmodel
     {
         public Owner Owner { get; set; }
+
         public IQueryable<Region> Region { get; set; }
         public IQueryable<TypeOfDocument> Documents { get; set; }
-        public IQueryable<Facilities> Facilities { get; set; }
-        public IQueryable<CategoryFacilities> CategoryFacilities { get; set; }
+        public List<Facilities> Facilities { get; set; }
         public IQueryable<Neighbourhood> Neighbourhoods { get; set; }
         public IQueryable<Rebuilt> Rebuilts { get; set; }
         public IQueryable<HomeDirection> HomeDirections { get; set; }

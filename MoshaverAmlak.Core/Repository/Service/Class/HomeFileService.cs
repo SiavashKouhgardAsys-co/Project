@@ -33,17 +33,7 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
             {
                 homeFileViewmodels.Add(new HomeFileViewmodel() 
                 {
-                    Id = item.Id,
-                    OnwerName = item.OwnerName,
-                    OwnerNumber = item.OwnerNumber,
-                    Address = item.Address,
-                    Description = item.Description,
-                    Region = item.Region,
-                    FinalPrice = item.FinalPrice,
-                    HomeFileType = item.HomeFileType,
-                    HomeDirection = item.HomeDirection,
-                    Neighbourhood = item.Neighbourhood,
-                    YearOfConstruction = item.YearOfConstruction
+                    
                    
                 });
             }

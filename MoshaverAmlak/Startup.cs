@@ -99,6 +99,7 @@ namespace MoshaverAmlak
             services.AddScoped<IHomeFileService, HomeFileService>();
             services.AddScoped<IInvestorService, InvestorService>();
             services.AddScoped<IRealStateService, RealStateService>();
+            services.AddScoped<ITypeOfDocumentService, TypeOfDocumentService>();
 
         }
 
