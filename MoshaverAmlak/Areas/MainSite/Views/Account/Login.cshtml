@@ -3,22 +3,19 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="container">
-    <div class="row d-flex justify-content-center">
-        <div class="col-4 mt-5">
-            <form asp-area="MainSite" asp-controller="Account" asp-action="Login" method="post">
-                <div class="form-group">
-                    <label>شماره موبایل</label>
-                    <input class="form-control" type="text" asp-for="Username">
-                </div>
-                <div class="form-group">
-                    <label>رمز عبور</label>
-                    <input class="form-control" type="password" asp-for="Password">
-                </div>
-                <button class="btn btn-primary mt-3"  type="submit">ورود</button>
-            </form>
+<div class="main">
+    <p class="sign text-center" align="center">ورود به سایت</p>
+
+    <form asp-area="MainSite" asp-controller="Account" asp-action="Login" method="post" class="form1">
+        <div class="form-group">
+            <label>شماره موبایل</label>
+            <input class="form-control un  text-center" type="text" asp-for="Username" placeholder="نام کاربری" >
         </div>
-    </div>
+        <div class="form-group">
+            <label>رمز عبور</label>
+            <input class="form-control pass text-center" type="password" asp-for="Password"  placeholder="کلمه عبور" >
+        </div>
+        <button class="btn btn-primary mt-3 submit text-center" type="submit">ورود</button>
+    </form>
+
 </div>
-
-
