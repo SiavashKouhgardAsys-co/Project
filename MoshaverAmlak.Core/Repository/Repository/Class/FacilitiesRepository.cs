@@ -17,6 +17,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public ReturnEntity_IQueryable<Facilities> GetAllFacilities() => _facilitiesRepository.GetAllEntity();
         public ReturnEntity<Facilities> GetFacilityById(int facilityId) => _facilitiesRepository.GetEntityById(facilityId);
+        public ReturnEntity<Facilities> GetFacilityByCategoryId(int id) => _facilitiesRepository.GetEntityByOtherColumn(x => x.CategoryFacilityId == id);
+        public ReturnEntity_IQueryable<Facilities> GetRangeFacilityByCategoryId(int catId) => _facilitiesRepository.GetAllEntityByOtherColumn(x => x.CategoryFacilityId == catId);
         public async Task<Result> CreateFacility(Facilities facilities)
         {
             var entity = await _facilitiesRepository.AddEntity(facilities);

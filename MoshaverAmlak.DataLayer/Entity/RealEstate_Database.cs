@@ -55,8 +55,7 @@ namespace MoshaverAmlak.DataLayer.Entity
         public int FileTypeId { get; set; }
 
         public Region Region { get; set; }
-
-
+        
         public Neighbourhood Neighbourhood { get; set; }
         public Rebuilt Rebuilt { get; set; }
         public City City { get; set; }

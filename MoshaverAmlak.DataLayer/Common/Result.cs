@@ -15,7 +15,7 @@ namespace MoshaverAmlak.DataLayer.Common
             OK,
             Failed,
             NotRecognizedUser,
-            NotRecognizedRole,
+            NotRecognizedRole,  
             LoginOk,
             LoginFailed
         }

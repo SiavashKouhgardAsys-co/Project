@@ -51,9 +51,6 @@ namespace MoshaverAmlak.DataLayer.Entity
                                           .ValueGeneratedOnAdd()
                                           .UseIdentityColumn(1, 1);
 
-            
-
-
             builder.Entity<Neighbourhood>().HasKey(x => x.Id);
             builder.Entity<Neighbourhood>().Property(x => x.Id)
                                           .ValueGeneratedOnAdd()
@@ -73,8 +70,6 @@ namespace MoshaverAmlak.DataLayer.Entity
             builder.Entity<Province>().Property(x => x.Id)
                                           .ValueGeneratedOnAdd()
                                           .UseIdentityColumn(1, 1);
-
-            
 
             builder.Entity<ImageHome>().HasKey(x => x.Id);
             builder.Entity<ImageHome>().Property(x => x.Id)

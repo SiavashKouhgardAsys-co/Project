@@ -25,7 +25,6 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
             if (resultStatus != null)
                 sendDataToView.Message = Result.GetMessage(resultStatus);
             return View(sendDataToView);
-
         }
 
         [HttpGet]

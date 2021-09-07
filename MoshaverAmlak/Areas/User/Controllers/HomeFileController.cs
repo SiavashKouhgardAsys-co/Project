@@ -59,7 +59,7 @@ namespace MoshaverAmlak.Areas.User.Controllers
         public IActionResult Create()
         {
             HomeFileCreateViewmodel homeFileCreateViewmodel = new HomeFileCreateViewmodel();
-            
+
             var regions = _regionService.GetAllRegions();
             if(regions.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = regions.Result.StatusResult }));
             homeFileCreateViewmodel.Region = regions.Entity;
@@ -88,16 +88,24 @@ namespace MoshaverAmlak.Areas.User.Controllers
             if (homeFileTypes.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = homeFileTypes.Result.StatusResult }));
             homeFileCreateViewmodel.HomeFileTypes = homeFileTypes.Entity;
 
+            var facilities = _facilitiesService.GetFacilityByCategory();
+            if(facilities.Result.StatusResult != (int)Result.Status.OK) RedirectToAction("Index" , new RouteValueDictionary(new { 
+            resultStatus = facilities.Result.StatusResult}));
+            homeFileCreateViewmodel.ForFacilities = facilities.Entity;
 
             return View(homeFileCreateViewmodel);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Create(HomeFileViewmodel homeFileViewmodel)
         {
             var result = await _homeFileService.CreateHomeFile(new HomeFile() 
             {
-                //yes please...
+                FinalPrice = homeFileViewmodel.FinalPrice,
+                FileType = homeFileViewmodel.HomeFileType,
+                Area = homeFileViewmodel.Area,
+                
             });
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
         }

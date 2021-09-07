@@ -20,7 +20,7 @@ namespace MoshaverAmlak.DataLayer.GenericRepository
             _dbSet = _context.Set<T>();
         }
 
-        // GET DATE
+        // GET DATA
         public ReturnEntity_IQueryable<T> GetAllEntity()
         {
             ReturnEntity_IQueryable<T> returnEntity = new ReturnEntity_IQueryable<T>();

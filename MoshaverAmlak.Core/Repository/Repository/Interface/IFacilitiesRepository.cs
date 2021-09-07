@@ -9,6 +9,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Interface
     {
         ReturnEntity_IQueryable<Facilities> GetAllFacilities();
         ReturnEntity<Facilities> GetFacilityById(int facilityId);
+        ReturnEntity_IQueryable<Facilities> GetRangeFacilityByCategoryId(int catId);
+        ReturnEntity<Facilities> GetFacilityByCategoryId(int id);
         Task<Result> CreateFacility(Facilities facilities);
         Task<Result> DeleteFacilityById(int facilityId);
         Task<Result> EditFacility(Facilities facilities);

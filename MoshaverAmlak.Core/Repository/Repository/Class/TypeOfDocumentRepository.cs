@@ -19,8 +19,8 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
         public ReturnEntity<TypeOfDocument> GetTypeOfDocumentById(int typeOfDocumentId) => _typeOfDocumentRepository.GetEntityById(typeOfDocumentId);
         public async Task<Result> CreateTypeOfDocument(TypeOfDocument typeOfDocument)
         {
-            var entity = _typeOfDocumentRepository.AddEntity(typeOfDocument);
-            if (entity.Status != (int)Result.Status.OK) return await entity;
+            var entity = await _typeOfDocumentRepository.AddEntity(typeOfDocument);
+            if (entity.StatusResult != (int)Result.Status.OK) return entity;
             return await _typeOfDocumentRepository.SaveChangeAsync();
         }
         public async Task<Result> DeleteTypeOfDocument(int typeOfDocumentId)
@@ -41,7 +41,7 @@ namespace MoshaverAmlak.Core.Repository.Repository.Class
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _typeOfDocumentRepository?.Dispose();
         }
     }
 }

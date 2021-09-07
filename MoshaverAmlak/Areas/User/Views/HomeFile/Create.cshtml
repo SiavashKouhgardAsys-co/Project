@@ -25,7 +25,7 @@
                 <label class="d-block fw-bold">منطقه</label>
                 @{
                     <select>
-                        <option value="0">انتخاب کنید...</option>
+                        <option value=" ">انتخاب کنید...</option>
                         @foreach (var item in Model.Region)
                         {
                             <option value="@item.Id">@item.Name</option>
@@ -35,12 +35,48 @@
             </div>
         </div>
         <div class="row my-4">
-            <div class="col-4">
+            <div class="col-3">
                 <label class="d-block fw-bold">نوع سند</label>
                 @{
                     <select>
-                        <option value="0">انتخاب کنید...</option>
+                        <option value=" "> ...انتخاب کنید</option>
                         @foreach (var item in Model.TypeOfDocuments)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                }
+            </div>
+            <div class="col-3">
+                <label class="d-block fw-bold">جهت خانه</label>
+                @{
+                    <select>
+                        <option value=" ">...انتخاب کنید</option>
+                        @foreach (var item in Model.HomeDirections)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                }
+            </div>
+            <div class="col-3">
+                <label class="d-block fw-bold">انتخاب همسایگی</label>
+                @{
+                    <select>
+                        <option value=" ">...انتخاب کنید</option>
+                        @foreach (var item in Model.Neighbourhoods)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                }
+            </div>
+            <div class="col-3">
+                <label class="d-block fw-bold">وضعیت بازسازی</label>
+                @{
+                    <select>
+                        <option value=" ">...انتخاب کنید</option>
+                        @foreach (var item in Model.Rebuilts)
                         {
                             <option value="@item.Id">@item.Name</option>
                         }
@@ -49,62 +85,40 @@
             </div>
         </div>
         <div class="row my-4">
-            <div class="col-2">
+            <div class="col-3">
+                <label class="d-block fw-bold">نوع فایل خانه</label>
+                @{
+                    <select>
+                        <option>انتخاب کنید...</option>
+                        @foreach (var item in Model.FileTypes)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+
+                        }
+                    </select>
+                }
+            </div>
+        </div>
+        <div class="row my-4">
+            @*<div class="col-2">
                 <label class="d-block fw-bold">پارکینگ</label>
-                <input type="radio" name="isParking" value="true" /> <span>دارد</span>
+                <input type="radio" name="isParking" value="true" asp-for="@Model.ForFacilities" /> <span>دارد</span>
                 <input type="radio" name="isParking" value="false" /> <span>ندارد</span>
-            </div>
-            <div class="col-5">
-                <label class="d-block fw-bold">تهویه</label>
-                <input type="radio" name="aircondition" /> <span>چیلر</span>
-                <input type="radio" name="aircondition" /> <span>پکیج سقفی</span>
-                <input type="radio" name="aircondition" /> <span>کولر آبی</span>
-                <input type="radio" name="aircondition" /> <span>کولر گازی</span>
-            </div>
-            <div class="col-5 mt-3">
-                <label class="d-block fw-bold">گرمایش</label>
-                <input type="radio" name="HeatingType" /> <span>شوفاژ</span>
-                <input type="radio" name="HeatingType" /> <span>گرمایش از کف</span>
-                <input type="radio" name="HeatingType" /> <span>بخاری</span>
-            </div>
+            </div>*@
+           @foreach (var item in Model.ForFacilities)
+           {
+               <div class="col-3">
+                   <label class="d-block fw-bold">@item.CategoryName</label>
+                   @foreach (var fItem in item.Facilities)
+                   {
+                       <label>@fItem.Name</label>
+                       <input type="checkbox"/>
+                   }
+               </div>
+           }
         </div>
+        
         <div class="row my-4">
-            <div class="col-3">
-                <label class="d-block fw-bold my-1">انتخاب نوع خونه</label>
-                <input type="radio" name="TypeOfHome" /> <span>ویلایی</span>
-                <input type="radio" name="TypeOfHome" /> <span>آپارتمان</span>
-                <input type="radio" name="TypeOfHome" /> <span>کلنگی</span>
-            </div>
-            <div class="col-3">
-                <label class="d-block fw-bold my-1">انتخاب جنس کابینت</label>
-                <input type="radio" name="Cupboard" /> <span>چوبی</span>
-                <input type="radio" name="Cupboard" /> <span>لمینت</span>
-                <input type="radio" name="Cupboard" /> <span>فلزی</span>
-            </div>
-            <div class="col-2">
-                <label class="d-block fw-bold my-1">انتخاب جهت خونه</label>
-                <input type="radio" name="HomeDirection" /> <span>شمالی</span>
-                <input type="radio" name="HomeDirection" /> <span>جنوبی</span>
-            </div>
-            <div class="col-4">
-                <label class="d-block fw-bold">انتخاب جنس کف</label>
-                <input type="radio" name="FloorMaterial" /> <span>پارکت</span>
-                <input type="radio" name="FloorMaterial" /> <span>موزاییک</span>
-                <input type="radio" name="FloorMaterial" /> <span>کامپوزیت</span>
-            </div>
-        </div>
-        <div class="row my-4">
-            <div class="col-4">
-                <label class="d-block fw-bold">انتخاب نما</label>
-                <input type="radio" name="FloorMaterial" /> <span>آجر سه سانتی</span>
-                <input type="radio" name="FloorMaterial" /> <span>سنگ</span>
-                <input type="radio" name="FloorMaterial" /> <span>کاشی سفید</span>
-            </div>
-            <div class="col-2">
-                <label class="d-block fw-bold">انتخاب نوع سرویس</label>
-                <input type="radio" name="FloorMaterial" /> <span>فرنگی</span>
-                <input type="radio" name="FloorMaterial" /> <span>ایرانی</span>
-            </div>
             <div class="col-2">
                 <label class="d-block fw-bold">انتحاب تعداد سرویس</label>
                 <select>
@@ -128,16 +142,7 @@
                     }
                 </select>
             </div>
-            <div class="col-2">
-                <label class="d-block fw-bold">وضعیت بازسازی</label>
-                <input type="radio" name="rebuilt" /><span>بازسازی شده</span>
-                <input type="radio" name="rebuilt" /><span>بازسازی نشده</span>
-            </div>
-            <div class="col-2">
-                <label class="d-block fw-bold">تراس</label>
-                <input type="radio" name="rebuilt" /><span>دارد</span>
-                <input type="radio" name="rebuilt" /><span>ندارد</span>
-            </div>
+
         </div>
         <div class="row my-4">
             <div class="col-6">

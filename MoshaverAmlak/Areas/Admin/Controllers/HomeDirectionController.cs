@@ -37,9 +37,7 @@ namespace MoshaverAmlak.Areas.Admin.Controllers
         {
             var result = await _homeDirectionService.CreateHomeDirection(homeDirection);
             return RedirectToAction("Index", new RouteValueDictionary(new { resultStatus = result.StatusResult }));
-
         }
-
         
         [HttpGet]
         public IActionResult Delete(int id)

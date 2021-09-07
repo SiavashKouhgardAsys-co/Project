@@ -9,8 +9,8 @@ namespace MoshaverAmlak.DataLayer.Viewmodel
     public class HomeFileViewmodel
     {
         public int HomeFileId { get; set; }
-        public string HomeFileType { get; set; }
-        public string Area { get; set; }
+        public FileType HomeFileType { get; set; }
+        public double Area { get; set; }
         public long FinalPrice { get; set; }
     }
 
@@ -20,14 +20,20 @@ namespace MoshaverAmlak.DataLayer.Viewmodel
 
         public IQueryable<Region> Region { get; set; }
         public IQueryable<TypeOfDocument> Documents { get; set; }
-        public List<Facilities> Facilities { get; set; }
         public IQueryable<Neighbourhood> Neighbourhoods { get; set; }
         public IQueryable<Rebuilt> Rebuilts { get; set; }
         public IQueryable<HomeDirection> HomeDirections { get; set; }
         public IQueryable<HomeFileType> HomeFileTypes { get; set; }
         public IQueryable<FileType> FileTypes { get; set; }
         public IQueryable<TypeOfDocument> TypeOfDocuments { get; set; }
+        public List<HomeFileCreateFacilityViewModel> ForFacilities { get; set; }
     }
-    
-    
+
+    public class HomeFileCreateFacilityViewModel
+    {
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public IQueryable<Facilities> Facilities { get; set; }
+    }
+
 }

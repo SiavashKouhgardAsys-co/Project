@@ -56,7 +56,7 @@ namespace MoshaverAmlak
 
             services.AddScoped<IdentityErrorDescriber>();
 
-            //Contex
+            //Context
             services.AddTransient<RealEstate_Context>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             //Repositories

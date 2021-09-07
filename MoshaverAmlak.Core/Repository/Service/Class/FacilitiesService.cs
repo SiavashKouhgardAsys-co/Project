@@ -37,7 +37,7 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
                     FacilityId = item.Id,
                     FacilityName = item.Name
 
-                }) ;
+                });
             }
             returnEntity.Entity = facilitiesViewmodel;
             return returnEntity;
@@ -45,9 +45,28 @@ namespace MoshaverAmlak.Core.Repository.Service.Class
 
 
         public ReturnEntity<Facilities> GetFacilitiesById(int id) => _facilities.GetFacilityById(id);
+        public ReturnEntity_List<HomeFileCreateFacilityViewModel> GetFacilityByCategory()
+        {
+            ReturnEntity_List<HomeFileCreateFacilityViewModel> returnEntity = new ReturnEntity_List<HomeFileCreateFacilityViewModel>();
+            List<HomeFileCreateFacilityViewModel> homeFileCreateFacilityViewModels = new List<HomeFileCreateFacilityViewModel>();
+            var category = _categoryFacilitiesService.GetAllCategoryFacilities();
+            foreach (var item in category.Entity)
+            {
+                var facility = _facilities.GetRangeFacilityByCategoryId(item.Id);
+                if (facility.Result.StatusResult != (int)Result.Status.OK) return returnEntity;
+                returnEntity.Result = facility.Result;
+                homeFileCreateFacilityViewModels.Add(new HomeFileCreateFacilityViewModel
+                {
+                    CategoryId = item.Id,
+                    CategoryName = item.Name,
+                    Facilities = facility.Entity
+                });
+            }
+            returnEntity.Entity = homeFileCreateFacilityViewModels;
+            return returnEntity;
+        }
         public async Task<Result> CreateFacilities(Facilities facilities) => await _facilities.CreateFacility(facilities);
         public async Task<Result> DeleteFacilities(int id) => await _facilities.DeleteFacilityById(id);
-
         public async Task<Result> EditFacilities(Facilities facilities) => await
             _facilities.EditFacility(facilities);
     }
